@@ -15,9 +15,14 @@ except:
     pass
 
 
-def confirmaSalir(self, event):
-    quit_msg = "¿Estás seguro de que quieres salir?"
-    reply = QtWidgets.QMessageBox.question(self, 'Salir', quit_msg, QtWidgets.QMessageBox.Yes, QtWidgets.QMessageBox.No)
+def confirmaSalir(self, event, porSalir=False):
+    if porSalir == True:
+        event.accept
+        return
+
+    quit_msg = "Are you sure you want to exit?"
+    reply = QtWidgets.QMessageBox.question(
+        self, 'Exit', quit_msg, QtWidgets.QMessageBox.Yes, QtWidgets.QMessageBox.No)
 
     if reply == QtWidgets.QMessageBox.Yes:
         event.accept()
@@ -45,7 +50,7 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
         if not arduino:
             QtWidgets.QMessageBox.critical(
                 self, 'Error',
-                "No se ha podido establecer la conexión con el dispositivo de juego.",
+                "Can't stablish a connection with the gaming device.",
                 QtWidgets.QMessageBox.Ok)
             self.abreSelectorEquipos()
         else:
@@ -96,34 +101,66 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
         self.setupUi(self)
         self.continuar.clicked.connect(self.siguiente)
         self.back.clicked.connect(self.anterior)
-        locales = [self.L1, self.L2, self.L3, self.L4, self.L5, self.L6]
-        visitantes = [self.L1_2, self.L2_2, self.L3_2, self.L4_2, self.L5_2, self.L6_2]
+        self.porSalir = False
+        self.locales = [self.L1, self.L2, self.L3, self.L4, self.L5, self.L6]
+        self.visitantes = [self.L1_2, self.L2_2,
+                           self.L3_2, self.L4_2, self.L5_2, self.L6_2]
 
-        for btn in locales:
-            btn.clicked.connect(lambda: self.seleccion())
+        self.L1.clicked.connect(lambda: self.seleccion("L1"))
+        self.L2.clicked.connect(lambda: self.seleccion("L2"))
+        self.L3.clicked.connect(lambda: self.seleccion("L3"))
+        self.L4.clicked.connect(lambda: self.seleccion("L4"))
+        self.L5.clicked.connect(lambda: self.seleccion("L5"))
+        self.L6.clicked.connect(lambda: self.seleccion("L6"))
 
-        for btn in visitantes:
-            btn.clicked.connect(lambda: self.seleccion(1))
+        self.L1_2.clicked.connect(lambda: self.seleccion("L1_2", 1))
+        self.L2_2.clicked.connect(lambda: self.seleccion("L2_2", 1))
+        self.L3_2.clicked.connect(lambda: self.seleccion("L3_2", 1))
+        self.L4_2.clicked.connect(lambda: self.seleccion("L4_2", 1))
+        self.L5_2.clicked.connect(lambda: self.seleccion("L5_2", 1))
+        self.L6_2.clicked.connect(lambda: self.seleccion("L6_2", 1))
 
     def closeEvent(self, event):
-        confirmaSalir(self, event)
+        confirmaSalir(self, event, self.porSalir)
 
     def anterior(self):
         juego.show()
+        self.porSalir = True
+        juego.selectorUi.close()
         juego.selectorUi = None
 
-    def seleccion(self, visitante=0):
+    def seleccion(self, this, visitante=0):
         if visitante:
-            QtWidgets.QMessageBox.critical(
-                self, 'Error',
-                "Visitante clickeado",
-                QtWidgets.QMessageBox.Ok)
+            juego.visitante = this
+            
+            for btn in self.locales:
+                btn.setDisabled(False)
 
+            contrario = getattr(self, this[:-2])
+            contrario.setDisabled(True)
+
+            for btn in self.visitantes:
+                if this == btn.objectName():
+                    btn.setChecked(True)
+                    pass
+                else:
+                    btn.setChecked(False)
         else:
-            QtWidgets.QMessageBox.critical(
-                self, 'Error',
-                "Local clickeado",
-                QtWidgets.QMessageBox.Ok)
+            juego.local = this
+
+            for btn in self.visitantes:
+                btn.setDisabled(False)
+
+            contrario = getattr(self, this+"_2")
+            contrario.setDisabled(True)
+
+
+            for btn in self.locales:
+                if this == btn.objectName():
+                    btn.setChecked(True)
+                    pass
+                else:
+                    btn.setChecked(False)
 
     def siguiente(self):
         return
