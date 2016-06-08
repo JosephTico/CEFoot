@@ -8,18 +8,18 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(802, 560)
+class Ui_VentanaTitulo(object):
+    def setupUi(self, VentanaTitulo):
+        VentanaTitulo.setObjectName("VentanaTitulo")
+        VentanaTitulo.resize(802, 560)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
-        MainWindow.setSizePolicy(sizePolicy)
-        MainWindow.setMinimumSize(QtCore.QSize(802, 560))
-        MainWindow.setMaximumSize(QtCore.QSize(802, 560))
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        sizePolicy.setHeightForWidth(VentanaTitulo.sizePolicy().hasHeightForWidth())
+        VentanaTitulo.setSizePolicy(sizePolicy)
+        VentanaTitulo.setMinimumSize(QtCore.QSize(802, 560))
+        VentanaTitulo.setMaximumSize(QtCore.QSize(802, 560))
+        self.centralwidget = QtWidgets.QWidget(VentanaTitulo)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(90, 320, 641, 201))
@@ -36,9 +36,9 @@ class Ui_MainWindow(object):
 "color: #FFF;")
         self.play.setObjectName("play")
         self.verticalLayout.addWidget(self.play)
-        self.pushButton_2 = QtWidgets.QPushButton(self.verticalLayoutWidget)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.verticalLayout.addWidget(self.pushButton_2)
+        self.botonAbout = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.botonAbout.setObjectName("botonAbout")
+        self.verticalLayout.addWidget(self.botonAbout)
         self.exit = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.exit.setObjectName("exit")
         self.verticalLayout.addWidget(self.exit)
@@ -70,28 +70,18 @@ class Ui_MainWindow(object):
         self.label_2.raise_()
         self.label_3.raise_()
         self.buttonNextsong.raise_()
-        MainWindow.setCentralWidget(self.centralwidget)
+        VentanaTitulo.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        MainWindow.setTabOrder(self.play, self.pushButton_2)
-        MainWindow.setTabOrder(self.pushButton_2, self.exit)
+        self.retranslateUi(VentanaTitulo)
+        QtCore.QMetaObject.connectSlotsByName(VentanaTitulo)
+        VentanaTitulo.setTabOrder(self.play, self.botonAbout)
+        VentanaTitulo.setTabOrder(self.botonAbout, self.exit)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, VentanaTitulo):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "CEFoot"))
-        self.play.setText(_translate("MainWindow", "Play"))
-        self.pushButton_2.setText(_translate("MainWindow", "About"))
-        self.exit.setText(_translate("MainWindow", "Exit"))
-        self.buttonNextsong.setText(_translate("MainWindow", "Next Song"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+        VentanaTitulo.setWindowTitle(_translate("VentanaTitulo", "CEFoot"))
+        self.play.setText(_translate("VentanaTitulo", "Play"))
+        self.botonAbout.setText(_translate("VentanaTitulo", "About"))
+        self.exit.setText(_translate("VentanaTitulo", "Exit"))
+        self.buttonNextsong.setText(_translate("VentanaTitulo", "Next Song"))
 
