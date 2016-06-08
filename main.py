@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets, QtMultimedia
 from design import *
+from about import *
 import sys, time
 import serial
 
@@ -20,6 +21,7 @@ class Interfaz(QtWidgets.QMainWindow, Ui_MainWindow):
         self.play.clicked.connect(self.jugar)
         self.exit.clicked.connect(self.salir)
         self.buttonNextsong.clicked.connect(self.nextsong)
+        self.pushButton_2.clicked.connect(self.about)
 
         '''self.video = QtMultimedia.QMediaPlayer
         playlist = QtMultimedia.QMediaPlayer
@@ -47,8 +49,20 @@ class Interfaz(QtWidgets.QMainWindow, Ui_MainWindow):
                                    
     def nextsong(self):
         playlist.next()
+    def about(self):
+        about = aboutWindow()
+        about.Show()
 
 
+
+class aboutWindow(QtWidgets.QMainWindow, Ui_Form):
+    
+    def __init__(self, parent=None):
+        super(aboutWindow, self).__init__(parent)
+        self.setupUi(self)
+
+        
+    
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     
@@ -58,6 +72,9 @@ if __name__ == "__main__":
     splash.show()
 
     juego = Interfaz()
+    
+
+    
     url2= QtCore.QUrl.fromLocalFile("./audio/title2.mp3")
     url= QtCore.QUrl.fromLocalFile("./audio/title.mp3")
     playlist = QtMultimedia.QMediaPlaylist()
