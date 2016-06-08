@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets, QtMultimedia
 from design import *
 from about import *
+from teams import *
 import sys
 import time
 import serial
@@ -14,9 +15,19 @@ except:
     pass
 
 
+def confirmaSalir(self, event):
+    quit_msg = "¿Estás seguro de que quieres salir?"
+    reply = QtWidgets.QMessageBox.question(self, 'Salir', quit_msg, QtWidgets.QMessageBox.Yes, QtWidgets.QMessageBox.No)
+
+    if reply == QtWidgets.QMessageBox.Yes:
+        event.accept()
+    else:
+        event.ignore()
+
+
 class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
-    def __init__(self, parent=None):
-        super(VentanaTitulo, self).__init__(parent)
+    def __init__(self):
+        super().__init__()
 
         self.setupUi(self)
 
@@ -36,6 +47,7 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
                 self, 'Error',
                 "No se ha podido establecer la conexión con el dispositivo de juego.",
                 QtWidgets.QMessageBox.Ok)
+            self.abreSelectorEquipos()
         else:
             # Otro comentario por acá
             arduino.write(b'9')
@@ -63,11 +75,28 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
         self.aboutUi = VentanaAbout()
         self.aboutUi.show()
 
+    def closeEvent(self, event):
+        confirmaSalir(self, event)
+
+    def abreSelectorEquipos(self):
+        self.selectorUi = VentanaSelector()
+        self.selectorUi.show()
+        self.hide()
+
 
 class VentanaAbout(QtWidgets.QMainWindow, Ui_VentanaAbout):
-    def __init__(self, parent=None):
-        super(VentanaAbout, self).__init__(parent)
+    def __init__(self):
+        super().__init__()
         self.setupUi(self)
+
+
+class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+    def closeEvent(self, event):
+        confirmaSalir(self, event)
 
 # Inicializa el programa
 if __name__ == "__main__":
