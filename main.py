@@ -55,7 +55,7 @@ class Interfaz(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
 
-class aboutWindow(QtWidgets.QMainWindow, Ui_Form):
+class aboutWindow(QtWidgets.QForm, Ui_Form):
     
     def __init__(self, parent=None):
         super(aboutWindow, self).__init__(parent)
