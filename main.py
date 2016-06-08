@@ -132,7 +132,7 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
     def seleccion(self, this, visitante=0):
         if visitante:
             juego.visitante = this
-            
+
             for btn in self.locales:
                 btn.setDisabled(False)
 
@@ -151,9 +151,8 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
             for btn in self.visitantes:
                 btn.setDisabled(False)
 
-            contrario = getattr(self, this+"_2")
+            contrario = getattr(self, this + "_2")
             contrario.setDisabled(True)
-
 
             for btn in self.locales:
                 if this == btn.objectName():
