@@ -35,9 +35,6 @@ class Interfaz(QtWidgets.QMainWindow, Ui_MainWindow):
         if arduino:
             QtWidgets.QMessageBox.critical(self, 'Error',"No se ha podido establecer la conexión con el dispositivo de juego.", QtWidgets.QMessageBox.Ok)
         else:
-            # Aquí escribe algo
-            #Y otra cosa
-            # Nanana
             arduino.write(b'9')
 
     def salir(self):
