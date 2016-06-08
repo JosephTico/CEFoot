@@ -3,6 +3,7 @@ from design import *
 import sys, serial, time
 
 #Probando un comentario
+#Otro comentarito
 arduino = None
 try:
     arduino = serial.Serial("COM5", 9600)
