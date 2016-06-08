@@ -4,6 +4,8 @@ from about import *
 import sys, time
 import serial
 
+
+
 #Probando un comentario
 #Otro comentarito
 arduino = None
@@ -23,14 +25,6 @@ class Interfaz(QtWidgets.QMainWindow, Ui_MainWindow):
         self.buttonNextsong.clicked.connect(self.nextsong)
         self.pushButton_2.clicked.connect(self.about)
 
-        '''self.video = QtMultimedia.QMediaPlayer
-        playlist = QtMultimedia.QMediaPlayer
-        url= QtCore.QUrl.fromLocalFile("./video/title.mp4")
-        playlist.addMedia(QtMultimedia.QMediaContent(url))
-        playlist.setPlaybackMode(QtMultimedia.QMediaPlaylist.Loop)
-        playlist.setCurrentIndex(1)
-
-        self.videowidget = QtMultimedia.QV'''
 
     def jugar(self):
         global arduino
@@ -44,18 +38,34 @@ class Interfaz(QtWidgets.QMainWindow, Ui_MainWindow):
             #Otro comentario por acá
             arduino.write(b'9')
 
+    def reproduceMusica(self):
+        self.url2= QtCore.QUrl.fromLocalFile("./audio/title2.mp3")
+        self.url= QtCore.QUrl.fromLocalFile("./audio/title.mp3")
+        self.playlist = QtMultimedia.QMediaPlaylist()
+        self.playlist.addMedia(QtMultimedia.QMediaContent(self.url2))
+        self.playlist.addMedia(QtMultimedia.QMediaContent(self.url))
+        self.playlist.setPlaybackMode(QtMultimedia.QMediaPlaylist.Loop)
+        self.playlist.setCurrentIndex(1)
+        self.player = QtMultimedia.QMediaPlayer()
+        self.player.setPlaylist(self.playlist)
+        self.player.setVolume(100)
+        self.player.play()
+
+
     def salir(self):
         sys.exit()
                                    
     def nextsong(self):
-        playlist.next()
+        self.playlist.next()
+
+
     def about(self):
-        about = aboutWindow()
-        about.Show()
+        self.aboutUi = aboutWindow()
+        self.aboutUi.show()
 
 
 
-class aboutWindow(QtWidgets.QForm, Ui_Form):
+class aboutWindow(QtWidgets.QMainWindow, Ui_Form):
     
     def __init__(self, parent=None):
         super(aboutWindow, self).__init__(parent)
@@ -71,21 +81,11 @@ if __name__ == "__main__":
     splash.setMask(splash_pic.mask())
     splash.show()
 
-    juego = Interfaz()
-    
 
-    
-    url2= QtCore.QUrl.fromLocalFile("./audio/title2.mp3")
-    url= QtCore.QUrl.fromLocalFile("./audio/title.mp3")
-    playlist = QtMultimedia.QMediaPlaylist()
-    playlist.addMedia(QtMultimedia.QMediaContent(url2))
-    playlist.addMedia(QtMultimedia.QMediaContent(url))
-    playlist.setPlaybackMode(QtMultimedia.QMediaPlaylist.Loop)
-    playlist.setCurrentIndex(1)
-    player = QtMultimedia.QMediaPlayer()
-    player.setPlaylist(playlist)
-    player.setVolume(100)
-    player.play()
+
+    juego = Interfaz()    
+
+    juego.reproduceMusica()
     juego.show()
     splash.finish(juego)
     sys.exit(app.exec_())
