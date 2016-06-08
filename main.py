@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets, QtMultimedia
 from design import *
 import sys, serial, time
 
+#Probando un comentario
 arduino = None
 try:
     arduino = serial.Serial("COM5", 9600)
