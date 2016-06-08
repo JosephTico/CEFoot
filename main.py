@@ -37,6 +37,7 @@ class Interfaz(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             # Aquí escribe algo
             #Y otra cosa
+            # Nanana
             arduino.write(b'9')
 
     def salir(self):
