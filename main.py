@@ -33,7 +33,9 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
             pass
         if not arduino:
             QtWidgets.QMessageBox.critical(
-                self, 'Error', "No se ha podido establecer la conexión con el dispositivo de juego.", QtWidgets.QMessageBox.Ok)
+                self, 'Error',
+                "No se ha podido establecer la conexión con el dispositivo de juego.",
+                QtWidgets.QMessageBox.Ok)
         else:
             # Otro comentario por acá
             arduino.write(b'9')
