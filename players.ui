@@ -22,6 +22,11 @@
      <height>571</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -51,22 +56,6 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
-   <property name="geometry">
-    <rect>
-     <x>450</x>
-     <y>90</y>
-     <width>351</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background: rgba(0, 85, 255,0.5)</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
@@ -89,35 +78,13 @@
     <string>Local</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>630</x>
-     <y>80</y>
-     <width>201</width>
-     <height>81</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>8514oem</family>
-     <pointsize>36</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255)</string>
-   </property>
-   <property name="text">
-    <string>Visit</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>90</y>
      <width>351</width>
-     <height>61</height>
+     <height>111</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -127,12 +94,293 @@
     <string/>
    </property>
   </widget>
+  <widget class="QListWidget" name="ListaJugadores">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>210</y>
+     <width>341</width>
+     <height>321</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: rgba(0, 0, 0, 0.5);
+color: rgb(255, 255, 255)</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>Prueba xxxx</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>3</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>4</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>5</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>6</string>
+    </property>
+    <property name="flags">
+     <set>ItemIsSelectable|ItemIsUserCheckable|ItemIsEnabled</set>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>7</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>150</y>
+     <width>341</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe MDL2 Assets</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255, 255, 255)</string>
+   </property>
+   <property name="text">
+    <string>(&quot;Equipo escogido&quot;) players:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>210</y>
+     <width>291</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe MDL2 Assets</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+background: rgba(0, 0, 0,0.5);</string>
+   </property>
+   <property name="text">
+    <string>(&quot;Selected Player's Name&quot;)</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>140</y>
+     <width>131</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:rgba(0,0,0,0.5)</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/Madrid.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidget">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>270</y>
+     <width>431</width>
+     <height>261</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: rgba(0, 0, 0, 0.5);
+color: rgb(255, 255, 255)</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>Shooter Global:</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Goalkeeper Global:</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Type of Player</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Contry:</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Age:</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Weight:</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Height:</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Goals:</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>20</y>
+     <width>341</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="pushButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Comic Sans MS</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:rgba(120, 120, 120, 0.5);
+border: 1px solid;
+color: rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>Back</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Comic Sans MS</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:rgba(10, 10, 10, 0.5);
+color: rgb(255, 255, 255);
+border: 1px solid;</string>
+      </property>
+      <property name="text">
+       <string>Continue</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>140</y>
+     <width>291</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="font">
+    <font>
+     <family>Comic Sans MS</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:rgba(120, 120, 120, 0.5);
+border: 1px solid;
+color: rgb(255, 255, 255)</string>
+   </property>
+   <property name="text">
+    <string>Add a new Player</string>
+   </property>
+  </widget>
   <zorder>label</zorder>
   <zorder>label_3</zorder>
-  <zorder>label_6</zorder>
-  <zorder>label_4</zorder>
   <zorder>label_5</zorder>
   <zorder>label_2</zorder>
+  <zorder>ListaJugadores</zorder>
+  <zorder>label_4</zorder>
+  <zorder>label_6</zorder>
+  <zorder>label_7</zorder>
+  <zorder>listWidget</zorder>
+  <zorder>horizontalLayoutWidget</zorder>
+  <zorder>pushButton_3</zorder>
  </widget>
  <resources/>
  <connections/>

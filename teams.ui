@@ -194,6 +194,9 @@ background: rgba(5,5,5,0.5);
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QPushButton" name="L1">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
