@@ -2,10 +2,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets, QtMultimedia
 from design import *
 from about import *
 from teams import *
+from players_data import *
 import sys
 import time
 import serial
-
 
 # Inicializa la conexión a Arduno
 arduino = None
@@ -13,6 +13,7 @@ try:
     arduino = serial.Serial("COM5", 9600)
 except:
     pass
+
 
 
 def confirmaSalir(self, event, porSalir=False):
