@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\Joseph\Google Drive\TEC\2016 S1\Intro Progra\Tareas Programadas\TP3\design.ui'
+# Form implementation generated from reading ui file 'design.ui'
 #
 # Created by: PyQt5 UI code generator 5.6
 #
@@ -59,14 +59,23 @@ class Ui_MainWindow(object):
         self.label_3.setPixmap(QtGui.QPixmap("images/logo ce.png"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
+        self.buttonNextsong = QtWidgets.QPushButton(self.centralwidget)
+        self.buttonNextsong.setGeometry(QtCore.QRect(700, 10, 93, 28))
+        self.buttonNextsong.setStyleSheet("font: italic 8pt \"Comic Sans MS\";\n"
+"background: rgba(50,50,50,0.4);\n"
+"border: 2px solid rgba(50,15,15,0.3);")
+        self.buttonNextsong.setObjectName("buttonNextsong")
         self.label.raise_()
         self.verticalLayoutWidget.raise_()
         self.label_2.raise_()
         self.label_3.raise_()
+        self.buttonNextsong.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        MainWindow.setTabOrder(self.play, self.pushButton_2)
+        MainWindow.setTabOrder(self.pushButton_2, self.exit)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -74,4 +83,15 @@ class Ui_MainWindow(object):
         self.play.setText(_translate("MainWindow", "Play"))
         self.pushButton_2.setText(_translate("MainWindow", "About"))
         self.exit.setText(_translate("MainWindow", "Exit"))
+        self.buttonNextsong.setText(_translate("MainWindow", "Next Song"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
 
