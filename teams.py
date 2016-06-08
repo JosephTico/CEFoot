@@ -22,8 +22,14 @@ class Ui_VentanaSelector(object):
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"border: 1px solid #222;\n"
-"background: rgba(5,5,5,0.3);\n"
+"border: 3px dashed #222;\n"
+"background: rgba(5,5,5,0.2);\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton:checked {\n"
+"border:3px solid #222;\n"
+"background: rgba(5,5,5,0.5);\n"
 "}")
         self.label = QtWidgets.QLabel(VentanaSelector)
         self.label.setEnabled(True)
@@ -84,11 +90,12 @@ class Ui_VentanaSelector(object):
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
         self.L1 = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.L1.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.L1.setStyleSheet("")
         self.L1.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("images/barcelona.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         icon.addPixmap(QtGui.QPixmap("images/barcelona.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap("images/barcelona.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.L1.setIcon(icon)
         self.L1.setIconSize(QtCore.QSize(115, 115))
         self.L1.setCheckable(True)
@@ -96,6 +103,7 @@ class Ui_VentanaSelector(object):
         self.L1.setObjectName("L1")
         self.gridLayout.addWidget(self.L1, 0, 0, 1, 1)
         self.L3 = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.L3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.L3.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("images/Bayern.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -105,6 +113,7 @@ class Ui_VentanaSelector(object):
         self.L3.setObjectName("L3")
         self.gridLayout.addWidget(self.L3, 1, 0, 1, 1)
         self.L2 = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.L2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.L2.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("images/Madrid.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -114,6 +123,7 @@ class Ui_VentanaSelector(object):
         self.L2.setObjectName("L2")
         self.gridLayout.addWidget(self.L2, 0, 1, 1, 1)
         self.L4 = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.L4.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.L4.setText("")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap("images/psg.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -123,6 +133,7 @@ class Ui_VentanaSelector(object):
         self.L4.setObjectName("L4")
         self.gridLayout.addWidget(self.L4, 1, 1, 1, 1)
         self.L5 = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.L5.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.L5.setText("")
         icon4 = QtGui.QIcon()
         icon4.addPixmap(QtGui.QPixmap("images/arsenal.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -132,6 +143,7 @@ class Ui_VentanaSelector(object):
         self.L5.setObjectName("L5")
         self.gridLayout.addWidget(self.L5, 2, 0, 1, 1)
         self.L6 = QtWidgets.QPushButton(self.gridLayoutWidget)
+        self.L6.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.L6.setText("")
         icon5 = QtGui.QIcon()
         icon5.addPixmap(QtGui.QPixmap("images/juventus-hd-logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -147,6 +159,7 @@ class Ui_VentanaSelector(object):
         self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.L1_2 = QtWidgets.QPushButton(self.gridLayoutWidget_2)
+        self.L1_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.L1_2.setStyleSheet("")
         self.L1_2.setText("")
         self.L1_2.setIcon(icon)
@@ -156,6 +169,7 @@ class Ui_VentanaSelector(object):
         self.L1_2.setObjectName("L1_2")
         self.gridLayout_2.addWidget(self.L1_2, 0, 0, 1, 1)
         self.L3_2 = QtWidgets.QPushButton(self.gridLayoutWidget_2)
+        self.L3_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.L3_2.setText("")
         self.L3_2.setIcon(icon1)
         self.L3_2.setIconSize(QtCore.QSize(120, 120))
@@ -163,6 +177,7 @@ class Ui_VentanaSelector(object):
         self.L3_2.setObjectName("L3_2")
         self.gridLayout_2.addWidget(self.L3_2, 1, 0, 1, 1)
         self.L2_2 = QtWidgets.QPushButton(self.gridLayoutWidget_2)
+        self.L2_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.L2_2.setText("")
         self.L2_2.setIcon(icon2)
         self.L2_2.setIconSize(QtCore.QSize(120, 120))
@@ -170,6 +185,7 @@ class Ui_VentanaSelector(object):
         self.L2_2.setObjectName("L2_2")
         self.gridLayout_2.addWidget(self.L2_2, 0, 1, 1, 1)
         self.L4_2 = QtWidgets.QPushButton(self.gridLayoutWidget_2)
+        self.L4_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.L4_2.setText("")
         self.L4_2.setIcon(icon3)
         self.L4_2.setIconSize(QtCore.QSize(120, 120))
@@ -177,6 +193,7 @@ class Ui_VentanaSelector(object):
         self.L4_2.setObjectName("L4_2")
         self.gridLayout_2.addWidget(self.L4_2, 1, 1, 1, 1)
         self.L5_2 = QtWidgets.QPushButton(self.gridLayoutWidget_2)
+        self.L5_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.L5_2.setText("")
         self.L5_2.setIcon(icon4)
         self.L5_2.setIconSize(QtCore.QSize(120, 120))
@@ -184,6 +201,7 @@ class Ui_VentanaSelector(object):
         self.L5_2.setObjectName("L5_2")
         self.gridLayout_2.addWidget(self.L5_2, 2, 0, 1, 1)
         self.L6_2 = QtWidgets.QPushButton(self.gridLayoutWidget_2)
+        self.L6_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.L6_2.setText("")
         self.L6_2.setIcon(icon5)
         self.L6_2.setIconSize(QtCore.QSize(120, 120))
@@ -196,36 +214,38 @@ class Ui_VentanaSelector(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.pushButton = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        self.back = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
-        self.pushButton.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.back.sizePolicy().hasHeightForWidth())
+        self.back.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
-        font.setFamily("Comic Sans MS")
-        font.setPointSize(10)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("background:rgba(120, 120, 120, 0.5);\n"
+        font.setFamily("Yu Gothic UI Semilight")
+        font.setPointSize(14)
+        self.back.setFont(font)
+        self.back.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.back.setStyleSheet("background:rgba(120, 120, 120, 0.5);\n"
 "border: 1px solid;\n"
 "color: rgb(255, 255, 255)")
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout.addWidget(self.pushButton)
-        self.pushButton_2 = QtWidgets.QPushButton(self.horizontalLayoutWidget)
+        self.back.setObjectName("back")
+        self.horizontalLayout.addWidget(self.back)
+        self.continuar = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
-        self.pushButton_2.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(self.continuar.sizePolicy().hasHeightForWidth())
+        self.continuar.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
-        font.setFamily("Comic Sans MS")
+        font.setFamily("Yu Gothic UI Semilight")
         font.setPointSize(14)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setStyleSheet("background:rgba(10, 10, 10, 0.5);\n"
+        self.continuar.setFont(font)
+        self.continuar.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.continuar.setStyleSheet("background:rgba(10, 10, 10, 0.5);\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid;")
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.horizontalLayout.addWidget(self.pushButton_2)
+        self.continuar.setObjectName("continuar")
+        self.horizontalLayout.addWidget(self.continuar)
         self.label.raise_()
         self.label_3.raise_()
         self.label_5.raise_()
@@ -249,14 +269,14 @@ class Ui_VentanaSelector(object):
         VentanaSelector.setTabOrder(self.L3_2, self.L4_2)
         VentanaSelector.setTabOrder(self.L4_2, self.L5_2)
         VentanaSelector.setTabOrder(self.L5_2, self.L6_2)
-        VentanaSelector.setTabOrder(self.L6_2, self.pushButton)
-        VentanaSelector.setTabOrder(self.pushButton, self.pushButton_2)
+        VentanaSelector.setTabOrder(self.L6_2, self.back)
+        VentanaSelector.setTabOrder(self.back, self.continuar)
 
     def retranslateUi(self, VentanaSelector):
         _translate = QtCore.QCoreApplication.translate
         VentanaSelector.setWindowTitle(_translate("VentanaSelector", "Teams Selector"))
         self.label_2.setText(_translate("VentanaSelector", "Local"))
         self.label_4.setText(_translate("VentanaSelector", "Visit"))
-        self.pushButton.setText(_translate("VentanaSelector", "Back"))
-        self.pushButton_2.setText(_translate("VentanaSelector", "Continue"))
+        self.back.setText(_translate("VentanaSelector", "Back"))
+        self.continuar.setText(_translate("VentanaSelector", "Continue"))
 

@@ -94,9 +94,39 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.continuar.clicked.connect(self.siguiente)
+        self.back.clicked.connect(self.anterior)
+        locales = [self.L1, self.L2, self.L3, self.L4, self.L5, self.L6]
+        visitantes = [self.L1_2, self.L2_2, self.L3_2, self.L4_2, self.L5_2, self.L6_2]
+
+        for btn in locales:
+            btn.clicked.connect(lambda: self.seleccion())
+
+        for btn in visitantes:
+            btn.clicked.connect(lambda: self.seleccion(1))
 
     def closeEvent(self, event):
         confirmaSalir(self, event)
+
+    def anterior(self):
+        juego.show()
+        juego.selectorUi = None
+
+    def seleccion(self, visitante=0):
+        if visitante:
+            QtWidgets.QMessageBox.critical(
+                self, 'Error',
+                "Visitante clickeado",
+                QtWidgets.QMessageBox.Ok)
+
+        else:
+            QtWidgets.QMessageBox.critical(
+                self, 'Error',
+                "Local clickeado",
+                QtWidgets.QMessageBox.Ok)
+
+    def siguiente(self):
+        return
 
 # Inicializa el programa
 if __name__ == "__main__":

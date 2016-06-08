@@ -29,6 +29,7 @@ class Ui_VentanaTitulo(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.play = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.play.setMinimumSize(QtCore.QSize(0, 60))
+        self.play.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.play.setStyleSheet("background: rgba(10,45,255,0.4);\n"
 "border: 2px solid rgba(50,25,255,0.3);\n"
 "font-size: 18px;\n"
@@ -37,9 +38,11 @@ class Ui_VentanaTitulo(object):
         self.play.setObjectName("play")
         self.verticalLayout.addWidget(self.play)
         self.botonAbout = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.botonAbout.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.botonAbout.setObjectName("botonAbout")
         self.verticalLayout.addWidget(self.botonAbout)
         self.exit = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.exit.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.exit.setObjectName("exit")
         self.verticalLayout.addWidget(self.exit)
         self.label = QtWidgets.QLabel(self.centralwidget)
