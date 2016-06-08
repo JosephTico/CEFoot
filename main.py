@@ -16,13 +16,14 @@ except:
 
 
 def confirmaSalir(self, event, porSalir=False):
-    if porSalir == True:
+    if porSalir:
         event.accept
         return
 
     quit_msg = "Are you sure you want to exit?"
     reply = QtWidgets.QMessageBox.question(
-        self, 'Exit', quit_msg, QtWidgets.QMessageBox.Yes, QtWidgets.QMessageBox.No)
+        self, 'Exit', quit_msg, QtWidgets.QMessageBox.Yes,
+        QtWidgets.QMessageBox.No)
 
     if reply == QtWidgets.QMessageBox.Yes:
         event.accept()
