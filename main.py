@@ -207,7 +207,15 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         self.playerName.setText(
             self.plist[self.ListaJugadores.currentRow()].name)
         self.dataList.clear()
-
+        player=self.plist[self.ListaJugadores.currentRow()]
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Shooter Global: "+str(player.glob)))
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Goalkeeper Global: "+str(player.port)))
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Type of Player: "+str(player.tipo)))
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Country: "+str(player.pais)))
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Age: "+str(player.edad)))
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Weight: "+str(player.peso)))
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Height: "+str(player.altura)))
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Goal: "+str(player.goles)))
 
 # Inicializa el programa
 if __name__ == "__main__":
