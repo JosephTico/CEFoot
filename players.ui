@@ -177,7 +177,7 @@ padding-left: 5px;</string>
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_7">
+  <widget class="QLabel" name="playerphoto">
    <property name="geometry">
     <rect>
      <x>660</x>
@@ -613,7 +613,7 @@ qproperty-alignment: AlignCenter;</string>
   <zorder>ListaJugadores</zorder>
   <zorder>team_label</zorder>
   <zorder>playerName</zorder>
-  <zorder>label_7</zorder>
+  <zorder>playerphoto</zorder>
   <zorder>dataList</zorder>
   <zorder>horizontalLayoutWidget</zorder>
   <zorder>pushButton_3</zorder>
