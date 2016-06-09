@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>802</width>
-    <height>561</height>
+    <width>804</width>
+    <height>649</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>-40</x>
+     <x>-80</x>
      <y>0</y>
-     <width>851</width>
-     <height>571</height>
+     <width>931</width>
+     <height>661</height>
     </rect>
    </property>
    <property name="font">
@@ -109,7 +109,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background: rgba(0, 0, 0, 0.5);
+    <string notr="true">background: rgba(0, 0, 0, 0.65);
 color: rgb(255, 255, 255)</string>
    </property>
    <item>
@@ -189,8 +189,8 @@ color: rgb(255, 255, 255)</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);
-background: rgba(0, 0, 0,0.5);</string>
+    <string notr="true">background: rgba(0, 0, 0, 0.7);
+color: rgb(255, 255, 255)</string>
    </property>
    <property name="text">
     <string>(&quot;Selected Player's Name&quot;)</string>
@@ -223,7 +223,7 @@ background: rgba(0, 0, 0,0.5);</string>
     <rect>
      <x>360</x>
      <y>270</y>
-     <width>431</width>
+     <width>291</width>
      <height>261</height>
     </rect>
    </property>
@@ -233,7 +233,7 @@ background: rgba(0, 0, 0,0.5);</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background: rgba(0, 0, 0, 0.5);
+    <string notr="true">background: rgba(0, 0, 0, 0.65);
 color: rgb(255, 255, 255)</string>
    </property>
    <item>
@@ -370,6 +370,69 @@ color: rgb(255, 255, 255)</string>
     <string>Add a new Player</string>
    </property>
   </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>270</y>
+     <width>131</width>
+     <height>261</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Comic Sans MS</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: rgba(0, 0, 0, 0.65);
+color: rgb(255, 255, 255);
+border: 1px solid;
+</string>
+      </property>
+      <property name="text">
+       <string>Select
+ Shooter</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Comic Sans MS</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: rgba(0, 0, 0, 0.65);
+color: rgb(255, 255, 255);
+border: 1px solid;</string>
+      </property>
+      <property name="text">
+       <string>Select as 
+ Goalkepper</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
   <zorder>label</zorder>
   <zorder>label_3</zorder>
   <zorder>label_5</zorder>
@@ -381,6 +444,7 @@ color: rgb(255, 255, 255)</string>
   <zorder>listWidget</zorder>
   <zorder>horizontalLayoutWidget</zorder>
   <zorder>pushButton_3</zorder>
+  <zorder>verticalLayoutWidget</zorder>
  </widget>
  <resources/>
  <connections/>
