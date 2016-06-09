@@ -203,8 +203,17 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         juego.equipoVisitante = [-1, []]
 
         self.ListaJugadores.selectionModel().selectionChanged.connect(self.muestraInfo)
+        self.ListaJugadores.doubleClicked.connect(self.asignaShooter)
+
         self.gkSelect.clicked.connect(self.asignaGk)
         self.sSelect.clicked.connect(self.asignaShooter)
+
+        self.gk.clicked.connect(lambda: self.remuevePlayer('gk'))
+        self.s1.clicked.connect(lambda: self.remuevePlayer(0))
+        self.s2.clicked.connect(lambda: self.remuevePlayer(1))
+        self.s3.clicked.connect(lambda: self.remuevePlayer(2))
+        self.s4.clicked.connect(lambda: self.remuevePlayer(3))
+        self.s5.clicked.connect(lambda: self.remuevePlayer(4))
 
         self.configuraTodo("loc")
 
@@ -234,34 +243,58 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
 
         if jugadores[0] == -1:
-            self.gk.setPixmap(QtGui.QPixmap("images/myst.jpg"))
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("images/myst.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.gk.setIcon(icon)
         else:
-            self.gk.setPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[0]].foto))
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[0]].foto))
+            self.gk.setIcon(icon)
 
         if len(jugadores[1]) == 0:
-            self.s1.setPixmap(QtGui.QPixmap("images/myst.jpg"))
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("images/myst.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.s1.setIcon(icon)
         else:
-            self.s1.setPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][0]].foto))
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][0]].foto))
+            self.s1.setIcon(icon)
 
         if len(jugadores[1]) < 2:
-            self.s2.setPixmap(QtGui.QPixmap("images/myst.jpg"))
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("images/myst.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.s2.setIcon(icon)
         else:
-            self.s2.setPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][1]].foto))
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][1]].foto))
+            self.s2.setIcon(icon)
 
         if len(jugadores[1]) < 3:
-            self.s3.setPixmap(QtGui.QPixmap("images/myst.jpg"))
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("images/myst.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.s3.setIcon(icon)
         else:
-            self.s3.setPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][2]].foto))
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][2]].foto))
+            self.s3.setIcon(icon)
 
         if len(jugadores[1]) < 4:
-            self.s4.setPixmap(QtGui.QPixmap("images/myst.jpg"))
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("images/myst.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.s4.setIcon(icon)
         else:
-            self.s4.setPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][3]].foto))
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][3]].foto))
+            self.s4.setIcon(icon)
 
         if len(jugadores[1]) < 5:
-            self.s5.setPixmap(QtGui.QPixmap("images/myst.jpg"))
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("images/myst.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.s5.setIcon(icon)
         else:
-            self.s5.setPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][4]].foto))
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][4]].foto))
+            self.s5.setIcon(icon)
 
 
 
@@ -276,7 +309,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         if var[0] == -1 or len(var[1]) != 5:
             QtWidgets.QMessageBox.critical(
                 self, 'Error',
-                "Select 1 goalkeeper and 5 shooters before continuing.",
+                "You need to select 1 goalkeeper and 5 shooters before continuing.",
                 QtWidgets.QMessageBox.Ok)
             return
 
@@ -295,6 +328,20 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         else:
             self.modo = "loc"
             self.configuraTodo("loc")
+
+    def remuevePlayer(self, num):
+        if self.modo == "loc":
+            var = juego.equipoLocal
+        else:
+            var = juego.equipoVisitante
+
+        if num=="gk":
+            var[0] = -1
+        elif num < len(var[1]):
+            var[1].pop(num)
+
+        self.muestraPlanilla()
+
 
     def asignaGk(self):
         if self.modo == "loc":

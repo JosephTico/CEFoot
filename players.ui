@@ -34,8 +34,8 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>-80</x>
-     <y>-30</y>
+     <x>-90</x>
+     <y>-20</y>
      <width>931</width>
      <height>671</height>
     </rect>
@@ -157,9 +157,9 @@ color: rgb(255, 255, 255)</string>
    <property name="geometry">
     <rect>
      <x>360</x>
-     <y>180</y>
+     <y>150</y>
      <width>291</width>
-     <height>51</height>
+     <height>81</height>
     </rect>
    </property>
    <property name="font">
@@ -181,10 +181,28 @@ padding-left: 5px;</string>
    <property name="geometry">
     <rect>
      <x>660</x>
-     <y>110</y>
+     <y>100</y>
      <width>131</width>
-     <height>121</height>
+     <height>131</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>131</width>
+     <height>131</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>131</width>
+     <height>131</height>
+    </size>
    </property>
    <property name="styleSheet">
     <string notr="true">background:rgba(0,0,0,0.5)</string>
@@ -291,9 +309,9 @@ border: 1px solid;</string>
    <property name="geometry">
     <rect>
      <x>360</x>
-     <y>110</y>
+     <y>100</y>
      <width>291</width>
-     <height>61</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -354,7 +372,7 @@ border: 1px solid;
 </string>
       </property>
       <property name="text">
-       <string>Select as
+       <string>Select
  Shooter</string>
       </property>
      </widget>
@@ -392,9 +410,9 @@ border: 1px solid;</string>
   <widget class="QFrame" name="horizontalFrame_2">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>100</x>
      <y>510</y>
-     <width>721</width>
+     <width>609</width>
      <height>101</height>
     </rect>
    </property>
@@ -405,7 +423,7 @@ background: #000;
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <property name="spacing">
-     <number>2</number>
+     <number>1</number>
     </property>
     <property name="sizeConstraint">
      <enum>QLayout::SetMinimumSize</enum>
@@ -423,139 +441,265 @@ background: #000;
      <number>0</number>
     </property>
     <item>
-     <widget class="QLabel" name="gk">
+     <widget class="QPushButton" name="gk">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
-      <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Press to unselect this player.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
       <property name="styleSheet">
-       <string notr="true">border: 0;
-border-right: 2px solid #000;
-padding-right: 6px;
-border-radius: 99px;
-overflow: hidden;
-</string>
+       <string notr="true">padding-right: 5px;</string>
       </property>
       <property name="text">
        <string/>
       </property>
-      <property name="pixmap">
-       <pixmap>images/myst.jpg</pixmap>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/myst.jpg</normaloff>images/myst.jpg</iconset>
       </property>
-      <property name="scaledContents">
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="flat">
        <bool>true</bool>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="s1">
+     <widget class="QPushButton" name="s1">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
-      <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Press to unselect this player.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
       <property name="styleSheet">
-       <string notr="true">border: 0;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
       </property>
-      <property name="pixmap">
-       <pixmap>images/myst.jpg</pixmap>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/myst.jpg</normaloff>images/myst.jpg</iconset>
       </property>
-      <property name="scaledContents">
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="flat">
        <bool>true</bool>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="s2">
+     <widget class="QPushButton" name="s2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
-      <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Press to unselect this player.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
       <property name="styleSheet">
-       <string notr="true">border: 0;
-</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
       </property>
-      <property name="pixmap">
-       <pixmap>images/myst.jpg</pixmap>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/myst.jpg</normaloff>images/myst.jpg</iconset>
       </property>
-      <property name="scaledContents">
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="flat">
        <bool>true</bool>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="s3">
+     <widget class="QPushButton" name="s3">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
-      <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Press to unselect this player.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
       <property name="styleSheet">
-       <string notr="true">border: 0;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
       </property>
-      <property name="pixmap">
-       <pixmap>images/myst.jpg</pixmap>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/myst.jpg</normaloff>images/myst.jpg</iconset>
       </property>
-      <property name="scaledContents">
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="flat">
        <bool>true</bool>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="s4">
+     <widget class="QPushButton" name="s4">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
-      <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Press to unselect this player.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
       <property name="styleSheet">
-       <string notr="true">border: 0;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
       </property>
-      <property name="pixmap">
-       <pixmap>images/myst.jpg</pixmap>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/myst.jpg</normaloff>images/myst.jpg</iconset>
       </property>
-      <property name="scaledContents">
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="flat">
        <bool>true</bool>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="s5">
+     <widget class="QPushButton" name="s5">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
-      <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Press to unselect this player.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
       <property name="styleSheet">
-       <string notr="true">border: 0;</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>
       </property>
-      <property name="pixmap">
-       <pixmap>images/myst.jpg</pixmap>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/myst.jpg</normaloff>images/myst.jpg</iconset>
       </property>
-      <property name="scaledContents">
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="flat">
        <bool>true</bool>
       </property>
      </widget>
@@ -565,9 +709,9 @@ overflow: hidden;
   <widget class="QLabel" name="label_14">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>100</x>
      <y>610</y>
-     <width>111</width>
+     <width>101</width>
      <height>20</height>
     </rect>
    </property>
@@ -587,9 +731,9 @@ qproperty-alignment: AlignCenter;</string>
   <widget class="QLabel" name="label_15">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>200</x>
      <y>610</y>
-     <width>611</width>
+     <width>509</width>
      <height>20</height>
     </rect>
    </property>
