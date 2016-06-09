@@ -199,7 +199,7 @@ padding-left: 5px;</string>
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QListWidget" name="listWidget">
+  <widget class="QListWidget" name="dataList">
    <property name="geometry">
     <rect>
      <x>360</x>
@@ -316,7 +316,7 @@ color: rgb(255, 255, 255)</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">background:rgba(10, 10, 10, 0.5);
+       <string notr="true">background:rgba(120, 120, 120, 0.5);
 color: rgb(255, 255, 255);
 border: 1px solid;</string>
       </property>
@@ -654,7 +654,7 @@ qproperty-alignment: AlignCenter;</string>
   <zorder>team_label</zorder>
   <zorder>playerName</zorder>
   <zorder>label_7</zorder>
-  <zorder>listWidget</zorder>
+  <zorder>dataList</zorder>
   <zorder>horizontalLayoutWidget</zorder>
   <zorder>pushButton_3</zorder>
   <zorder>verticalLayoutWidget</zorder>
