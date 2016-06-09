@@ -235,10 +235,10 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
     def muestraInfo(self):
         self.playerName.setText(
             self.plist[self.ListaJugadores.currentRow()].name)
-        self.playerphoto.clear()
-
         self.dataList.clear()
         player=self.plist[self.ListaJugadores.currentRow()]
+        self.playerphoto.clear()
+        self.playerphoto.setPixmap(QtGui.QPixmap("images/players/"+str(player.foto)))
         self.dataList.addItem(QtWidgets.QListWidgetItem("Shooter Global: "+str(player.glob)))
         self.dataList.addItem(QtWidgets.QListWidgetItem("Goalkeeper Global: "+str(player.port)))
         self.dataList.addItem(QtWidgets.QListWidgetItem("Type of Player: "+str(player.tipo)))
