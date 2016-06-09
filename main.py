@@ -43,6 +43,8 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
         self.exit.clicked.connect(self.salir)
         self.buttonNextsong.clicked.connect(self.nextsong)
         self.botonAbout.clicked.connect(self.abreAbout)
+        self.local=None
+        self.visitante=None
 
     def jugar(self):
         global arduino
@@ -170,10 +172,15 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
                     btn.setChecked(False)
 
     def siguiente(self):
-        self.playersUi = VentanaPlayers()
-        self.playersUi.show()
-        self.hide()
-
+        if juego.local!=None and juego.visitante!=None:
+            self.playersUi = VentanaPlayers()
+            self.playersUi.show()
+            self.hide()
+        else:
+            QtWidgets.QMessageBox.critical(
+                self, 'Error',
+                "Please select both teams before continuing.",
+                QtWidgets.QMessageBox.Ok)
 
 class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
     def __init__(self):
