@@ -305,7 +305,7 @@ border: 1px solid;</string>
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="playerAdd">
    <property name="geometry">
     <rect>
      <x>360</x>
@@ -742,7 +742,7 @@ qproperty-alignment: AlignCenter;</string>
   <zorder>playerphoto</zorder>
   <zorder>dataList</zorder>
   <zorder>horizontalLayoutWidget</zorder>
-  <zorder>pushButton_3</zorder>
+  <zorder>playerAdd</zorder>
   <zorder>verticalLayoutWidget</zorder>
   <zorder>horizontalFrame_2</zorder>
   <zorder>label_14</zorder>
