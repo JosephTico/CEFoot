@@ -40,7 +40,7 @@ j5=player("Paulo Dybala",55,91,"Juventus","Argentina","Shooter",22,69,177,"XXXXX
 j6=player("Mario Mandžukić",55,84,"Juventus","Croatia","Shooter",30,84,187,"XXXXX.jpg")
 j7=player("Juan Cuadrado",55,83,"Juventus","Colombia","Shooter",28,66,176,"XXXXX.jpg")
 
-a1=player("Petr Čech",85,55,"Arsenal","Czech Republic","Goalkeeper",34,90,196,"a1.jpg)"
+a1=player("Petr Čech",85,55,"Arsenal","Czech Republic","Goalkeeper",34,90,196,"a1.jpg")
 a2=player("David Ospina",88,55,"Arsenal","Chile","Goalkeeper",27,79,183,"a2.jpg")
 a3=player("Mesut Özil",55,94,"Arsenal","Germany","Shooter",27,76,183,"a3.jpg")
 a4=player("Alexis Sánchez",55,88,"Arsenal","Chile","Shooter",27,62,169,"a4.jpg")

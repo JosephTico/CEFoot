@@ -226,7 +226,8 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             self.hide()
             juego.selectorUi.show()
         else:
-            return
+            self.configuraTodo("loc")
+            self.modo = "loc"
 
     def asignaGk(self):
         print(self.ListaJugadores.currentRow())
