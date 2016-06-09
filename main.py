@@ -230,7 +230,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             self.modo = "loc"
 
     def asignaGk(self):
-        print(self.ListaJugadores.currentRow())
+        self.gk.setPixmap(QtGui.QPixmap("images/players/" + self.plist[self.ListaJugadores.currentRow()].foto))
 
     def muestraInfo(self):
         self.playerName.setText(
