@@ -363,11 +363,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             var = juego.equipoVisitante
 
         if self.ListaJugadores.currentRow() in var[1]:
-            QtWidgets.QMessageBox.critical(
-                self, 'Error',
-                "Player already selected. To remove it click on its photo.",
-                QtWidgets.QMessageBox.Ok)
-            return
+            var[1].remove(self.ListaJugadores.currentRow())
 
         if self.ListaJugadores.currentRow() == var[0]:
             var[0] = -1
