@@ -7,6 +7,7 @@ from players import *
 import sys
 import time
 import serial
+from random import randrange
 
 # Inicializa la conexión a Arduno
 arduino = None
@@ -60,11 +61,16 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
             arduino.write(b'9')
 
     def reproduceMusica(self):
+        
+        self.musica1 = QtCore.QUrl.fromLocalFile("./audio/title3.mp3")
         self.musica2 = QtCore.QUrl.fromLocalFile("./audio/title2.mp3")
-        self.musica1 = QtCore.QUrl.fromLocalFile("./audio/title.mp3")
+        self.musica3 = QtCore.QUrl.fromLocalFile("./audio/title.mp3")
+        self.musica4 = QtCore.QUrl.fromLocalFile("./audio/title4.mp3")
         self.playlist = QtMultimedia.QMediaPlaylist()
-        self.playlist.addMedia(QtMultimedia.QMediaContent(self.musica2))
         self.playlist.addMedia(QtMultimedia.QMediaContent(self.musica1))
+        self.playlist.addMedia(QtMultimedia.QMediaContent(self.musica4))
+        self.playlist.addMedia(QtMultimedia.QMediaContent(self.musica2))
+        self.playlist.addMedia(QtMultimedia.QMediaContent(self.musica3))
         self.playlist.setPlaybackMode(QtMultimedia.QMediaPlaylist.Loop)
         self.playlist.setCurrentIndex(1)
         self.player = QtMultimedia.QMediaPlayer()
@@ -227,6 +233,8 @@ if __name__ == "__main__":
     splash.show()
     juego = VentanaTitulo()
     juego.reproduceMusica()
+    for i in range(0, randrange(0,5)):
+        juego.nextsong()
     juego.show()
     splash.finish(juego)
 
