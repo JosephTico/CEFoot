@@ -206,7 +206,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
     def muestraInfo(self):
         self.playerName.setText(
             self.plist[self.ListaJugadores.currentRow()].name)
-        self.ListaJugadores.clear()
+        self.dataList.clear()
 
 
 # Inicializa el programa
