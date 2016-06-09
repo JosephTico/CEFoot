@@ -53,7 +53,7 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
         if not arduino:
             QtWidgets.QMessageBox.critical(
                 self, 'Error',
-                "Can't stablish a connection with the gaming device.",
+                "Can't establish a connection with the gaming device.",
                 QtWidgets.QMessageBox.Ok)
             self.abreSelectorEquipos()
         else:
