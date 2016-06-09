@@ -3,6 +3,7 @@ from design import *
 from about import *
 from teams import *
 from players_data import *
+from players import *
 import sys
 import time
 import serial
@@ -164,7 +165,50 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
                     btn.setChecked(False)
 
     def siguiente(self):
-        return
+        self.playersUi = VentanaPlayers()
+        self.playersUi.show()
+        self.hide()
+
+class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.back.clicked.connect(self.anterior)
+        self.teamToPlayers = {"L1": lista_barsa, "L1_2": lista_barsa,
+        "L2": lista_madrid, "L2_2": lista_madrid,
+        "L3": lista_bayern, "L3_2": lista_bayern,
+        "L4": lista_psg, "L4_2": lista_psg,
+        "L5": lista_arsenal, "L5_2": lista_arsenal,
+        "L6": lista_juve, "L6_2": lista_juve,
+        }
+
+        self.plist = self.teamToPlayers.get(juego.local)
+
+        self.team_label.setText(self.plist[0].team + " players:")
+
+        for player in self.plist:
+            self.ListaJugadores.addItem(QtWidgets.QListWidgetItem(player.name))
+
+        self.ListaJugadores.selectionModel().selectionChanged.connect(self.muestraInfo)
+
+
+        self.gkSelect.clicked.connect(self.asignaGk)
+
+    def closeEvent(self, event):
+        confirmaSalir(self, event)
+
+    def anterior(self):
+        self.hide()
+        juego.selectorUi.show()
+
+    def asignaGk(self):
+        print(self.ListaJugadores.currentRow())
+
+    def muestraInfo(self):
+        self.playerName.setText(self.plist[self.ListaJugadores.currentRow()].name)
+
+
+
 
 # Inicializa el programa
 if __name__ == "__main__":

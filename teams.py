@@ -17,6 +17,8 @@ class Ui_VentanaSelector(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(VentanaSelector.sizePolicy().hasHeightForWidth())
         VentanaSelector.setSizePolicy(sizePolicy)
+        VentanaSelector.setMinimumSize(QtCore.QSize(799, 561))
+        VentanaSelector.setMaximumSize(QtCore.QSize(799, 561))
         VentanaSelector.setStyleSheet("QPushButton {\n"
 "background: rgba(0,0,0,0);\n"
 "}\n"
@@ -95,8 +97,8 @@ class Ui_VentanaSelector(object):
         self.L1.setStyleSheet("")
         self.L1.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("images/barcelona.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         icon.addPixmap(QtGui.QPixmap("images/barcelona.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap("images/barcelona.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.L1.setIcon(icon)
         self.L1.setIconSize(QtCore.QSize(115, 115))
         self.L1.setCheckable(True)
