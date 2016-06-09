@@ -43,8 +43,6 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
         self.exit.clicked.connect(self.salir)
         self.buttonNextsong.clicked.connect(self.nextsong)
         self.botonAbout.clicked.connect(self.abreAbout)
-        self.local=None
-        self.visitante=None
 
     def jugar(self):
         global arduino
@@ -115,6 +113,10 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
         self.locales = [self.L1, self.L2, self.L3, self.L4, self.L5, self.L6]
         self.visitantes = [self.L1_2, self.L2_2,
                            self.L3_2, self.L4_2, self.L5_2, self.L6_2]
+
+        juego.local=None
+        juego.visitante=None
+
 
         self.L1.clicked.connect(lambda: self.seleccion("L1"))
         self.L2.clicked.connect(lambda: self.seleccion("L2"))
@@ -196,6 +198,14 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
                               "L6": lista_juve, "L6_2": lista_juve,
                               }
         self.modo = "loc"
+
+        juego.equipoLocal = [-1, []]
+        juego.equipoVisitante = [-1, []]
+
+        self.ListaJugadores.selectionModel().selectionChanged.connect(self.muestraInfo)
+        self.gkSelect.clicked.connect(self.asignaGk)
+        self.sSelect.clicked.connect(self.asignaShooter)
+
         self.configuraTodo("loc")
 
     def configuraTodo(self, modo):
@@ -210,16 +220,66 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
         self.ListaJugadores.clear()
         self.dataList.clear()
-        self.playerName.setText("")
+
         for player in self.plist:
             self.ListaJugadores.addItem(QtWidgets.QListWidgetItem(player.name))
 
-        self.ListaJugadores.selectionModel().selectionChanged.connect(self.muestraInfo)
+        self.muestraPlanilla()
 
-        self.gkSelect.clicked.connect(self.asignaGk)
+    def muestraPlanilla(self):
+        if self.modo == "loc":
+            jugadores = juego.equipoLocal
+        else:
+            jugadores = juego.equipoVisitante
+
+
+        if jugadores[0] == -1:
+            self.gk.setPixmap(QtGui.QPixmap("images/myst.jpg"))
+        else:
+            self.gk.setPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[0]].foto))
+
+        if len(jugadores[1]) == 0:
+            self.s1.setPixmap(QtGui.QPixmap("images/myst.jpg"))
+        else:
+            self.s1.setPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][0]].foto))
+
+        if len(jugadores[1]) < 2:
+            self.s2.setPixmap(QtGui.QPixmap("images/myst.jpg"))
+        else:
+            self.s2.setPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][1]].foto))
+
+        if len(jugadores[1]) < 3:
+            self.s3.setPixmap(QtGui.QPixmap("images/myst.jpg"))
+        else:
+            self.s3.setPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][2]].foto))
+
+        if len(jugadores[1]) < 4:
+            self.s4.setPixmap(QtGui.QPixmap("images/myst.jpg"))
+        else:
+            self.s4.setPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][3]].foto))
+
+        if len(jugadores[1]) < 5:
+            self.s5.setPixmap(QtGui.QPixmap("images/myst.jpg"))
+        else:
+            self.s5.setPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][4]].foto))
+
+
+
 
 
     def siguiente(self):
+        if self.modo == "loc":
+            var = juego.equipoLocal
+        else:
+            var = juego.equipoVisitante
+
+        if var[0] == -1 or len(var[1]) != 5:
+            QtWidgets.QMessageBox.critical(
+                self, 'Error',
+                "Select 1 goalkeeper and 5 shooters before continuing.",
+                QtWidgets.QMessageBox.Ok)
+            return
+
         if self.modo == "loc":
             self.modo = "visit"
 
@@ -233,11 +293,45 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             self.hide()
             juego.selectorUi.show()
         else:
-            self.configuraTodo("loc")
             self.modo = "loc"
+            self.configuraTodo("loc")
 
     def asignaGk(self):
-        self.gk.setPixmap(QtGui.QPixmap("images/players/" + self.plist[self.ListaJugadores.currentRow()].foto))
+        if self.modo == "loc":
+            var = juego.equipoLocal
+        else:
+            var = juego.equipoVisitante
+
+        var[0] = self.ListaJugadores.currentRow()
+
+        if self.ListaJugadores.currentRow() in var[1]:
+            var[1].remove(self.ListaJugadores.currentRow())
+
+        self.muestraPlanilla()
+
+    def asignaShooter(self):
+        if self.modo == "loc":
+            var = juego.equipoLocal
+        else:
+            var = juego.equipoVisitante
+
+        if self.ListaJugadores.currentRow() in var[1]:
+            QtWidgets.QMessageBox.critical(
+                self, 'Error',
+                "Player already selected. To remove it click on its photo.",
+                QtWidgets.QMessageBox.Ok)
+            return
+
+        if self.ListaJugadores.currentRow() == var[0]:
+            var[0] = -1
+
+        if len(var[1]) >= 5:
+            var[1].pop(0)
+            var[1].append(self.ListaJugadores.currentRow())
+        else:
+            var[1].append(self.ListaJugadores.currentRow())
+
+        self.muestraPlanilla()
 
     def muestraInfo(self):
         self.playerName.setText(
