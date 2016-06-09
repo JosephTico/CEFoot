@@ -206,22 +206,20 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
     def muestraInfo(self):
         self.playerName.setText(
             self.plist[self.ListaJugadores.currentRow()].name)
+        self.ListaJugadores.clear()
 
 
 # Inicializa el programa
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-
-    splash_pic = QtGui.QPixmap('./images/loading.png')
+    splash_pic = QtGui.QPixmap('./images/loading.png')  
     splash = QtWidgets.QSplashScreen(
         splash_pic, QtCore.Qt.WindowStaysOnTopHint)
     splash.setMask(splash_pic.mask())
     splash.show()
-
     juego = VentanaTitulo()
     juego.reproduceMusica()
     juego.show()
-
     splash.finish(juego)
 
     sys.exit(app.exec_())
