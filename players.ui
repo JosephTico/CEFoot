@@ -34,8 +34,8 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>-90</x>
-     <y>-20</y>
+     <x>-80</x>
+     <y>-30</y>
      <width>931</width>
      <height>671</height>
     </rect>
@@ -185,24 +185,6 @@ padding-left: 5px;</string>
      <width>131</width>
      <height>121</height>
     </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>131</width>
-     <height>121</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>131</width>
-     <height>121</height>
-    </size>
    </property>
    <property name="styleSheet">
     <string notr="true">background:rgba(0,0,0,0.5)</string>
@@ -372,7 +354,7 @@ border: 1px solid;
 </string>
       </property>
       <property name="text">
-       <string>Select
+       <string>Select as
  Shooter</string>
       </property>
      </widget>
@@ -410,9 +392,9 @@ border: 1px solid;</string>
   <widget class="QFrame" name="horizontalFrame_2">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>40</x>
      <y>510</y>
-     <width>681</width>
+     <width>721</width>
      <height>101</height>
     </rect>
    </property>
@@ -442,24 +424,6 @@ background: #000;
     </property>
     <item>
      <widget class="QLabel" name="gk">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>110</width>
-        <height>100</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>110</width>
-        <height>100</height>
-       </size>
-      </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
@@ -487,24 +451,6 @@ overflow: hidden;
     </item>
     <item>
      <widget class="QLabel" name="s1">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>110</width>
-        <height>100</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>110</width>
-        <height>100</height>
-       </size>
-      </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
@@ -527,24 +473,6 @@ overflow: hidden;
     </item>
     <item>
      <widget class="QLabel" name="s2">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>110</width>
-        <height>100</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>110</width>
-        <height>100</height>
-       </size>
-      </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
@@ -568,24 +496,6 @@ overflow: hidden;
     </item>
     <item>
      <widget class="QLabel" name="s3">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>110</width>
-        <height>100</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>110</width>
-        <height>100</height>
-       </size>
-      </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
@@ -608,24 +518,6 @@ overflow: hidden;
     </item>
     <item>
      <widget class="QLabel" name="s4">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>110</width>
-        <height>100</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>110</width>
-        <height>100</height>
-       </size>
-      </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
@@ -648,24 +540,6 @@ overflow: hidden;
     </item>
     <item>
      <widget class="QLabel" name="s5">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>110</width>
-        <height>100</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>110</width>
-        <height>100</height>
-       </size>
-      </property>
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
@@ -691,7 +565,7 @@ overflow: hidden;
   <widget class="QLabel" name="label_14">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>40</x>
      <y>610</y>
      <width>111</width>
      <height>20</height>
@@ -713,9 +587,9 @@ qproperty-alignment: AlignCenter;</string>
   <widget class="QLabel" name="label_15">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>150</x>
      <y>610</y>
-     <width>571</width>
+     <width>611</width>
      <height>20</height>
     </rect>
    </property>
