@@ -16,7 +16,6 @@ except:
     pass
 
 
-
 def confirmaSalir(self, event, porSalir=False):
     if porSalir:
         event.accept
@@ -169,18 +168,19 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
         self.playersUi.show()
         self.hide()
 
+
 class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.back.clicked.connect(self.anterior)
         self.teamToPlayers = {"L1": lista_barsa, "L1_2": lista_barsa,
-        "L2": lista_madrid, "L2_2": lista_madrid,
-        "L3": lista_bayern, "L3_2": lista_bayern,
-        "L4": lista_psg, "L4_2": lista_psg,
-        "L5": lista_arsenal, "L5_2": lista_arsenal,
-        "L6": lista_juve, "L6_2": lista_juve,
-        }
+                              "L2": lista_madrid, "L2_2": lista_madrid,
+                              "L3": lista_bayern, "L3_2": lista_bayern,
+                              "L4": lista_psg, "L4_2": lista_psg,
+                              "L5": lista_arsenal, "L5_2": lista_arsenal,
+                              "L6": lista_juve, "L6_2": lista_juve,
+                              }
 
         self.plist = self.teamToPlayers.get(juego.local)
 
@@ -190,7 +190,6 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             self.ListaJugadores.addItem(QtWidgets.QListWidgetItem(player.name))
 
         self.ListaJugadores.selectionModel().selectionChanged.connect(self.muestraInfo)
-
 
         self.gkSelect.clicked.connect(self.asignaGk)
 
@@ -205,9 +204,8 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         print(self.ListaJugadores.currentRow())
 
     def muestraInfo(self):
-        self.playerName.setText(self.plist[self.ListaJugadores.currentRow()].name)
-
-
+        self.playerName.setText(
+            self.plist[self.ListaJugadores.currentRow()].name)
 
 
 # Inicializa el programa

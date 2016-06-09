@@ -344,9 +344,12 @@ border: 1px solid;</string>
    </property>
    <property name="font">
     <font>
-     <family>Comic Sans MS</family>
-     <pointsize>10</pointsize>
+     <family>Yu Gothic UI Semilight</family>
+     <pointsize>14</pointsize>
     </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">background:rgba(120, 120, 120, 0.5);
