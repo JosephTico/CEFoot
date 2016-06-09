@@ -180,6 +180,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         super().__init__()
         self.setupUi(self)
         self.back.clicked.connect(self.anterior)
+        self.continuar.clicked.connect(self.siguiente)
         self.teamToPlayers = {"L1": lista_barsa, "L1_2": lista_barsa,
                               "L2": lista_madrid, "L2_2": lista_madrid,
                               "L3": lista_bayern, "L3_2": lista_bayern,
@@ -187,11 +188,22 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
                               "L5": lista_arsenal, "L5_2": lista_arsenal,
                               "L6": lista_juve, "L6_2": lista_juve,
                               }
+        self.modo = "loc"
+        self.configuraTodo("loc")
 
-        self.plist = self.teamToPlayers.get(juego.local)
+    def configuraTodo(self, modo):
+        if modo == "loc":
+            self.plist = self.teamToPlayers.get(juego.local)
+            self.modoLabel.setText("Local")
+        else:
+            self.plist = self.teamToPlayers.get(juego.visitante)
+            self.modoLabel.setText("Visitante")
 
         self.team_label.setText(self.plist[0].team + " players:")
 
+        self.ListaJugadores.clear()
+        self.dataList.clear()
+        self.playerName.setText("")
         for player in self.plist:
             self.ListaJugadores.addItem(QtWidgets.QListWidgetItem(player.name))
 
@@ -199,12 +211,22 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
         self.gkSelect.clicked.connect(self.asignaGk)
 
+
+    def siguiente(self):
+        if self.modo == "loc":
+            self.modo = "visit"
+
+        self.configuraTodo("visit")
+
     def closeEvent(self, event):
         confirmaSalir(self, event)
 
     def anterior(self):
-        self.hide()
-        juego.selectorUi.show()
+        if self.modo=="loc":
+            self.hide()
+            juego.selectorUi.show()
+        else:
+            return
 
     def asignaGk(self):
         print(self.ListaJugadores.currentRow())

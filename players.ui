@@ -74,7 +74,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="modoLabel">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -174,7 +174,7 @@ color: rgb(255, 255, 255);
 padding-left: 5px;</string>
    </property>
    <property name="text">
-    <string>(&quot;Selected Player's Name&quot;)</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_7">
@@ -217,46 +217,6 @@ padding-left: 5px;</string>
     <string notr="true">background: rgba(0, 0, 0, 0.65);
 color: rgb(255, 255, 255)</string>
    </property>
-   <item>
-    <property name="text">
-     <string>Shooter Global:</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Goalkeeper Global:</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Type of Player</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Contry:</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Age:</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Weight:</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Height:</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Goals:</string>
-    </property>
-   </item>
   </widget>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
@@ -649,7 +609,7 @@ qproperty-alignment: AlignCenter;</string>
   <zorder>label</zorder>
   <zorder>label_3</zorder>
   <zorder>label_5</zorder>
-  <zorder>label_2</zorder>
+  <zorder>modoLabel</zorder>
   <zorder>ListaJugadores</zorder>
   <zorder>team_label</zorder>
   <zorder>playerName</zorder>
@@ -661,7 +621,6 @@ qproperty-alignment: AlignCenter;</string>
   <zorder>horizontalFrame_2</zorder>
   <zorder>label_14</zorder>
   <zorder>label_15</zorder>
-  <zorder>back</zorder>
  </widget>
  <resources/>
  <connections/>
