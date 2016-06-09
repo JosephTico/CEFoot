@@ -34,6 +34,7 @@ def confirmaSalir(self, event, porSalir=False):
 
 
 class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
+
     def __init__(self):
         super().__init__()
 
@@ -43,6 +44,11 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
         self.exit.clicked.connect(self.salir)
         self.buttonNextsong.clicked.connect(self.nextsong)
         self.botonAbout.clicked.connect(self.abreAbout)
+
+        audio = QtCore.QUrl.fromLocalFile("./audio/click.mp3")
+        self.clickPlayer = QtMultimedia.QMediaPlayer()
+        self.clickPlayer.setMedia(QtMultimedia.QMediaContent(audio))
+        self.clickPlayer.setVolume(100)
 
     def jugar(self):
         global arduino
@@ -61,7 +67,6 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
             arduino.write(b'9')
 
     def reproduceMusica(self):
-        
         self.musica1 = QtCore.QUrl.fromLocalFile("./audio/title3.mp3")
         self.musica2 = QtCore.QUrl.fromLocalFile("./audio/title2.mp3")
         self.musica3 = QtCore.QUrl.fromLocalFile("./audio/title.mp3")
@@ -75,16 +80,21 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
         self.playlist.setCurrentIndex(1)
         self.player = QtMultimedia.QMediaPlayer()
         self.player.setPlaylist(self.playlist)
-        self.player.setVolume(100)
+        self.player.setVolume(70)
         self.player.play()
 
+    def clickFx(self):
+        self.clickPlayer.play()
+
     def salir(self):
+        self.clickFx()
         sys.exit()
 
     def nextsong(self):
         self.playlist.next()
 
     def abreAbout(self):
+        self.clickFx()
         self.aboutUi = VentanaAbout()
         self.aboutUi.show()
 
@@ -92,18 +102,21 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
         confirmaSalir(self, event)
 
     def abreSelectorEquipos(self):
+        self.clickFx()
         self.selectorUi = VentanaSelector()
         self.selectorUi.show()
         self.hide()
 
 
 class VentanaAbout(QtWidgets.QMainWindow, Ui_VentanaAbout):
+
     def __init__(self):
         super().__init__()
         self.setupUi(self)
 
 
 class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
+
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -114,9 +127,8 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
         self.visitantes = [self.L1_2, self.L2_2,
                            self.L3_2, self.L4_2, self.L5_2, self.L6_2]
 
-        juego.local=None
-        juego.visitante=None
-
+        juego.local = None
+        juego.visitante = None
 
         self.L1.clicked.connect(lambda: self.seleccion("L1"))
         self.L2.clicked.connect(lambda: self.seleccion("L2"))
@@ -136,12 +148,14 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
         confirmaSalir(self, event, self.porSalir)
 
     def anterior(self):
+        juego.clickFx()
         juego.show()
         self.porSalir = True
         juego.selectorUi.close()
         juego.selectorUi = None
 
     def seleccion(self, this, visitante=0):
+        juego.clickFx()
         if visitante:
             juego.visitante = this
 
@@ -174,7 +188,8 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
                     btn.setChecked(False)
 
     def siguiente(self):
-        if juego.local!=None and juego.visitante!=None:
+        juego.clickFx()
+        if juego.local != None and juego.visitante != None:
             self.playersUi = VentanaPlayers()
             self.playersUi.show()
             self.hide()
@@ -184,7 +199,9 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
                 "Please select both teams before continuing.",
                 QtWidgets.QMessageBox.Ok)
 
+
 class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
+
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -204,6 +221,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
         self.ListaJugadores.selectionModel().selectionChanged.connect(self.muestraInfo)
         self.ListaJugadores.doubleClicked.connect(self.asignaShooter)
+        self.ListaJugadores.clicked.connect(juego.clickFx)
 
         self.gkSelect.clicked.connect(self.asignaGk)
         self.sSelect.clicked.connect(self.asignaShooter)
@@ -240,7 +258,6 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             jugadores = juego.equipoLocal
         else:
             jugadores = juego.equipoVisitante
-
 
         if jugadores[0] == -1:
             icon = QtGui.QIcon()
@@ -296,11 +313,8 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             icon.addPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][4]].foto))
             self.s5.setIcon(icon)
 
-
-
-
-
     def siguiente(self):
+        juego.clickFx()
         if self.modo == "loc":
             var = juego.equipoLocal
         else:
@@ -322,7 +336,8 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         confirmaSalir(self, event)
 
     def anterior(self):
-        if self.modo=="loc":
+        juego.clickFx()
+        if self.modo == "loc":
             self.hide()
             juego.selectorUi.show()
         else:
@@ -330,20 +345,21 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             self.configuraTodo("loc")
 
     def remuevePlayer(self, num):
+        juego.clickFx()
         if self.modo == "loc":
             var = juego.equipoLocal
         else:
             var = juego.equipoVisitante
 
-        if num=="gk":
+        if num == "gk":
             var[0] = -1
         elif num < len(var[1]):
             var[1].pop(num)
 
         self.muestraPlanilla()
 
-
     def asignaGk(self):
+        juego.clickFx()
         if self.modo == "loc":
             var = juego.equipoLocal
         else:
@@ -357,6 +373,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         self.muestraPlanilla()
 
     def asignaShooter(self):
+        juego.clickFx()
         if self.modo == "loc":
             var = juego.equipoLocal
         else:
