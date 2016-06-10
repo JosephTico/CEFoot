@@ -347,6 +347,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
         if self.modo == "loc":
             self.modo = "visit"
+            self.ListaJugadores.setCurrentRow(0)
             juego.modo = self.modo
 
         self.configuraTodo(self.modo)
@@ -362,6 +363,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         else:
             self.modo = "loc"
             juego.modo = self.modo
+            self.ListaJugadores.setCurrentRow(0)
             self.configuraTodo("loc")
 
     def remuevePlayer(self, num):
@@ -434,7 +436,27 @@ class VentanaCreator (QtWidgets.QMainWindow,Ui_VentanaCreator):
         super().__init__()
         self.setupUi(self)
         self.nombreEquipo.setText(juego.equipos[juego.modo]["name"])
+        self.ButtonCreate.clicked.connect(self.CreatePlayer)
 
+    def CreatePlayer(self):
+        if self.LineName.text() and self.LineCountry.text():
+            x=player(self.LineName.text(),55,self.LineShooterGlobal.value(),
+                juego.equipos[juego.modo]["name"],self.LineCountry.text(),
+                "Shooter",self.LineAge.value(),self.LinePeso.value(),self.LinePeso.value(),"xxxxx.jpg")
+            if juego.modo == "loc":
+                self.plist = juego.selectorUi.playersUi.teamToPlayers.get(juego.local)
+            else:
+                self.plist = juego.selectorUi.playersUi.teamToPlayers.get(juego.visitante)
+
+            self.plist.append(x)
+            self.hide()
+            juego.selectorUi.playersUi.configuraTodo(juego.modo)
+
+        else:
+            QtWidgets.QMessageBox.critical(
+                self, 'Error',
+                "You need to define the name and the country of the player.",
+                QtWidgets.QMessageBox.Ok)
 
 # Inicializa el programa
 if __name__ == "__main__":

@@ -156,16 +156,16 @@ border: 1px solid </string>
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit"/>
+     <widget class="QLineEdit" name="LineName"/>
     </item>
     <item row="2" column="1">
-     <widget class="QSpinBox" name="spinBox"/>
+     <widget class="QSpinBox" name="LineShooterGlobal"/>
     </item>
     <item row="3" column="1">
-     <widget class="QLineEdit" name="lineEdit_2"/>
+     <widget class="QLineEdit" name="LineCountry"/>
     </item>
     <item row="4" column="1">
-     <widget class="QSpinBox" name="spinBox_2">
+     <widget class="QSpinBox" name="LineAge">
       <property name="minimum">
        <number>16</number>
       </property>
@@ -175,7 +175,7 @@ border: 1px solid </string>
      </widget>
     </item>
     <item row="5" column="1">
-     <widget class="QSpinBox" name="spinBox_3">
+     <widget class="QSpinBox" name="LinePeso">
       <property name="minimum">
        <number>50</number>
       </property>
@@ -185,7 +185,7 @@ border: 1px solid </string>
      </widget>
     </item>
     <item row="6" column="1">
-     <widget class="QSpinBox" name="spinBox_4">
+     <widget class="QSpinBox" name="LineAltura">
       <property name="minimum">
        <number>140</number>
       </property>
@@ -196,6 +196,14 @@ border: 1px solid </string>
     </item>
     <item row="7" column="1">
      <widget class="QLabel" name="nombreEquipo">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
       <property name="text">
        <string>str(equipo seleccionado)</string>
       </property>
@@ -236,7 +244,7 @@ border: 1px solid </string>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="CancelButton">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -258,7 +266,7 @@ border: 1px solid </string>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="ButtonCreate">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
         <horstretch>0</horstretch>
