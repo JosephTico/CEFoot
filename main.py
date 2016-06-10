@@ -189,7 +189,7 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
 
     def siguiente(self):
         juego.clickFx()
-        if juego.local != None and juego.visitante != None:
+        if juego.local and juego.visitante:
             self.playersUi = VentanaPlayers()
             self.playersUi.show()
             self.hide()
@@ -247,6 +247,8 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
         self.ListaJugadores.clear()
         self.dataList.clear()
+        self.playerName.clear()
+        self.playerphoto.clear()
 
         for player in self.plist:
             self.ListaJugadores.addItem(QtWidgets.QListWidgetItem(player.name))
@@ -330,7 +332,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         if self.modo == "loc":
             self.modo = "visit"
 
-        self.configuraTodo("visit")
+        self.configuraTodo(self.modo)
 
     def closeEvent(self, event):
         confirmaSalir(self, event)
@@ -365,6 +367,15 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         else:
             var = juego.equipoVisitante
 
+
+        if not self.ListaJugadores.currentRow():
+            QtWidgets.QMessageBox.critical(
+                self, 'Error',
+                "Select a player first.",
+                QtWidgets.QMessageBox.Ok)
+            return
+
+
         var[0] = self.ListaJugadores.currentRow()
 
         if self.ListaJugadores.currentRow() in var[1]:
@@ -378,6 +389,13 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             var = juego.equipoLocal
         else:
             var = juego.equipoVisitante
+
+        if not self.ListaJugadores.currentRow():
+            QtWidgets.QMessageBox.critical(
+                self, 'Error',
+                "Select a player first.",
+                QtWidgets.QMessageBox.Ok)
+            return
 
         if self.ListaJugadores.currentRow() in var[1]:
             var[1].remove(self.ListaJugadores.currentRow())
@@ -397,29 +415,29 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         self.playerName.setText(
             self.plist[self.ListaJugadores.currentRow()].name)
         self.dataList.clear()
-        player=self.plist[self.ListaJugadores.currentRow()]
+        player = self.plist[self.ListaJugadores.currentRow()]
         self.playerphoto.clear()
-        self.playerphoto.setPixmap(QtGui.QPixmap("images/players/"+str(player.foto)))
-        self.dataList.addItem(QtWidgets.QListWidgetItem("Shooter Global: "+str(player.glob)))
-        self.dataList.addItem(QtWidgets.QListWidgetItem("Goalkeeper Global: "+str(player.port)))
-        self.dataList.addItem(QtWidgets.QListWidgetItem("Type of Player: "+str(player.tipo)))
-        self.dataList.addItem(QtWidgets.QListWidgetItem("Country: "+str(player.pais)))
-        self.dataList.addItem(QtWidgets.QListWidgetItem("Age: "+str(player.edad)))
-        self.dataList.addItem(QtWidgets.QListWidgetItem("Weight: "+str(player.peso)))
-        self.dataList.addItem(QtWidgets.QListWidgetItem("Height: "+str(player.altura)))
-        self.dataList.addItem(QtWidgets.QListWidgetItem("Goal: "+str(player.goles)))
+        self.playerphoto.setPixmap(QtGui.QPixmap("images/players/" + str(player.foto)))
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Shooter Global: " + str(player.glob)))
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Goalkeeper Global: " + str(player.port)))
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Type of Player: " + str(player.tipo)))
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Country: " + str(player.pais)))
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Age: " + str(player.edad)))
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Weight: " + str(player.peso)))
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Height: " + str(player.altura)))
+        self.dataList.addItem(QtWidgets.QListWidgetItem("Goal: " + str(player.goles)))
 
 # Inicializa el programa
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    splash_pic = QtGui.QPixmap('./images/loading.png')  
+    splash_pic = QtGui.QPixmap('./images/loading.png')
     splash = QtWidgets.QSplashScreen(
         splash_pic, QtCore.Qt.WindowStaysOnTopHint)
     splash.setMask(splash_pic.mask())
     splash.show()
     juego = VentanaTitulo()
     juego.reproduceMusica()
-    for i in range(0, randrange(0,5)):
+    for i in range(0, randrange(0, 5)):
         juego.nextsong()
     juego.show()
     splash.finish(juego)
