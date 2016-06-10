@@ -255,6 +255,8 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
         self.muestraPlanilla()
 
+        self.ListaJugadores.setCurrentRow(0)
+
     def muestraPlanilla(self):
         if self.modo == "loc":
             jugadores = juego.equipoLocal
@@ -367,15 +369,6 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         else:
             var = juego.equipoVisitante
 
-
-        if not self.ListaJugadores.currentRow():
-            QtWidgets.QMessageBox.critical(
-                self, 'Error',
-                "Select a player first.",
-                QtWidgets.QMessageBox.Ok)
-            return
-
-
         var[0] = self.ListaJugadores.currentRow()
 
         if self.ListaJugadores.currentRow() in var[1]:
@@ -389,13 +382,6 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             var = juego.equipoLocal
         else:
             var = juego.equipoVisitante
-
-        if not self.ListaJugadores.currentRow():
-            QtWidgets.QMessageBox.critical(
-                self, 'Error',
-                "Select a player first.",
-                QtWidgets.QMessageBox.Ok)
-            return
 
         if self.ListaJugadores.currentRow() in var[1]:
             var[1].remove(self.ListaJugadores.currentRow())
