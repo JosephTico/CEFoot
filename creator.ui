@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>VentanaCreator</class>
+ <widget class="QWidget" name="VentanaCreator">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -195,7 +195,7 @@ border: 1px solid </string>
      </widget>
     </item>
     <item row="7" column="1">
-     <widget class="QLabel" name="label_6">
+     <widget class="QLabel" name="nombreEquipo">
       <property name="text">
        <string>str(equipo seleccionado)</string>
       </property>
@@ -206,13 +206,35 @@ border: 1px solid </string>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>220</x>
      <y>510</y>
-     <width>491</width>
+     <width>574</width>
      <height>41</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>17</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:rgba(136, 113, 72,0.4);
+border: 1px solid </string>
+      </property>
+      <property name="text">
+       <string>Upload a photo</string>
+      </property>
+     </widget>
+    </item>
     <item>
      <widget class="QPushButton" name="pushButton">
       <property name="sizePolicy">
@@ -231,7 +253,7 @@ border: 1px solid </string>
 border: 1px solid </string>
       </property>
       <property name="text">
-       <string>Upload a photo</string>
+       <string>Cancel</string>
       </property>
      </widget>
     </item>

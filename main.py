@@ -4,6 +4,7 @@ from about import *
 from teams import *
 from players_data import *
 from players import *
+from creator import *
 import sys
 import time
 import serial
@@ -49,6 +50,8 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
         self.clickPlayer = QtMultimedia.QMediaPlayer()
         self.clickPlayer.setMedia(QtMultimedia.QMediaContent(audio))
         self.clickPlayer.setVolume(100)
+
+        self.equipos = {"loc": {"name": None, "img": None}, "visit": {"name": None, "img": None}}
 
     def jugar(self):
         global arduino
@@ -207,6 +210,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         self.setupUi(self)
         self.back.clicked.connect(self.anterior)
         self.continuar.clicked.connect(self.siguiente)
+        self.playerAdd.clicked.connect(self.abrirEditor)
         self.teamToPlayers = {"L1": lista_barsa, "L1_2": lista_barsa,
                               "L2": lista_madrid, "L2_2": lista_madrid,
                               "L3": lista_bayern, "L3_2": lista_bayern,
@@ -215,6 +219,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
                               "L6": lista_juve, "L6_2": lista_juve,
                               }
         self.modo = "loc"
+        juego.modo = self.modo
 
         juego.equipoLocal = [-1, []]
         juego.equipoVisitante = [-1, []]
@@ -235,6 +240,10 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
         self.configuraTodo("loc")
 
+    def abrirEditor(self):
+        self.editor=VentanaCreator()
+        self.editor.show()
+
     def configuraTodo(self, modo):
         if modo == "loc":
             self.plist = self.teamToPlayers.get(juego.local)
@@ -244,6 +253,11 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             self.modoLabel.setText("Visitante")
 
         self.team_label.setText(self.plist[0].team + " players:")
+
+
+        juego.equipos[modo]["name"] = self.plist[0].team
+
+
 
         self.ListaJugadores.clear()
         self.dataList.clear()
@@ -333,6 +347,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
         if self.modo == "loc":
             self.modo = "visit"
+            juego.modo = self.modo
 
         self.configuraTodo(self.modo)
 
@@ -346,6 +361,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             juego.selectorUi.show()
         else:
             self.modo = "loc"
+            juego.modo = self.modo
             self.configuraTodo("loc")
 
     def remuevePlayer(self, num):
@@ -412,6 +428,13 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         self.dataList.addItem(QtWidgets.QListWidgetItem("Weight: " + str(player.peso)))
         self.dataList.addItem(QtWidgets.QListWidgetItem("Height: " + str(player.altura)))
         self.dataList.addItem(QtWidgets.QListWidgetItem("Goal: " + str(player.goles)))
+
+class VentanaCreator (QtWidgets.QMainWindow,Ui_VentanaCreator):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.nombreEquipo.setText(juego.equipos[juego.modo]["name"])
+
 
 # Inicializa el programa
 if __name__ == "__main__":
