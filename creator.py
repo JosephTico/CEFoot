@@ -12,6 +12,13 @@ class Ui_VentanaCreator(object):
     def setupUi(self, VentanaCreator):
         VentanaCreator.setObjectName("VentanaCreator")
         VentanaCreator.resize(804, 563)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Ignored, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(VentanaCreator.sizePolicy().hasHeightForWidth())
+        VentanaCreator.setSizePolicy(sizePolicy)
+        VentanaCreator.setMinimumSize(QtCore.QSize(804, 563))
+        VentanaCreator.setMaximumSize(QtCore.QSize(804, 563))
         self.label = QtWidgets.QLabel(VentanaCreator)
         self.label.setGeometry(QtCore.QRect(0, 0, 831, 571))
         self.label.setText("")
@@ -125,6 +132,7 @@ class Ui_VentanaCreator(object):
         font = QtGui.QFont()
         font.setPointSize(17)
         self.pushButton_3.setFont(font)
+        self.pushButton_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_3.setStyleSheet("background:rgba(136, 113, 72,0.4);\n"
 "border: 1px solid ")
         self.pushButton_3.setObjectName("pushButton_3")
@@ -138,6 +146,7 @@ class Ui_VentanaCreator(object):
         font = QtGui.QFont()
         font.setPointSize(17)
         self.CancelButton.setFont(font)
+        self.CancelButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.CancelButton.setStyleSheet("background:rgba(136, 113, 72,0.4);\n"
 "border: 1px solid ")
         self.CancelButton.setObjectName("CancelButton")
@@ -151,6 +160,7 @@ class Ui_VentanaCreator(object):
         font = QtGui.QFont()
         font.setPointSize(18)
         self.ButtonCreate.setFont(font)
+        self.ButtonCreate.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.ButtonCreate.setStyleSheet("background:rgba(136, 113, 72,0.4);\n"
 "border: 1px solid ")
         self.ButtonCreate.setObjectName("ButtonCreate")
@@ -161,7 +171,7 @@ class Ui_VentanaCreator(object):
 
     def retranslateUi(self, VentanaCreator):
         _translate = QtCore.QCoreApplication.translate
-        VentanaCreator.setWindowTitle(_translate("VentanaCreator", "Form"))
+        VentanaCreator.setWindowTitle(_translate("VentanaCreator", "Player creation"))
         self.label_2.setText(_translate("VentanaCreator", "Creating a New Player"))
         self.label_4.setText(_translate("VentanaCreator", "Shooter Global:"))
         self.label_5.setText(_translate("VentanaCreator", "Country:"))

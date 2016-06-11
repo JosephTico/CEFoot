@@ -10,8 +10,26 @@
     <height>563</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>804</width>
+    <height>563</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>804</width>
+    <height>563</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Player creation</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -234,6 +252,9 @@ border: 1px solid </string>
         <pointsize>17</pointsize>
        </font>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
        <string notr="true">background:rgba(136, 113, 72,0.4);
 border: 1px solid </string>
@@ -256,6 +277,9 @@ border: 1px solid </string>
         <pointsize>17</pointsize>
        </font>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
        <string notr="true">background:rgba(136, 113, 72,0.4);
 border: 1px solid </string>
@@ -277,6 +301,9 @@ border: 1px solid </string>
        <font>
         <pointsize>18</pointsize>
        </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">background:rgba(136, 113, 72,0.4);

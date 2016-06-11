@@ -19,6 +19,7 @@ class Ui_VentanaPlayers(object):
         VentanaPlayers.setSizePolicy(sizePolicy)
         VentanaPlayers.setMinimumSize(QtCore.QSize(804, 640))
         VentanaPlayers.setMaximumSize(QtCore.QSize(804, 640))
+        VentanaPlayers.setWindowTitle("Player selection")
         self.label = QtWidgets.QLabel(VentanaPlayers)
         self.label.setGeometry(QtCore.QRect(-90, -20, 931, 671))
         font = QtGui.QFont()
@@ -340,7 +341,6 @@ class Ui_VentanaPlayers(object):
 
     def retranslateUi(self, VentanaPlayers):
         _translate = QtCore.QCoreApplication.translate
-        VentanaPlayers.setWindowTitle(_translate("VentanaPlayers", "Form"))
         self.modoLabel.setText(_translate("VentanaPlayers", "Local"))
         self.team_label.setText(_translate("VentanaPlayers", "%EQUIPO% players:"))
         self.back.setText(_translate("VentanaPlayers", "Back"))
