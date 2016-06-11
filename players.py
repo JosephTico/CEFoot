@@ -84,7 +84,9 @@ class Ui_VentanaPlayers(object):
         self.playerphoto.setSizePolicy(sizePolicy)
         self.playerphoto.setMinimumSize(QtCore.QSize(131, 131))
         self.playerphoto.setMaximumSize(QtCore.QSize(131, 131))
-        self.playerphoto.setStyleSheet("background:rgba(0,0,0,0.5)")
+        self.playerphoto.setStyleSheet("background:rgba(0,0,0,0.5);\n"
+"color: rgb(255, 255, 255);\n"
+"border: 1px solid;")
         self.playerphoto.setText("")
         self.playerphoto.setPixmap(QtGui.QPixmap("images/Madrid.png"))
         self.playerphoto.setScaledContents(True)
