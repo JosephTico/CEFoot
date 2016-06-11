@@ -5,6 +5,7 @@ from teams import *
 from players_data import *
 from players import *
 from creator import *
+from play import *
 import sys
 import time
 import serial
@@ -202,6 +203,11 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
                 "Please select both teams before continuing.",
                 QtWidgets.QMessageBox.Ok)
 
+
+class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
 
 class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
