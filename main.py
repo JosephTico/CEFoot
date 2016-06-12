@@ -245,6 +245,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.setupUi(self)
         self.LocalLabel.setPixmap(QtGui.QPixmap("images/"+str(juego.equipos["loc"]["img"])))
         self.VisitLabel.setPixmap(QtGui.QPixmap("images/"+str(juego.equipos["visit"]["img"])))
+        self.player.play()
 
 class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
