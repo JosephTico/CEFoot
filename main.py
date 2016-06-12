@@ -245,6 +245,15 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.setupUi(self)
         self.LocalLabel.setPixmap(QtGui.QPixmap("images/"+str(juego.equipos["loc"]["img"])))
         self.VisitLabel.setPixmap(QtGui.QPixmap("images/"+str(juego.equipos["visit"]["img"])))
+        self.fans = QtCore.QUrl.fromLocalFile("./sounds/fans.mp3")
+        self.playlist = QtMultimedia.QMediaPlaylist()
+        self.playlist.addMedia(QtMultimedia.QMediaContent(self.fans))
+        self.playlist.setPlaybackMode(QtMultimedia.QMediaPlaylist.Loop)
+        self.playlist.setCurrentIndex(1)
+        self.player = QtMultimedia.QMediaPlayer()
+        self.player.setPlaylist(self.playlist)
+        self.player.setVolume(90)
+        self.player.play()
 
 class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
