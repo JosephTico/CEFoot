@@ -178,18 +178,21 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
                     btn.setChecked(False)
 
             nombre = this[:-2]
+
+
             if nombre == "L1":
-                juego.equipos["loc"]["img"] = "barcelona.png"
+                juego.equipos["visit"]["img"] = "barcelona.png"
             elif nombre == "L2":
-                juego.equipos["loc"]["img"] = "Madrid.png"
+                juego.equipos["visit"]["img"] = "Madrid.png"
             elif nombre == "L3":
-                juego.equipos["loc"]["img"] = "Bayern.png"
+                juego.equipos["visit"]["img"] = "Bayern.png"
             elif nombre == "L4":
-                juego.equipos["loc"]["img"] = "psg.png"
+                juego.equipos["visit"]["img"] = "psg.png"
             elif nombre == "L5":
-                juego.equipos["loc"]["img"] = "arsenal.png"
+                juego.equipos["visit"]["img"] = "arsenal.png"
             elif nombre == "L6":
-                juego.equipos["loc"]["img"] = "juventus_hd_logo.png"
+                juego.equipos["visit"]["img"] = "juventus-hd-logo.png"
+            
         else:
             juego.local = this
 
@@ -209,19 +212,20 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
             nombre = this
 
             if nombre == "L1":
-                juego.equipos["visit"]["img"] = "barcelona.png"
+                juego.equipos["loc"]["img"] = "barcelona.png"
             elif nombre == "L2":
-                juego.equipos["visit"]["img"] = "Madrid.png"
+                juego.equipos["loc"]["img"] = "Madrid.png"
             elif nombre == "L3":
-                juego.equipos["visit"]["img"] = "Bayern.png"
+                juego.equipos["loc"]["img"] = "Bayern.png"
             elif nombre == "L4":
-                juego.equipos["visit"]["img"] = "psg.png"
+                juego.equipos["loc"]["img"] = "psg.png"
             elif nombre == "L5":
-                juego.equipos["visit"]["img"] = "arsenal.png"
+                juego.equipos["loc"]["img"] = "arsenal.png"
             elif nombre == "L6":
-                juego.equipos["visit"]["img"] = "juventus_hd_logo.png"
+                juego.equipos["loc"]["img"] = "juventus-hd-logo.png"
 
-                
+
+
     def siguiente(self):
         juego.clickFx()
         if juego.local and juego.visitante:
