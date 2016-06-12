@@ -355,8 +355,11 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             self.modo = "visit"
             self.ListaJugadores.setCurrentRow(0)
             juego.modo = self.modo
-
-        self.configuraTodo(self.modo)
+            self.configuraTodo(self.modo)
+        else:
+            juego.partida = VentanaJuego()
+            self.hide()
+            juego.partida.show()
 
     def closeEvent(self, event):
         confirmaSalir(self, event)
