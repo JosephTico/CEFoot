@@ -24,7 +24,7 @@ class player:
         print(self.altura)
         print(self.goles)
 
-m1=player("Keylor Navas Gamboa",91,55,"Real Madrid","Costa Rica","Goalkeeper",28,85,185,"m1.jpg","barcelona.png")
+m1=player("Keylor Navas Gamboa",91,55,"Real Madrid","Costa Rica","Goalkeeper",28,85,185,"m1.jpg")
 m2=player("Kiko Casilla Cortés",83,55,"Real Madrid","Spain","Goalkeeper",29,84,191,"m2.jpg")
 m3=player("Cristiano Ronaldo",55,98,"Real Madrid","Portugal","Shooter",31,80,185,"m3.jpg")
 m4=player("Karim Benzema",55,95,"Real Madrid","France","Shooter",28,79,187,"m4.jpg")

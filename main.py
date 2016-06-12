@@ -177,7 +177,7 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
                 else:
                     btn.setChecked(False)
 
-            nombre = this
+            nombre = this[:-2]
             if nombre == "L1":
                 juego.equipos["loc"]["img"] = "barcelona.png"
             elif nombre == "L2":
@@ -206,7 +206,7 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
                 else:
                     btn.setChecked(False)
 
-            nombre = getattr(self, this[:-2])
+            nombre = this
 
             if nombre == "L1":
                 juego.equipos["visit"]["img"] = "barcelona.png"
@@ -221,6 +221,7 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
             elif nombre == "L6":
                 juego.equipos["visit"]["img"] = "juventus_hd_logo.png"
 
+                
     def siguiente(self):
         juego.clickFx()
         if juego.local and juego.visitante:
