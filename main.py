@@ -246,6 +246,31 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.LocalLabel.setPixmap(QtGui.QPixmap("images/"+str(juego.equipos["loc"]["img"])))
         self.VisitLabel.setPixmap(QtGui.QPixmap("images/"+str(juego.equipos["visit"]["img"])))
         juego.player.stop()
+        self.fans = QtCore.QUrl.fromLocalFile("./sounds/fans.mp3")
+        self.playlist = QtMultimedia.QMediaPlaylist()
+        self.playlist.addMedia(QtMultimedia.QMediaContent(self.fans))
+        self.playlist.setPlaybackMode(QtMultimedia.QMediaPlaylist.Loop)
+        self.playlist.setCurrentIndex(1)
+        self.player = QtMultimedia.QMediaPlayer()
+        self.player.setPlaylist(self.playlist)
+        self.player.setVolume(90)
+        self.player.play()
+
+        self.timer=QtCore.QTimer()
+        self.timer.timeout.connect(self.arduino_start)
+        self.timer.start(5000)
+
+    def arduino_start(self):
+        self.fans = QtCore.QUrl.fromLocalFile("./sounds/silbato.mp3")
+        self.silbato = QtMultimedia.QMediaPlaylist()
+        self.silbato.addMedia(QtMultimedia.QMediaContent(self.fans))
+        self.silbato.setCurrentIndex(1)
+        self.player = QtMultimedia.QMediaPlayer()
+        self.player.setPlaylist(self.silbato)
+        self.player.setVolume(90)
+        self.player.play()
+        self.timer.stop()
+
 
 class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
