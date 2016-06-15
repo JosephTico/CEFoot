@@ -594,8 +594,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
 
     def penales_extra():
         if juego.turno == 11:
-            
-
+            return
 
     def stop(self):
         juego.ejecutando = False
