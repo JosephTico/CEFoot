@@ -67,7 +67,7 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
                 self, 'Error',
                 "Can't establish a connection with the gaming device.",
                 QtWidgets.QMessageBox.Ok)
-                self.abreSelectorEquipos()
+            self.abreSelectorEquipos()
         else:
             self.abreSelectorEquipos()
 
