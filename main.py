@@ -565,7 +565,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
 
     def arduino_start(self):
 
-        if self.turno >= 11:
+        if juego.turno >= 11:
             if self.penales_extra() == True:
                 return
 
@@ -593,7 +593,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.lt.start()
 
     def penales_extra():
-        if self.turno == 11:
+        if juego.turno == 11:
             
 
 
@@ -645,7 +645,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
             mark = self.g6
         elif juego.turno == 7:
             mark = self.g7
-        elif juegoself.turno == 8:
+        elif juego.turno == 8:
             mark = self.g8
         elif juego.turno == 9:
             mark = self.g9
