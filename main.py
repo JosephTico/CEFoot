@@ -593,6 +593,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
 
     def penales_extra():
         if self.turno == 11:
+            return
             
 
 
