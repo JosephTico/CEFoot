@@ -1,47 +1,470 @@
-﻿m1=player("Keylor Navas Gamboa",91,55,"Real Madrid","Costa Rica","Goalkeeper",28,85,185,"m1.jpg")
-m2=player("Kiko Casilla Cortés",83,55,"Real Madrid","Spain","Goalkeeper",29,84,191,"m2.jpg")
-m3=player("Cristiano Ronaldo",55,98,"Real Madrid","Portugal","Shooter",31,80,185,"m3.jpg")
-m4=player("Karim Benzema",55,95,"Real Madrid","France","Shooter",28,79,187,"m4.jpg")
-m5=player("Sergio Ramos García",55,93,"Real Madrid","Spain","Shooter",30,75,183,"m5.jpg")
-m6=player("Gareth Bale",55,92,"Real Madrid","Gales","Shooter",26,74,183,"m6.jpg")
-m7=player("Marcelo Vieira da Silva",55,89,"Real Madrid","Brazil","Shooter",28,75,174,"m7.jpg")
-
-j1=player("Gianluigi Buffon",93,55,"Juventus","Italia","Goalkeeper",38,83,191,"j1.jpg")
-j2=player("Rubinho Fernando",72,55,"Juventus","Brazil","Goalkeeper",33,82,186,"j2.jpg")
-j3=player("Alex Sandro Lobo Silva",55,88,"Juventus","Brazil","Shooter",25,78,180,"j3.jpg")
-j4=player("Paul Pogba",55,91,"Juventus","France","Shooter",23,80,188,"j4.jpg")
-j5=player("Paulo Dybala",55,91,"Juventus","Argentina","Shooter",22,69,177,"j5.jpg")
-j6=player("Mario Mandžukić",55,84,"Juventus","Croatia","Shooter",30,84,187,"j6.jpg")
-j7=player("Juan Cuadrado",55,83,"Juventus","Colombia","Shooter",28,66,176,"j7.jpg")
-
-a1=player("Petr Čech",85,55,"Arsenal","Czech Republic","Goalkeeper",34,90,196,"a1.jpg")
-a2=player("David Ospina",88,55,"Arsenal","Chile","Goalkeeper",27,79,183,"a2.jpg")
-a3=player("Mesut Özil",55,94,"Arsenal","Germany","Shooter",27,76,183,"a3.jpg")
-a4=player("Alexis Sánchez",55,88,"Arsenal","Chile","Shooter",27,62,169,"a4.jpg")
-a5=player("Olivier Giroud",55,83,"Arsenal","France","Shooter",29,88,192,"a5.jpg")
-a6=player("Aaron Ramsey",55,83,"Arsenal","Gales","Shooter",25,70,177,"a6.jpg")
-a7=player("Joel Campbell",55,83,"Arsenal","Costa Rica","Shooter",24,72,178,"a7.jpg")
-
-p1=player("Kevin Trapp",84,55,"Paris Saint-Germain","Germany","Goalkeeper",22,88,189,"p1.jpg")
-p2=player("Salvatore Sirigu",83,55,"Paris Saint-Germain","Italy","Goalkeeper",29,80,192,"p2.jpg")
-p3=player("Zlatan Ibrahimović",55,98,"Paris Saint-Germain","Sweden","Shooter",34,95,195,"p3.jpg")
-p4=player("Ángel Di María",55,89,"Paris Saint-Germain","Argentina","Shooter",28,75,180,"p4.jpg")
-p5=player("Edinson Cavani",55,86,"Paris Saint-Germain","Uruguay","Shooter",29,71,184,"p5.jpg")
-p6=player("Maxwell Scherer",55,87,"Paris Saint-Germain","Brazil","Shooter",34,73,176,"p6.jpg")
-p7=player("David Luiz Moreira",55,89,"Paris Saint-Germain","Brazil","Shooter",29,84,189,"p7.jpg")
-
-b1=player("Claudio Bravo",83,55,"FC Barcelona","Chile","Goalkeeper",33,80,184,"b1.jpg")
-b2=player("Marc-André ter Stegen",82,55,"FC Barcelona","Germany","Goalkeeper",24,85,187,"b2.jpg")
-b3=player("Lionel Messi",55,98,"FC Barcelona","Argentina","Shooter",28,72,170,"b3.jpg")
-b4=player("Neymar da Silva",55,97,"FC Barcelona","Brazil","Shooter",24,68,174,"b4.jpg")
-b5=player("Luis Suárez",55,97,"FC Barcelona","Uruguay","Shooter",29,85,182,"b5.jpg")
-b6=player("Andrés Iniesta",55,95,"FC Barcelona","Spain","Shooter",32,68,171,"b6.jpg")
-b7=player("Daniel Alves da Silva",55,92,"FC Barcelona","Brazil","Shooter",33,72,172,"b7.jpg")
-
-g1=player("Manuel Neuer",92,55,"FC Bayern Munchen","Germany","Goalkeeper",30,92,193,"g1.jpg")
-g2=player("Sven Ulreich",77,55,"FC Bayern Munchen","Germany","Goalkeeper",27,84,192,"g2.jpg")
-g3=player("Robert Lewandowski",55,98,"FC Bayern Munchen","Poland","Shooter",27,79,185,"g3.jpg")
-g4=player("Thomas Müller",55,94,"FC Bayern Munchen","Germany","Shooter",26,75,186,"g4.jpg")
-g5=player("Arjen Robben",55,91,"FC Bayern Munchen","Holland","Shooter",32,80,180,"g5.jpg")
-g6=player("Philipp Lahm",55,90,"FC Bayern Munchen","Germany","Shooter",32,66,170,"g6.jpg")
-g7=player("Mario Götze",55,91,"FC Bayern Munchen","Germany","Shooter",24,72,176,"g7.jpg")
+﻿{
+	"madrid": [{
+		"name": "Keylor Navas Gamboa",
+		"glob": "55",
+		"port": "91",
+		"team": "Real Madrid",
+		"pais": "Costa Rica",
+		"tipo": "Goalkeeper",
+		"edad": "28",
+		"peso": "85",
+		"altura": "185",
+		"foto": "m1.jpg"
+	}, {
+		"name": "Kiko Casilla Cortés",
+		"glob": "55",
+		"port": "83",
+		"team": "Real Madrid",
+		"pais": "Spain",
+		"tipo": "Goalkeeper",
+		"edad": "29",
+		"peso": "84",
+		"altura": "191",
+		"foto": "m2.jpg"
+	}, {
+		"name": "Cristiano Ronaldo",
+		"glob": "98",
+		"port": "55",
+		"team": "Real Madrid",
+		"pais": "Portugal",
+		"tipo": "Shooter",
+		"edad": "31",
+		"peso": "80",
+		"altura": "185",
+		"foto": "m3.jpg"
+	}, {
+		"name": "Karim Benzema",
+		"glob": "95",
+		"port": "55",
+		"team": "Real Madrid",
+		"pais": "France",
+		"tipo": "Shooter",
+		"edad": "28",
+		"peso": "79",
+		"altura": "187",
+		"foto": "m4.jpg"
+	}, {
+		"name": "Sergio Ramos García",
+		"glob": "93",
+		"port": "55",
+		"team": "Real Madrid",
+		"pais": "Spain",
+		"tipo": "Shooter",
+		"edad": "30",
+		"peso": "75",
+		"altura": "183",
+		"foto": "m5.jpg"
+	}, {
+		"name": "Gareth Bale",
+		"glob": "92",
+		"port": "55",
+		"team": "Real Madrid",
+		"pais": "Gales",
+		"tipo": "Shooter",
+		"edad": "26",
+		"peso": "74",
+		"altura": "183",
+		"foto": "m6.jpg"
+	}, {
+		"name": "Marcelo Vieira da Silva",
+		"glob": "89",
+		"port": "55",
+		"team": "Real Madrid",
+		"pais": "Brazil",
+		"tipo": "Shooter",
+		"edad": "28",
+		"peso": "75",
+		"altura": "174",
+		"foto": "m7.jpg"
+	}],
+	"juve": [{
+		"name": "Gianluigi Buffon",
+		"glob": "55",
+		"port": "93",
+		"team": "Juventus",
+		"pais": "Italia",
+		"tipo": "Goalkeeper",
+		"edad": "38",
+		"peso": "83",
+		"altura": "191",
+		"foto": "j1.jpg"
+	}, {
+		"name": "Rubinho Fernando",
+		"glob": "55",
+		"port": "72",
+		"team": "Juventus",
+		"pais": "Brazil",
+		"tipo": "Goalkeeper",
+		"edad": "33",
+		"peso": "82",
+		"altura": "186",
+		"foto": "j2.jpg"
+	}, {
+		"name": "Alex Sandro Lobo Silva",
+		"glob": "88",
+		"port": "55",
+		"team": "Juventus",
+		"pais": "Brazil",
+		"tipo": "Shooter",
+		"edad": "25",
+		"peso": "78",
+		"altura": "180",
+		"foto": "j3.jpg"
+	}, {
+		"name": "Paul Pogba",
+		"glob": "91",
+		"port": "55",
+		"team": "Juventus",
+		"pais": "France",
+		"tipo": "Shooter",
+		"edad": "23",
+		"peso": "80",
+		"altura": "188",
+		"foto": "j4.jpg"
+	}, {
+		"name": "Paulo Dybala",
+		"glob": "91",
+		"port": "55",
+		"team": "Juventus",
+		"pais": "Argentina",
+		"tipo": "Shooter",
+		"edad": "22",
+		"peso": "69",
+		"altura": "177",
+		"foto": "j5.jpg"
+	}, {
+		"name": "Mario Mandzukic",
+		"glob": "84",
+		"port": "55",
+		"team": "Juventus",
+		"pais": "Croatia",
+		"tipo": "Shooter",
+		"edad": "30",
+		"peso": "84",
+		"altura": "187",
+		"foto": "j6.jpg"
+	}, {
+		"name": "Juan Cuadrado",
+		"glob": "83",
+		"port": "55",
+		"team": "Juventus",
+		"pais": "Colombia",
+		"tipo": "Shooter",
+		"edad": "28",
+		"peso": "66",
+		"altura": "176",
+		"foto": "j7.jpg"
+	}],
+	"arsenal": [{
+		"name": "Petr Cech",
+		"glob": "55",
+		"port": "85",
+		"team": "Arsenal",
+		"pais": "Czech Republic",
+		"tipo": "Goalkeeper",
+		"edad": "34",
+		"peso": "90",
+		"altura": "196",
+		"foto": "a1.jpg"
+	}, {
+		"name": "David Ospina",
+		"glob": "55",
+		"port": "88",
+		"team": "Arsenal",
+		"pais": "Chile",
+		"tipo": "Goalkeeper",
+		"edad": "27",
+		"peso": "79",
+		"altura": "183",
+		"foto": "a2.jpg"
+	}, {
+		"name": "Mesut Ozil",
+		"glob": "94",
+		"port": "55",
+		"team": "Arsenal",
+		"pais": "Germany",
+		"tipo": "Shooter",
+		"edad": "27",
+		"peso": "76",
+		"altura": "183",
+		"foto": "a3.jpg"
+	}, {
+		"name": "Alexis Sánchez",
+		"glob": "88",
+		"port": "55",
+		"team": "Arsenal",
+		"pais": "Chile",
+		"tipo": "Shooter",
+		"edad": "27",
+		"peso": "62",
+		"altura": "169",
+		"foto": "a4.jpg"
+	}, {
+		"name": "Olivier Giroud",
+		"glob": "83",
+		"port": "55",
+		"team": "Arsenal",
+		"pais": "France",
+		"tipo": "Shooter",
+		"edad": "29",
+		"peso": "88",
+		"altura": "192",
+		"foto": "a5.jpg"
+	}, {
+		"name": "Aaron Ramsey",
+		"glob": "83",
+		"port": "55",
+		"team": "Arsenal",
+		"pais": "Gales",
+		"tipo": "Shooter",
+		"edad": "25",
+		"peso": "70",
+		"altura": "177",
+		"foto": "a6.jpg"
+	}, {
+		"name": "Joel Campbell",
+		"glob": "83",
+		"port": "55",
+		"team": "Arsenal",
+		"pais": "Costa Rica",
+		"tipo": "Shooter",
+		"edad": "24",
+		"peso": "72",
+		"altura": "178",
+		"foto": "a7.jpg"
+	}],
+	"psg": [{
+		"name": "Kevin Trapp",
+		"glob": "55",
+		"port": "84",
+		"team": "Paris Saint-Germain",
+		"pais": "Germany",
+		"tipo": "Goalkeeper",
+		"edad": "22",
+		"peso": "88",
+		"altura": "189",
+		"foto": "p1.jpg"
+	}, {
+		"name": "Salvatore Sirigu",
+		"glob": "55",
+		"port": "83",
+		"team": "Paris Saint-Germain",
+		"pais": "Italy",
+		"tipo": "Goalkeeper",
+		"edad": "29",
+		"peso": "80",
+		"altura": "192",
+		"foto": "p2.jpg"
+	}, {
+		"name": "Zlatan Ibrahimovic",
+		"glob": "98",
+		"port": "55",
+		"team": "Paris Saint-Germain",
+		"pais": "Sweden",
+		"tipo": "Shooter",
+		"edad": "34",
+		"peso": "95",
+		"altura": "195",
+		"foto": "p3.jpg"
+	}, {
+		"name": "Angel Di Maria",
+		"glob": "89",
+		"port": "55",
+		"team": "Paris Saint-Germain",
+		"pais": "Argentina",
+		"tipo": "Shooter",
+		"edad": "28",
+		"peso": "75",
+		"altura": "180",
+		"foto": "p4.jpg"
+	}, {
+		"name": "Edinson Cavani",
+		"glob": "86",
+		"port": "55",
+		"team": "Paris Saint-Germain",
+		"pais": "Uruguay",
+		"tipo": "Shooter",
+		"edad": "29",
+		"peso": "71",
+		"altura": "184",
+		"foto": "p5.jpg"
+	}, {
+		"name": "Maxwell Scherer",
+		"glob": "87",
+		"port": "55",
+		"team": "Paris Saint-Germain",
+		"pais": "Brazil",
+		"tipo": "Shooter",
+		"edad": "34",
+		"peso": "73",
+		"altura": "176",
+		"foto": "p6.jpg"
+	}, {
+		"name": "David Luiz Moreira",
+		"glob": "89",
+		"port": "55",
+		"team": "Paris Saint-Germain",
+		"pais": "Brazil",
+		"tipo": "Shooter",
+		"edad": "29",
+		"peso": "84",
+		"altura": "189",
+		"foto": "p7.jpg"
+	}],
+	"barsa": [{
+		"name": "Claudio Bravo",
+		"glob": "55",
+		"port": "83",
+		"team": "FC Barcelona",
+		"pais": "Chile",
+		"tipo": "Goalkeeper",
+		"edad": "33",
+		"peso": "80",
+		"altura": "184",
+		"foto": "b1.jpg"
+	}, {
+		"name": "Marc-André ter Stegen",
+		"glob": "55",
+		"port": "82",
+		"team": "FC Barcelona",
+		"pais": "Germany",
+		"tipo": "Goalkeeper",
+		"edad": "24",
+		"peso": "85",
+		"altura": "187",
+		"foto": "b2.jpg"
+	}, {
+		"name": "Lionel Messi",
+		"glob": "98",
+		"port": "55",
+		"team": "FC Barcelona",
+		"pais": "Argentina",
+		"tipo": "Shooter",
+		"edad": "28",
+		"peso": "72",
+		"altura": "170",
+		"foto": "b3.jpg"
+	}, {
+		"name": "Neymar da Silva",
+		"glob": "97",
+		"port": "55",
+		"team": "FC Barcelona",
+		"pais": "Brazil",
+		"tipo": "Shooter",
+		"edad": "24",
+		"peso": "68",
+		"altura": "174",
+		"foto": "b4.jpg"
+	}, {
+		"name": "Luis Suárez",
+		"glob": "97",
+		"port": "55",
+		"team": "FC Barcelona",
+		"pais": "Uruguay",
+		"tipo": "Shooter",
+		"edad": "29",
+		"peso": "85",
+		"altura": "182",
+		"foto": "b5.jpg"
+	}, {
+		"name": "Andrés Iniesta",
+		"glob": "95",
+		"port": "55",
+		"team": "FC Barcelona",
+		"pais": "Spain",
+		"tipo": "Shooter",
+		"edad": "32",
+		"peso": "68",
+		"altura": "171",
+		"foto": "b6.jpg"
+	}, {
+		"name": "Daniel Alves da Silva",
+		"glob": "92",
+		"port": "55",
+		"team": "FC Barcelona",
+		"pais": "Brazil",
+		"tipo": "Shooter",
+		"edad": "33",
+		"peso": "72",
+		"altura": "172",
+		"foto": "b7.jpg"
+	}],
+	"bayern": [{
+		"name": "Manuel Neuer",
+		"glob": "55",
+		"port": "92",
+		"team": "FC Bayern Munchen",
+		"pais": "Germany",
+		"tipo": "Goalkeeper",
+		"edad": "30",
+		"peso": "92",
+		"altura": "193",
+		"foto": "g1.jpg"
+	}, {
+		"name": "Sven Ulreich",
+		"glob": "55",
+		"port": "77",
+		"team": "FC Bayern Munchen",
+		"pais": "Germany",
+		"tipo": "Goalkeeper",
+		"edad": "27",
+		"peso": "84",
+		"altura": "192",
+		"foto": "g2.jpg"
+	}, {
+		"name": "Robert Lewandowski",
+		"glob": "98",
+		"port": "55",
+		"team": "FC Bayern Munchen",
+		"pais": "Poland",
+		"tipo": "Shooter",
+		"edad": "27",
+		"peso": "79",
+		"altura": "185",
+		"foto": "g3.jpg"
+	}, {
+		"name": "Thomas Müller",
+		"glob": "94",
+		"port": "55",
+		"team": "FC Bayern Munchen",
+		"pais": "Germany",
+		"tipo": "Shooter",
+		"edad": "26",
+		"peso": "75",
+		"altura": "186",
+		"foto": "g4.jpg"
+	}, {
+		"name": "Arjen Robben",
+		"glob": "91",
+		"port": "55",
+		"team": "FC Bayern Munchen",
+		"pais": "Holland",
+		"tipo": "Shooter",
+		"edad": "32",
+		"peso": "80",
+		"altura": "180",
+		"foto": "g5.jpg"
+	}, {
+		"name": "Philipp Lahm",
+		"glob": "90",
+		"port": "55",
+		"team": "FC Bayern Munchen",
+		"pais": "Germany",
+		"tipo": "Shooter",
+		"edad": "32",
+		"peso": "66",
+		"altura": "170",
+		"foto": "g6.jpg"
+	}, {
+		"name": "Mario Götze",
+		"glob": "91",
+		"port": "55",
+		"team": "FC Bayern Munchen",
+		"pais": "Germany",
+		"tipo": "Shooter",
+		"edad": "24",
+		"peso": "72",
+		"altura": "176",
+		"foto": "g7.jpg"
+	}]
+}
