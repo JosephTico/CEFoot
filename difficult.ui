@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>referee</class>
+ <widget class="QWidget" name="referee">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>801</width>
+    <height>638</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Pre-Game</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton {
+background: rgba(0,0,0,0);
+}
+
+QPushButton:hover {
+border: 3px dashed #222;
+background: rgba(5,5,5,0.2);
+}
+
+
+QPushButton:checked {
+border:3px solid #222;
+background: rgba(5,5,5,0.5);
+}</string>
+  </property>
+  <widget class="QPushButton" name="Referee1">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>150</y>
+     <width>261</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/r1.jpg</normaloff>images/r1.jpg</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>250</width>
+     <height>250</height>
+    </size>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Referee2">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>150</y>
+     <width>261</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>images/r2.jpg</normaloff>images/r2.jpg</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>250</width>
+     <height>250</height>
+    </size>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>-30</x>
+     <y>-10</y>
+     <width>911</width>
+     <height>661</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>images/referee.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="L1_4">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>470</y>
+     <width>261</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>System</family>
+     <pointsize>36</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: rgba(0, 0, 0,0,8);
+color: rgb(184, 184, 184)</string>
+   </property>
+   <property name="text">
+    <string>Hard</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>115</width>
+     <height>115</height>
+    </size>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>40</y>
+     <width>361</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>-440</x>
+     <y>460</y>
+     <width>801</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:rgba(0,0,0,0.5)</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>120</y>
+     <width>801</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:rgba(0,0,0,0.5)</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>460</y>
+     <width>801</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:rgba(0,0,0,0.5)</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="L1_5">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>470</y>
+     <width>261</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>System</family>
+     <pointsize>36</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: rgba(0, 0, 0,0,8);
+color:rgb(184, 184, 184)</string>
+   </property>
+   <property name="text">
+    <string>Normal</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>115</width>
+     <height>115</height>
+    </size>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>10</y>
+     <width>341</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>System</family>
+     <pointsize>26</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Select Referee
+and the difficult</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>30</y>
+     <width>341</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="back">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Yu Gothic UI Semilight</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:rgba(120, 120, 120, 0.5);
+border: 1px solid;
+color: rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string>Back</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="continuar">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Yu Gothic UI Semilight</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:rgba(120, 120, 120, 0.5);
+color: rgb(255, 255, 255);
+border: 1px solid;</string>
+      </property>
+      <property name="text">
+       <string>Continue</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>label_5</zorder>
+  <zorder>label_4</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_3</zorder>
+  <zorder>L1_4</zorder>
+  <zorder>Referee2</zorder>
+  <zorder>Referee1</zorder>
+  <zorder>L1_5</zorder>
+  <zorder>label_6</zorder>
+  <zorder>horizontalLayoutWidget</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
