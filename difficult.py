@@ -8,11 +8,11 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_referee(object):
-    def setupUi(self, referee):
-        referee.setObjectName("referee")
-        referee.resize(801, 638)
-        referee.setStyleSheet("QPushButton {\n"
+class Ui_VentanaPre_Game(object):
+    def setupUi(self, VentanaPre_Game):
+        VentanaPre_Game.setObjectName("VentanaPre_Game")
+        VentanaPre_Game.resize(801, 638)
+        VentanaPre_Game.setStyleSheet("QPushButton {\n"
 "background: rgba(0,0,0,0);\n"
 "}\n"
 "\n"
@@ -26,7 +26,7 @@ class Ui_referee(object):
 "border:3px solid #222;\n"
 "background: rgba(5,5,5,0.5);\n"
 "}")
-        self.Referee1 = QtWidgets.QPushButton(referee)
+        self.Referee1 = QtWidgets.QPushButton(VentanaPre_Game)
         self.Referee1.setEnabled(True)
         self.Referee1.setGeometry(QtCore.QRect(90, 150, 261, 251))
         self.Referee1.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -39,7 +39,7 @@ class Ui_referee(object):
         self.Referee1.setCheckable(True)
         self.Referee1.setChecked(False)
         self.Referee1.setObjectName("Referee1")
-        self.Referee2 = QtWidgets.QPushButton(referee)
+        self.Referee2 = QtWidgets.QPushButton(VentanaPre_Game)
         self.Referee2.setEnabled(True)
         self.Referee2.setGeometry(QtCore.QRect(440, 150, 261, 251))
         self.Referee2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
@@ -52,13 +52,13 @@ class Ui_referee(object):
         self.Referee2.setCheckable(True)
         self.Referee2.setChecked(False)
         self.Referee2.setObjectName("Referee2")
-        self.label = QtWidgets.QLabel(referee)
+        self.label = QtWidgets.QLabel(VentanaPre_Game)
         self.label.setGeometry(QtCore.QRect(-30, -10, 911, 661))
         self.label.setText("")
         self.label.setPixmap(QtGui.QPixmap("images/referee.jpg"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
-        self.L1_4 = QtWidgets.QPushButton(referee)
+        self.L1_4 = QtWidgets.QPushButton(VentanaPre_Game)
         self.L1_4.setEnabled(True)
         self.L1_4.setGeometry(QtCore.QRect(450, 470, 261, 111))
         font = QtGui.QFont()
@@ -74,26 +74,26 @@ class Ui_referee(object):
         self.L1_4.setCheckable(True)
         self.L1_4.setChecked(False)
         self.L1_4.setObjectName("L1_4")
-        self.label_2 = QtWidgets.QLabel(referee)
+        self.label_2 = QtWidgets.QLabel(VentanaPre_Game)
         self.label_2.setGeometry(QtCore.QRect(120, 40, 361, 51))
         self.label_2.setText("")
         self.label_2.setObjectName("label_2")
-        self.label_3 = QtWidgets.QLabel(referee)
+        self.label_3 = QtWidgets.QLabel(VentanaPre_Game)
         self.label_3.setGeometry(QtCore.QRect(-440, 460, 801, 131))
         self.label_3.setStyleSheet("background:rgba(0,0,0,0.5)")
         self.label_3.setText("")
         self.label_3.setObjectName("label_3")
-        self.label_4 = QtWidgets.QLabel(referee)
+        self.label_4 = QtWidgets.QLabel(VentanaPre_Game)
         self.label_4.setGeometry(QtCore.QRect(0, 120, 801, 311))
         self.label_4.setStyleSheet("background:rgba(0,0,0,0.5)")
         self.label_4.setText("")
         self.label_4.setObjectName("label_4")
-        self.label_5 = QtWidgets.QLabel(referee)
+        self.label_5 = QtWidgets.QLabel(VentanaPre_Game)
         self.label_5.setGeometry(QtCore.QRect(420, 460, 801, 131))
         self.label_5.setStyleSheet("background:rgba(0,0,0,0.5)")
         self.label_5.setText("")
         self.label_5.setObjectName("label_5")
-        self.L1_5 = QtWidgets.QPushButton(referee)
+        self.L1_5 = QtWidgets.QPushButton(VentanaPre_Game)
         self.L1_5.setEnabled(True)
         self.L1_5.setGeometry(QtCore.QRect(90, 470, 261, 111))
         font = QtGui.QFont()
@@ -109,7 +109,7 @@ class Ui_referee(object):
         self.L1_5.setCheckable(True)
         self.L1_5.setChecked(False)
         self.L1_5.setObjectName("L1_5")
-        self.label_6 = QtWidgets.QLabel(referee)
+        self.label_6 = QtWidgets.QLabel(VentanaPre_Game)
         self.label_6.setGeometry(QtCore.QRect(50, 10, 341, 91))
         font = QtGui.QFont()
         font.setFamily("System")
@@ -118,7 +118,7 @@ class Ui_referee(object):
         font.setWeight(75)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
-        self.horizontalLayoutWidget = QtWidgets.QWidget(referee)
+        self.horizontalLayoutWidget = QtWidgets.QWidget(VentanaPre_Game)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(440, 30, 341, 35))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
@@ -169,16 +169,16 @@ class Ui_referee(object):
         self.label_6.raise_()
         self.horizontalLayoutWidget.raise_()
 
-        self.retranslateUi(referee)
-        QtCore.QMetaObject.connectSlotsByName(referee)
+        self.retranslateUi(VentanaPre_Game)
+        QtCore.QMetaObject.connectSlotsByName(VentanaPre_Game)
 
-    def retranslateUi(self, referee):
+    def retranslateUi(self, VentanaPre_Game):
         _translate = QtCore.QCoreApplication.translate
-        referee.setWindowTitle(_translate("referee", "Pre-Game"))
-        self.L1_4.setText(_translate("referee", "Hard"))
-        self.L1_5.setText(_translate("referee", "Normal"))
-        self.label_6.setText(_translate("referee", "Select Referee\n"
+        VentanaPre_Game.setWindowTitle(_translate("VentanaPre_Game", "Pre-Game"))
+        self.L1_4.setText(_translate("VentanaPre_Game", "Hard"))
+        self.L1_5.setText(_translate("VentanaPre_Game", "Normal"))
+        self.label_6.setText(_translate("VentanaPre_Game", "Select Referee\n"
 "and the difficult"))
-        self.back.setText(_translate("referee", "Back"))
-        self.continuar.setText(_translate("referee", "Continue"))
+        self.back.setText(_translate("VentanaPre_Game", "Back"))
+        self.continuar.setText(_translate("VentanaPre_Game", "Continue"))
 
