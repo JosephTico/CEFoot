@@ -511,6 +511,7 @@ class VentanaCreator (QtWidgets.QMainWindow, Ui_VentanaCreator):
         self.CancelButton.clicked.connect(self.hide)
 
     def uploadPhoto(self):
+        self.file = ["",""]
         self.file =  QtWidgets.QFileDialog.getOpenFileName(self, 'Open file', 'c:\\', "Image files (*.jpg *.gif *png)")
 
     def CreatePlayer(self):
@@ -590,8 +591,8 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.lt.start()
 
     def penales_extra():
-        if self.turno == 1:
-            return True
+        if self.turno == 11:
+            
 
 
     def stop(self):
