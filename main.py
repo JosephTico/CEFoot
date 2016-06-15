@@ -11,14 +11,10 @@ from missed import *
 import sys
 import time
 import serial
+import serial.tools.list_ports
 from random import randrange
 
-# Inicializa la conexión a Arduno
-arduino = None
-try:
-    arduino = serial.Serial("COM5", 9600)
-except:
-    pass
+
 
 
 def confirmaSalir(self, event, porSalir=False):
@@ -57,20 +53,22 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
         self.equipos = {"loc": {"name": None, "img": None}, "visit": {"name": None, "img": None}}
 
     def jugar(self):
-        global arduino
-        try:
-            arduino = serial.Serial("COM5", 9600)
-        except:
-            pass
-        if not arduino:
+        if not juego.arduino:
+            try:
+                ports = list(serial.tools.list_ports.comports())
+                for p in ports:
+                    if "Arduino" in p[1]:
+                        juego.arduino = serial.Serial(p[0], 9600)
+                        break
+            except:
+                pass
+        if not juego.arduino:
             QtWidgets.QMessageBox.critical(
                 self, 'Error',
                 "Can't establish a connection with the gaming device.",
                 QtWidgets.QMessageBox.Ok)
-            self.abreSelectorEquipos()
         else:
-            # Otro comentario por acá
-            arduino.write(b'9')
+            self.abreSelectorEquipos()
 
     def reproduceMusica(self):
         self.musica1 = QtCore.QUrl.fromLocalFile("./audio/title3.mp3")
@@ -546,6 +544,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.shoot.setVolume(100)
         self.shoot.play()
         self.timer.stop()
+        juego.arduino.wri
 
 
     def jugadoresActuales(self):
@@ -568,12 +567,12 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/players/"+str(jugadores[1].foto)))
 
     def BolaDentro(self):
-        # LLAMAR
+        # LLA
 
         juego.turno += 1
 
         if juego.turno == 11:
-            # Haga ka comprobaci'on
+            return
 
 
     def Arduino_goal(self):
@@ -640,6 +639,20 @@ if __name__ == "__main__":
     juego.reproduceMusica()
     for i in range(0, randrange(0, 5)):
         juego.nextsong()
+
+
+        # Inicializa la conexión a Arduno
+    juego.arduino = None
+    try:
+        ports = list(serial.tools.list_ports.comports())
+        for p in ports:
+            if "Arduino" in p[1]:
+                juego.arduino = serial.Serial(p[0], 9600)
+                break
+    except:
+        pass
+
+
     juego.show()
     splash.finish(juego)
 
