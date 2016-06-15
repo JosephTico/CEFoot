@@ -119,7 +119,7 @@ void loop()
 
   //oneOnAtATime();       // Scroll down the line
 
-  //pingPong();           // Like above, but back and forth
+  pingPong();           // Like above, but back and forth
 
   //randomLED();          // Blink random LEDs
 
@@ -127,14 +127,7 @@ void loop()
 
   //binaryCount();        // Bit patterns from 0 to 255
 
-  if (Serial.available()>0) 
-  {
-    char option = Serial.read();
-    if (option >= '1' && option <= '9')
-    {
-      randomLED();
-    }
-  }
+
 }
 
 
@@ -258,7 +251,7 @@ in both directions.
 void pingPong()
 {
   int index;
-  int delayTime = 100; // time (milliseconds) to pause between LEDs
+  int delayTime = 300; // time (milliseconds) to pause between LEDs
                        // make this smaller for faster switching
 
   // step through the LEDs, from 0 to 7

@@ -19,7 +19,12 @@ import threading
 def confirmaSalir(self, event, porSalir=False):
     if porSalir:
         if juego.arduino is not None:
+            juego.arduino.setDTR(False)
+            time.sleep(2)
+            juego.arduino.setDTR(True)
             juego.arduino.close()
+        juego.partida.at.terminate()
+        juego.partida.lt.terminate()
         juego.ejecutando = False
         event.accept
         return
@@ -30,9 +35,14 @@ def confirmaSalir(self, event, porSalir=False):
         QtWidgets.QMessageBox.No)
 
     if reply == QtWidgets.QMessageBox.Yes:
-        if juego.arduino is not None:
-            juego.arduino.close()
+        juego.partida.at.terminate()
+        juego.partida.lt.terminate()
         juego.ejecutando = False
+        if juego.arduino is not None:
+            juego.arduino.setDTR(False)
+            time.sleep(2)
+            juego.arduino.setDTR(True)
+            juego.arduino.close()
         event.accept()
     else:
         event.ignore()
@@ -58,6 +68,7 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
         self.ejecutando = False
 
         self.equipos = {"loc": {"name": None, "img": None}, "visit": {"name": None, "img": None}}
+
 
     def jugar(self):
         if not juego.arduino:
@@ -555,51 +566,12 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
 
         juego.ejecutando = True
 
-        self.arduino_thread = threading.Thread(target=self.arduino_loop)
-        self.arduino_thread.start()
+        self.at = arduino_loop()
+        self.at.start()
 
-        self.led_thread = threading.Thread(target=self.led_loop)
-        self.led_thread.start()
+        self.lt = led_loop()
+        self.lt.start()
 
-    def arduino_loop(self):
-        time.sleep(1)
-        while juego.ejecutando is True:
-            cmd = juego.arduino.readline()
-            if juego.arduino.inWaiting() and cmd and cmd != "":
-                cmd = cmd.decode().strip().replace('\n', '').replace('\r', '')
-
-                if cmd[0] == "A":
-                    if int(cmd[1]) == self.posicion:
-                        self.stop()
-                        self.Arduino_goal()
-                        juego.turno += 1
-                        self.arduino_start()
-                    else:
-                        self.stop()
-                        self.Arduino_missed()
-                        juego.turno += 1
-                        self.arduino_start()
-
-    def led_loop(self):
-        time.sleep(1)
-        while juego.ejecutando is True:
-            delay = self.delay
-            for i in range(1, 7):
-                self.posicion = i
-                data = "L" + str(i)
-                data = data.encode()
-                print(data)
-                juego.arduino.write(data)
-                time.sleep(delay / 1000)
-
-            for i in range(1, 5):
-                self.posicion = i
-                i = 6 - i
-                data = "L" + str(i)
-                data = data.encode()
-                print(data)
-                juego.arduino.write(data)
-                time.sleep(delay / 1000)
 
     def stop(self):
         juego.ejecutando = False
@@ -691,6 +663,62 @@ class Goal(QtWidgets.QMainWindow, Ui_VentanaJuego):
         super().__init__()
         self.setupUi(self)
 
+
+
+class arduino_loop(QtCore.QThread):
+
+    def __init__(self):
+        super().__init__()
+
+    def run(self):
+        time.sleep(1)
+        while True:
+            cmd = juego.arduino.readline()
+            if juego.arduino.inWaiting() and cmd and cmd != "":
+                cmd = cmd.decode().strip().replace('\n', '').replace('\r', '')
+                print(cmd)
+
+                if cmd[0] == "A":
+                    if int(cmd[1]) == juego.partida.posicion:
+                        juego.partida.stop()
+                        juego.partida.Arduino_goal()
+                        juego.turno += 1
+                        juego.partida.arduino_start()
+                        self.terminate()
+                    else:
+                        juego.partida.stop()
+                        juego.partida.Arduino_missed()
+                        juego.turno += 1
+                        juego.partida.arduino_start()
+                        self.terminate()
+
+
+class led_loop(QtCore.QThread):
+
+    def __init__(self):
+        super().__init__()
+
+    def run(self):
+        time.sleep(1)
+        while True:
+            delay = juego.partida.delay
+            for i in range(1, 7):
+                juego.partida.posicion = i
+                data = "X" + str(i) + "\n"
+                data = data.encode()
+                print(data)
+                juego.arduino.write(data)
+                time.sleep(delay / 3300)
+
+            for i in range(1, 5):
+                juego.partida.posicion = i
+                i = 6 - i
+                data = "X" + str(i) + "\n"
+                data = data.encode()
+                print(data)
+                juego.arduino.write(data)
+                time.sleep(delay / 3300)
+
 # Inicializa el programa
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
@@ -711,9 +739,9 @@ if __name__ == "__main__":
         for p in ports:
             if "Arduino" in p[1]:
                 juego.arduino = serial.Serial(p[0], 9600)
-                juego.arduino.setDTR(level=False)
+                juego.arduino.setDTR(False)
                 time.sleep(2)
-                juego.arduino.setDTR(level=True)
+                juego.arduino.setDTR(True)
                 break
     except:
         pass
