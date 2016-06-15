@@ -503,6 +503,8 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.LocalLabel.setPixmap(QtGui.QPixmap("images/"+str(juego.equipos["loc"]["img"])))
         self.VisitLabel.setPixmap(QtGui.QPixmap("images/"+str(juego.equipos["visit"]["img"])))
         juego.player.stop()
+        juego.turno=1
+        self.config_fotos()
         self.fans = QtCore.QUrl.fromLocalFile("./sounds/fans.mp3")
         self.playlist = QtMultimedia.QMediaPlaylist()
         self.playlist.addMedia(QtMultimedia.QMediaContent(self.fans))
@@ -512,7 +514,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.player.setPlaylist(self.playlist)
         self.player.setVolume(90)
         self.player.play()
-
+        
         self.timer=QtCore.QTimer()
         self.timer.timeout.connect(self.arduino_start)
         self.timer.start(5000)
@@ -528,45 +530,45 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.shoot.play()
         self.timer.stop()
     
-    juego.turno=1
-
-    if juego.turno%2 == 0:
-        jugador_index = i//2-1
-        shooter = juego.equipoVisitante[1][jugador_index]
-        portero = juego.equipoLocal[0]
-        self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/"+str(shooter.foto)))
-        self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/"+str(portero.foto)))
-    else:
-        jugador_index = (i-1)//2
-        shooter=juego.equipoLocal[1][jugador_index]
-        portero = juego.equipoVisitante[0]
-        self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/"+str(shooter.foto)))
-        self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/"+str(portero.foto)))
+    
+    def config_fotos(self):
+        if juego.turno%2 == 0:
+            jugador_index = i//2-1
+            shooter = juego.equipoVisitante[1][jugador_index]
+            portero = juego.equipoLocal[0]
+            self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/"+str(shooter.foto)))
+            self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/"+str(portero.foto)))
+        else:
+            jugador_index = (i-1)//2
+            shooter=juego.equipoLocal[1][jugador_index]
+            portero = juego.equipoVisitante[0]
+            self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/"+str(shooter.foto)))
+            self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/"+str(portero.foto)))
 
 
     def Arduino_goal(self):
-            if juego.turno%2 == 0:
-                jugador_index = i//2-1
-                shooter = juego.equipoVisitante[1][jugador_index]
-                portero = juego.equipoLocal[0]
-                juego.turno+=1
-                shooter.goles+=1
+        if juego.turno%2 == 0:
+            jugador_index = i//2-1
+            shooter = juego.equipoVisitante[1][jugador_index]
+            portero = juego.equipoLocal[0]
+            juego.turno+=1
+            shooter.goles+=1
 
-            else:
-                jugador_index = (i-1)//2
-                shooter=juego.equipoLocal[1][jugador_index]
-                portero = juego.equipoVisitante[0]
-                juego.turno+=1
-                shooter.goles+=1
+        else:
+            jugador_index = (i-1)//2
+            shooter=juego.equipoLocal[1][jugador_index]
+            portero = juego.equipoVisitante[0]
+            juego.turno+=1
+            shooter.goles+=1
     def Arduino_missed(self):
-            if juego.turno%2 == 0:
-                jugador_index = i//2-1
-                shooter = juego.equipoVisitante[1][jugador_index]
-                portero = juego.equipoLocal[0]
-            else:
-                jugador_index = (i-1)//2
-                shooter=juego.equipoLocal[1][jugador_index]
-                portero = juego.equipoVisitante[0]
+        if juego.turno%2 == 0:
+            jugador_index = i//2-1
+            shooter = juego.equipoVisitante[1][jugador_index]
+            portero = juego.equipoLocal[0]
+        else:
+            jugador_index = (i-1)//2
+            shooter=juego.equipoLocal[1][jugador_index]
+            portero = juego.equipoVisitante[0]
 
 
 # Inicializa el programa
