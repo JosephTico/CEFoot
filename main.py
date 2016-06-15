@@ -265,10 +265,10 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.silbato = QtMultimedia.QMediaPlaylist()
         self.silbato.addMedia(QtMultimedia.QMediaContent(self.referee))
         self.silbato.setCurrentIndex(2)
-        self.player = QtMultimedia.QMediaPlayer()
-        self.player.setPlaylist(self.silbato)
-        self.player.setVolume(90)
-        self.player.play()
+        self.shoot = QtMultimedia.QMediaPlayer()
+        self.shoot.setPlaylist(self.silbato)
+        self.shoot.setVolume(100)
+        self.shoot.play()
         self.timer.stop()
 
 
