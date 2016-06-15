@@ -16,8 +16,6 @@ from random import randrange
 import threading
 
 
-
-
 def confirmaSalir(self, event, porSalir=False):
     if porSalir:
         if juego.arduino is not None:
@@ -144,7 +142,6 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
         juego.local = None
         juego.visitante = None
 
-
         self.L1.clicked.connect(lambda: self.seleccion("L1"))
         self.L2.clicked.connect(lambda: self.seleccion("L2"))
         self.L3.clicked.connect(lambda: self.seleccion("L3"))
@@ -189,7 +186,6 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
 
             nombre = this[:-2]
 
-
             if nombre == "L1":
                 juego.equipos["visit"]["img"] = "barcelona.png"
             elif nombre == "L2":
@@ -202,7 +198,7 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
                 juego.equipos["visit"]["img"] = "arsenal.png"
             elif nombre == "L6":
                 juego.equipos["visit"]["img"] = "juventus-hd-logo.png"
-            
+
         else:
             juego.local = this
 
@@ -234,8 +230,6 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
             elif nombre == "L6":
                 juego.equipos["loc"]["img"] = "juventus-hd-logo.png"
 
-
-
     def siguiente(self):
         juego.clickFx()
         if juego.local and juego.visitante:
@@ -247,6 +241,7 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
                 self, 'Error',
                 "Please select both teams before continuing.",
                 QtWidgets.QMessageBox.Ok)
+
 
 class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
@@ -286,7 +281,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         self.configuraTodo("loc")
 
     def abrirEditor(self):
-        self.editor=VentanaCreator()
+        self.editor = VentanaCreator()
         self.editor.show()
 
     def configuraTodo(self, modo):
@@ -299,10 +294,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
         self.team_label.setText(self.plist[0].team + " players:")
 
-
         juego.equipos[modo]["name"] = self.plist[0].team
-
-
 
         self.ListaJugadores.clear()
         self.dataList.clear()
@@ -463,7 +455,6 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
         self.muestraPlanilla()
 
-
     def asignaDoble(self):
         juego.clickFx()
         if self.modo == "loc":
@@ -494,7 +485,9 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         self.dataList.addItem(QtWidgets.QListWidgetItem("Height: " + str(player.altura)))
         self.dataList.addItem(QtWidgets.QListWidgetItem("Goal: " + str(player.goles)))
 
-class VentanaCreator (QtWidgets.QMainWindow,Ui_VentanaCreator):
+
+class VentanaCreator (QtWidgets.QMainWindow, Ui_VentanaCreator):
+
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -503,9 +496,9 @@ class VentanaCreator (QtWidgets.QMainWindow,Ui_VentanaCreator):
 
     def CreatePlayer(self):
         if self.LineName.text() and self.LineCountry.text():
-            x=player(self.LineName.text(),55,self.LineShooterGlobal.value(),
-                juego.equipos[juego.modo]["name"],self.LineCountry.text(),
-                "Shooter",self.LineAge.value(),self.LinePeso.value(),self.LinePeso.value(),"xxxxx.jpg")
+            x = player(self.LineName.text(), 55, self.LineShooterGlobal.value(),
+                juego.equipos[juego.modo]["name"], self.LineCountry.text(),
+                "Shooter", self.LineAge.value(), self.LinePeso.value(), self.LinePeso.value(), "xxxxx.jpg")
             if juego.modo == "loc":
                 self.plist = juego.selectorUi.playersUi.teamToPlayers.get(juego.local)
             else:
@@ -521,14 +514,16 @@ class VentanaCreator (QtWidgets.QMainWindow,Ui_VentanaCreator):
                 "You need to define the name and the country of the player.",
                 QtWidgets.QMessageBox.Ok)
 
+
 class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
+
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.LocalLabel.setPixmap(QtGui.QPixmap("images/"+str(juego.equipos["loc"]["img"])))
-        self.VisitLabel.setPixmap(QtGui.QPixmap("images/"+str(juego.equipos["visit"]["img"])))
+        self.LocalLabel.setPixmap(QtGui.QPixmap("images/" + str(juego.equipos["loc"]["img"])))
+        self.VisitLabel.setPixmap(QtGui.QPixmap("images/" + str(juego.equipos["visit"]["img"])))
         juego.player.stop()
-        juego.turno=1
+        juego.turno = 1
         self.config_fotos()
         self.fans = QtCore.QUrl.fromLocalFile("./sounds/fans.mp3")
         self.playlist = QtMultimedia.QMediaPlaylist()
@@ -539,8 +534,8 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.player.setPlaylist(self.playlist)
         self.player.setVolume(90)
         self.player.play()
-        
-        self.timer=QtCore.QTimer()
+
+        self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.arduino_start)
         self.timer.start(3000)
 
@@ -555,9 +550,8 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.shoot.play()
         self.timer.stop()
 
-
         actuales = self.jugadoresActuales()
-        self.delay = 400+(300/43)*(int(actuales[1].glob) - int(actuales[0].port))
+        self.delay = 400 + (300 / 43) * (int(actuales[1].glob) - int(actuales[0].port))
 
         juego.ejecutando = True
 
@@ -567,41 +561,42 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.led_thread = threading.Thread(target=self.led_loop)
         self.led_thread.start()
 
-
     def arduino_loop(self):
         time.sleep(1)
-        while juego.ejecutando == True:
+        while juego.ejecutando is True:
             cmd = juego.arduino.readline()
             if juego.arduino.inWaiting() and cmd and cmd != "":
                 cmd = cmd.decode().strip().replace('\n', '').replace('\r', '')
-                
+
                 if cmd[0] == "A":
                     if int(cmd[1]) == self.posicion:
                         self.stop()
                         self.Arduino_goal()
+                        juego.turno += 1
+                        self.arduino_start()
                     else:
                         self.stop()
                         self.Arduino_missed()
-
+                        juego.turno += 1
+                        self.arduino_start()
 
     def led_loop(self):
         time.sleep(1)
-        while juego.ejecutando == True:
+        while juego.ejecutando is True:
             delay = self.delay
             for i in range(1, 7):
-                data = "L"+str(i)
+                data = "L" + str(i)
                 data = data.encode()
                 print(data)
                 juego.arduino.write(data)
                 time.sleep(delay / 1000)
             for i in range(1, 5):
-                i = 6-i
-                data = "L"+str(i)
+                i = 6 - i
+                data = "L" + str(i)
                 data = data.encode()
                 print(data)
                 juego.arduino.write(data)
                 time.sleep(delay / 1000)
-
 
     def stop(self):
         juego.ejecutando = False
@@ -609,91 +604,74 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         data = data.encode()
         juego.arduino.write(data)
 
-
-
-
-
     def closeEvent(self, event):
         confirmaSalir(self, event)
 
     def jugadoresActuales(self):
-        if juego.turno%2 == 0:
-            jugador_index = juego.turno//2-1
+        if juego.turno % 2 == 0:
+            jugador_index = juego.turno // 2 - 1
             shooter = juego.selectorUi.playersUi.teamToPlayers.get(juego.visitante)[juego.equipoVisitante[1][jugador_index]]
             portero = juego.selectorUi.playersUi.teamToPlayers.get(juego.local)[juego.equipoLocal[0]]
             return [portero, shooter]
         else:
-            jugador_index = (juego.turno-1)//2
+            jugador_index = (juego.turno - 1) // 2
             shooter = juego.selectorUi.playersUi.teamToPlayers.get(juego.local)[juego.equipoLocal[1][jugador_index]]
             portero = juego.selectorUi.playersUi.teamToPlayers.get(juego.visitante)[juego.equipoVisitante[0]]
             return [portero, shooter]
-    
-    
 
     def config_fotos(self):
         jugadores = self.jugadoresActuales()
-        self.GKPhoto.setPixmap(QtGui.QPixmap("images/players/"+str(jugadores[0].foto)))
-        self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/players/"+str(jugadores[1].foto)))
-
-    def BolaDentro(self):
-        # LLA
-
-        juego.turno += 1
-
-        if juego.turno == 11:
-            return
-
+        self.GKPhoto.setPixmap(QtGui.QPixmap("images/players/" + str(jugadores[0].foto)))
+        self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/players/" + str(jugadores[1].foto)))
 
     def Arduino_goal(self):
         jugadores = self.jugadoresActuales()
         jugadores[1].goles += 1
-        if juego.turno==1:
-            mark=g1
-        elif juego.turno==2:
-            mark=g2
-        elif juego.turno==3:
-            mark=g3
-        elif juego.turno==4:
-            mark=g4
-        elif juego.turno==5:
-            mark=g5
-        elif juego.turno==6:
-            mark=g6
-        elif juego.turno==7:
-            mark=g7
-        elif juego.turno==8:
-            mark=g8
-        elif juego.turno==9:
-            mark=g9
-        elif juego.turno==10:
-            mark=g10
-        self.mark.setEnabled(True)
-        
+        if juego.turno == 1:
+            mark = self.g1
+        elif juego.turno == 2:
+            mark = self.g2
+        elif juego.turno == 3:
+            mark = self.g3
+        elif juego.turno == 4:
+            mark = self.g4
+        elif juego.turno == 5:
+            mark = self.g5
+        elif juego.turno == 6:
+            mark = self.g6
+        elif juego.turno == 7:
+            mark = self.g7
+        elif juegoself.turno == 8:
+            mark = self.g8
+        elif juego.turno == 9:
+            mark = self.g9
+        elif juego.turno == 10:
+            mark = self.g10
+        mark.setEnabled(True)
 
     def Arduino_missed(self):
-        if juego.turno==1:
-            mark=g1
-        elif juego.turno==2:
-            mark=g2
-        elif juego.turno==3:
-            mark=g3
-        elif juego.turno==4:
-            mark=g4
-        elif juego.turno==5:
-            mark=g5
-        elif juego.turno==6:
-            mark=g6
-        elif juego.turno==7:
-            mark=g7
-        elif juego.turno==8:
-            mark=g8
-        elif juego.turno==9:
-            mark=g9
-        elif juego.turno==10:
-            mark=g10
-        self.mark.setPixmap(QtGui.QPixmap("images/red.png"))
-        self.mark.setEnabled(True)
-        
+        if juego.turno == 1:
+            mark = self.g1
+        elif juego.turno == 2:
+            mark = self.g2
+        elif juego.turno == 3:
+            mark = self.g3
+        elif juego.turno == 4:
+            mark = self.g4
+        elif juego.turno == 5:
+            mark = self.g5
+        elif juego.turno == 6:
+            mark = self.g6
+        elif juego.turno == 7:
+            mark = self.g7
+        elif juego.turno == 8:
+            mark = self.g8
+        elif juego.turno == 9:
+            mark = self.g9
+        elif juego.turno == 10:
+            mark = self.g10
+        mark.setPixmap(QtGui.QPixmap("images/red.png"))
+        mark.setEnabled(True)
 
 
 # Inicializa el programa
@@ -709,24 +687,21 @@ if __name__ == "__main__":
     for i in range(0, randrange(0, 5)):
         juego.nextsong()
 
-
-        # Inicializa la conexión a Arduno
+    # Inicializa la conexión a Arduno
     juego.arduino = None
     try:
         ports = list(serial.tools.list_ports.comports())
         for p in ports:
             if "Arduino" in p[1]:
                 juego.arduino = serial.Serial(p[0], 9600)
-                juego.arduino.setDTR( level=False ) # set the reset signal
-                time.sleep(2)             # wait two seconds, an Arduino needs some time to really reset
-                juego.arduino.setDTR( level=True )
+                juego.arduino.setDTR(level=False)
+                time.sleep(2)
+                juego.arduino.setDTR(level=True)
                 break
     except:
         pass
-
 
     juego.show()
     splash.finish(juego)
 
     sys.exit(app.exec_())
-
