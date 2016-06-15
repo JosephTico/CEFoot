@@ -42,25 +42,25 @@ with players_file as data_file:
     data = json.load(data_file)
 
 for p in data["madrid"]:
-    obj = player(p["name"], p["glob"], p["port"], p["team"], p["pais"], p["tipo"], p["edad"], p["peso"], p["altura"], p["foto"])
+    obj = player(p["name"], p["port"], p["glob"], p["team"], p["pais"], p["tipo"], p["edad"], p["peso"], p["altura"], p["foto"])
     lista_madrid.append(obj)
 
 for p in data["juve"]:
-    obj = player(p["name"], p["glob"], p["port"], p["team"], p["pais"], p["tipo"], p["edad"], p["peso"], p["altura"], p["foto"])
+    obj = player(p["name"], p["port"], p["glob"], p["team"], p["pais"], p["tipo"], p["edad"], p["peso"], p["altura"], p["foto"])
     lista_juve.append(obj)
 
 for p in data["arsenal"]:
-    obj = player(p["name"], p["glob"], p["port"], p["team"], p["pais"], p["tipo"], p["edad"], p["peso"], p["altura"], p["foto"])
+    obj = player(p["name"], p["port"], p["glob"], p["team"], p["pais"], p["tipo"], p["edad"], p["peso"], p["altura"], p["foto"])
     lista_arsenal.append(obj)
 
 for p in data["psg"]:
-    obj = player(p["name"], p["glob"], p["port"], p["team"], p["pais"], p["tipo"], p["edad"], p["peso"], p["altura"], p["foto"])
+    obj = player(p["name"], p["port"], p["glob"], p["team"], p["pais"], p["tipo"], p["edad"], p["peso"], p["altura"], p["foto"])
     lista_psg.append(obj)
 
 for p in data["barsa"]:
-    obj = player(p["name"], p["glob"], p["port"], p["team"], p["pais"], p["tipo"], p["edad"], p["peso"], p["altura"], p["foto"])
+    obj = player(p["name"], p["port"], p["glob"], p["team"], p["pais"], p["tipo"], p["edad"], p["peso"], p["altura"], p["foto"])
     lista_barsa.append(obj)
 
 for p in data["bayern"]:
-    obj = player(p["name"], p["glob"], p["port"], p["team"], p["pais"], p["tipo"], p["edad"], p["peso"], p["altura"], p["foto"])
+    obj = player(p["name"], p["port"], p["glob"], p["team"], p["pais"], p["tipo"], p["edad"], p["peso"], p["altura"], p["foto"])
     lista_bayern.append(obj)

@@ -13,12 +13,16 @@ import time
 import serial
 import serial.tools.list_ports
 from random import randrange
+import threading
 
 
 
 
 def confirmaSalir(self, event, porSalir=False):
     if porSalir:
+        if juego.arduino is not None:
+            juego.arduino.close()
+        juego.ejecutando = False
         event.accept
         return
 
@@ -28,6 +32,9 @@ def confirmaSalir(self, event, porSalir=False):
         QtWidgets.QMessageBox.No)
 
     if reply == QtWidgets.QMessageBox.Yes:
+        if juego.arduino is not None:
+            juego.arduino.close()
+        juego.ejecutando = False
         event.accept()
     else:
         event.ignore()
@@ -49,6 +56,8 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
         self.clickPlayer = QtMultimedia.QMediaPlayer()
         self.clickPlayer.setMedia(QtMultimedia.QMediaContent(audio))
         self.clickPlayer.setVolume(100)
+
+        self.ejecutando = False
 
         self.equipos = {"loc": {"name": None, "img": None}, "visit": {"name": None, "img": None}}
 
@@ -545,8 +554,67 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.shoot.setVolume(100)
         self.shoot.play()
         self.timer.stop()
-        juego.arduino.wri
 
+
+        actuales = self.jugadoresActuales()
+        self.delay = 400+(300/43)*(int(actuales[1].glob) - int(actuales[0].port))
+
+        juego.ejecutando = True
+
+        self.arduino_thread = threading.Thread(target=self.arduino_loop)
+        self.arduino_thread.start()
+
+        self.led_thread = threading.Thread(target=self.led_loop)
+        self.led_thread.start()
+
+
+    def arduino_loop(self):
+        time.sleep(1)
+        while juego.ejecutando == True:
+            cmd = juego.arduino.readline()
+            if juego.arduino.inWaiting() and cmd and cmd != "":
+                cmd = cmd.decode().strip().replace('\n', '').replace('\r', '')
+                
+                if cmd[0] == "A":
+                    if int(cmd[1]) == self.posicion:
+                        self.stop()
+                        self.Arduino_goal()
+                    else:
+                        self.stop()
+                        self.Arduino_missed()
+
+
+    def led_loop(self):
+        time.sleep(1)
+        while juego.ejecutando == True:
+            delay = self.delay
+            for i in range(1, 7):
+                data = "L"+str(i)
+                data = data.encode()
+                print(data)
+                juego.arduino.write(data)
+                time.sleep(delay / 1000)
+            for i in range(1, 5):
+                i = 6-i
+                data = "L"+str(i)
+                data = data.encode()
+                print(data)
+                juego.arduino.write(data)
+                time.sleep(delay / 1000)
+
+
+    def stop(self):
+        juego.ejecutando = False
+        data = "L0"
+        data = data.encode()
+        juego.arduino.write(data)
+
+
+
+
+
+    def closeEvent(self, event):
+        confirmaSalir(self, event)
 
     def jugadoresActuales(self):
         if juego.turno%2 == 0:
@@ -649,6 +717,9 @@ if __name__ == "__main__":
         for p in ports:
             if "Arduino" in p[1]:
                 juego.arduino = serial.Serial(p[0], 9600)
+                juego.arduino.setDTR( level=False ) # set the reset signal
+                time.sleep(2)             # wait two seconds, an Arduino needs some time to really reset
+                juego.arduino.setDTR( level=True )
                 break
     except:
         pass
