@@ -9,7 +9,7 @@
 		"edad": "28",
 		"peso": "85",
 		"altura": "185",
-		"foto": "m1.jpg"
+		"foto": "images/players/m1.jpg"
 	}, {
 		"name": "Kiko Casilla Cortés",
 		"glob": "55",
@@ -20,7 +20,7 @@
 		"edad": "29",
 		"peso": "84",
 		"altura": "191",
-		"foto": "m2.jpg"
+		"foto": "images/players/m2.jpg"
 	}, {
 		"name": "Cristiano Ronaldo",
 		"glob": "98",
@@ -31,7 +31,7 @@
 		"edad": "31",
 		"peso": "80",
 		"altura": "185",
-		"foto": "m3.jpg"
+		"foto": "images/players/m3.jpg"
 	}, {
 		"name": "Karim Benzema",
 		"glob": "95",
@@ -42,7 +42,7 @@
 		"edad": "28",
 		"peso": "79",
 		"altura": "187",
-		"foto": "m4.jpg"
+		"foto": "images/players/m4.jpg"
 	}, {
 		"name": "Sergio Ramos García",
 		"glob": "93",
@@ -53,7 +53,7 @@
 		"edad": "30",
 		"peso": "75",
 		"altura": "183",
-		"foto": "m5.jpg"
+		"foto": "images/players/m5.jpg"
 	}, {
 		"name": "Gareth Bale",
 		"glob": "92",
@@ -64,7 +64,7 @@
 		"edad": "26",
 		"peso": "74",
 		"altura": "183",
-		"foto": "m6.jpg"
+		"foto": "images/players/m6.jpg"
 	}, {
 		"name": "Marcelo Vieira da Silva",
 		"glob": "89",
@@ -75,7 +75,7 @@
 		"edad": "28",
 		"peso": "75",
 		"altura": "174",
-		"foto": "m7.jpg"
+		"foto": "images/players/m7.jpg"
 	}],
 	"juve": [{
 		"name": "Gianluigi Buffon",
@@ -87,7 +87,7 @@
 		"edad": "38",
 		"peso": "83",
 		"altura": "191",
-		"foto": "j1.jpg"
+		"foto": "images/players/j1.jpg"
 	}, {
 		"name": "Rubinho Fernando",
 		"glob": "55",
@@ -98,7 +98,7 @@
 		"edad": "33",
 		"peso": "82",
 		"altura": "186",
-		"foto": "j2.jpg"
+		"foto": "images/players/j2.jpg"
 	}, {
 		"name": "Alex Sandro Lobo Silva",
 		"glob": "88",
@@ -109,7 +109,7 @@
 		"edad": "25",
 		"peso": "78",
 		"altura": "180",
-		"foto": "j3.jpg"
+		"foto": "images/players/j3.jpg"
 	}, {
 		"name": "Paul Pogba",
 		"glob": "91",
@@ -120,7 +120,7 @@
 		"edad": "23",
 		"peso": "80",
 		"altura": "188",
-		"foto": "j4.jpg"
+		"foto": "images/players/j4.jpg"
 	}, {
 		"name": "Paulo Dybala",
 		"glob": "91",
@@ -131,7 +131,7 @@
 		"edad": "22",
 		"peso": "69",
 		"altura": "177",
-		"foto": "j5.jpg"
+		"foto": "images/players/j5.jpg"
 	}, {
 		"name": "Mario Mandzukic",
 		"glob": "84",
@@ -142,7 +142,7 @@
 		"edad": "30",
 		"peso": "84",
 		"altura": "187",
-		"foto": "j6.jpg"
+		"foto": "images/players/j6.jpg"
 	}, {
 		"name": "Juan Cuadrado",
 		"glob": "83",
@@ -153,7 +153,7 @@
 		"edad": "28",
 		"peso": "66",
 		"altura": "176",
-		"foto": "j7.jpg"
+		"foto": "images/players/j7.jpg"
 	}],
 	"arsenal": [{
 		"name": "Petr Cech",
@@ -165,7 +165,7 @@
 		"edad": "34",
 		"peso": "90",
 		"altura": "196",
-		"foto": "a1.jpg"
+		"foto": "images/players/a1.jpg"
 	}, {
 		"name": "David Ospina",
 		"glob": "55",
@@ -176,7 +176,7 @@
 		"edad": "27",
 		"peso": "79",
 		"altura": "183",
-		"foto": "a2.jpg"
+		"foto": "images/players/a2.jpg"
 	}, {
 		"name": "Mesut Ozil",
 		"glob": "94",
@@ -187,7 +187,7 @@
 		"edad": "27",
 		"peso": "76",
 		"altura": "183",
-		"foto": "a3.jpg"
+		"foto": "images/players/a3.jpg"
 	}, {
 		"name": "Alexis Sánchez",
 		"glob": "88",
@@ -198,7 +198,7 @@
 		"edad": "27",
 		"peso": "62",
 		"altura": "169",
-		"foto": "a4.jpg"
+		"foto": "images/players/a4.jpg"
 	}, {
 		"name": "Olivier Giroud",
 		"glob": "83",
@@ -209,7 +209,7 @@
 		"edad": "29",
 		"peso": "88",
 		"altura": "192",
-		"foto": "a5.jpg"
+		"foto": "images/players/a5.jpg"
 	}, {
 		"name": "Aaron Ramsey",
 		"glob": "83",
@@ -220,7 +220,7 @@
 		"edad": "25",
 		"peso": "70",
 		"altura": "177",
-		"foto": "a6.jpg"
+		"foto": "images/players/a6.jpg"
 	}, {
 		"name": "Joel Campbell",
 		"glob": "83",
@@ -231,7 +231,7 @@
 		"edad": "24",
 		"peso": "72",
 		"altura": "178",
-		"foto": "a7.jpg"
+		"foto": "images/players/a7.jpg"
 	}],
 	"psg": [{
 		"name": "Kevin Trapp",
@@ -243,7 +243,7 @@
 		"edad": "22",
 		"peso": "88",
 		"altura": "189",
-		"foto": "p1.jpg"
+		"foto": "images/players/p1.jpg"
 	}, {
 		"name": "Salvatore Sirigu",
 		"glob": "55",
@@ -254,7 +254,7 @@
 		"edad": "29",
 		"peso": "80",
 		"altura": "192",
-		"foto": "p2.jpg"
+		"foto": "images/players/p2.jpg"
 	}, {
 		"name": "Zlatan Ibrahimovic",
 		"glob": "98",
@@ -265,7 +265,7 @@
 		"edad": "34",
 		"peso": "95",
 		"altura": "195",
-		"foto": "p3.jpg"
+		"foto": "images/players/p3.jpg"
 	}, {
 		"name": "Angel Di Maria",
 		"glob": "89",
@@ -276,7 +276,7 @@
 		"edad": "28",
 		"peso": "75",
 		"altura": "180",
-		"foto": "p4.jpg"
+		"foto": "images/players/p4.jpg"
 	}, {
 		"name": "Edinson Cavani",
 		"glob": "86",
@@ -287,7 +287,7 @@
 		"edad": "29",
 		"peso": "71",
 		"altura": "184",
-		"foto": "p5.jpg"
+		"foto": "images/players/p5.jpg"
 	}, {
 		"name": "Maxwell Scherer",
 		"glob": "87",
@@ -298,7 +298,7 @@
 		"edad": "34",
 		"peso": "73",
 		"altura": "176",
-		"foto": "p6.jpg"
+		"foto": "images/players/p6.jpg"
 	}, {
 		"name": "David Luiz Moreira",
 		"glob": "89",
@@ -309,7 +309,7 @@
 		"edad": "29",
 		"peso": "84",
 		"altura": "189",
-		"foto": "p7.jpg"
+		"foto": "images/players/p7.jpg"
 	}],
 	"barsa": [{
 		"name": "Claudio Bravo",
@@ -321,7 +321,7 @@
 		"edad": "33",
 		"peso": "80",
 		"altura": "184",
-		"foto": "b1.jpg"
+		"foto": "images/players/b1.jpg"
 	}, {
 		"name": "Marc-André ter Stegen",
 		"glob": "55",
@@ -332,7 +332,7 @@
 		"edad": "24",
 		"peso": "85",
 		"altura": "187",
-		"foto": "b2.jpg"
+		"foto": "images/players/b2.jpg"
 	}, {
 		"name": "Lionel Messi",
 		"glob": "98",
@@ -343,7 +343,7 @@
 		"edad": "28",
 		"peso": "72",
 		"altura": "170",
-		"foto": "b3.jpg"
+		"foto": "images/players/b3.jpg"
 	}, {
 		"name": "Neymar da Silva",
 		"glob": "97",
@@ -354,7 +354,7 @@
 		"edad": "24",
 		"peso": "68",
 		"altura": "174",
-		"foto": "b4.jpg"
+		"foto": "images/players/b4.jpg"
 	}, {
 		"name": "Luis Suárez",
 		"glob": "97",
@@ -365,7 +365,7 @@
 		"edad": "29",
 		"peso": "85",
 		"altura": "182",
-		"foto": "b5.jpg"
+		"foto": "images/players/b5.jpg"
 	}, {
 		"name": "Andrés Iniesta",
 		"glob": "95",
@@ -376,7 +376,7 @@
 		"edad": "32",
 		"peso": "68",
 		"altura": "171",
-		"foto": "b6.jpg"
+		"foto": "images/players/b6.jpg"
 	}, {
 		"name": "Daniel Alves da Silva",
 		"glob": "92",
@@ -387,7 +387,7 @@
 		"edad": "33",
 		"peso": "72",
 		"altura": "172",
-		"foto": "b7.jpg"
+		"foto": "images/players/b7.jpg"
 	}],
 	"bayern": [{
 		"name": "Manuel Neuer",
@@ -399,7 +399,7 @@
 		"edad": "30",
 		"peso": "92",
 		"altura": "193",
-		"foto": "g1.jpg"
+		"foto": "images/players/g1.jpg"
 	}, {
 		"name": "Sven Ulreich",
 		"glob": "55",
@@ -410,7 +410,7 @@
 		"edad": "27",
 		"peso": "84",
 		"altura": "192",
-		"foto": "g2.jpg"
+		"foto": "images/players/g2.jpg"
 	}, {
 		"name": "Robert Lewandowski",
 		"glob": "98",
@@ -421,7 +421,7 @@
 		"edad": "27",
 		"peso": "79",
 		"altura": "185",
-		"foto": "g3.jpg"
+		"foto": "images/players/g3.jpg"
 	}, {
 		"name": "Thomas Müller",
 		"glob": "94",
@@ -432,7 +432,7 @@
 		"edad": "26",
 		"peso": "75",
 		"altura": "186",
-		"foto": "g4.jpg"
+		"foto": "images/players/g4.jpg"
 	}, {
 		"name": "Arjen Robben",
 		"glob": "91",
@@ -443,7 +443,7 @@
 		"edad": "32",
 		"peso": "80",
 		"altura": "180",
-		"foto": "g5.jpg"
+		"foto": "images/players/g5.jpg"
 	}, {
 		"name": "Philipp Lahm",
 		"glob": "90",
@@ -454,7 +454,7 @@
 		"edad": "32",
 		"peso": "66",
 		"altura": "170",
-		"foto": "g6.jpg"
+		"foto": "images/players/g6.jpg"
 	}, {
 		"name": "Mario Götze",
 		"glob": "91",
@@ -465,6 +465,6 @@
 		"edad": "24",
 		"peso": "72",
 		"altura": "176",
-		"foto": "g7.jpg"
+		"foto": "images/players/g7.jpg"
 	}]
 }

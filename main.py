@@ -69,6 +69,8 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
 
         self.equipos = {"loc": {"name": None, "img": None}, "visit": {"name": None, "img": None}}
 
+        self.dificultad = "L"
+
 
     def jugar(self):
         if not juego.arduino:
@@ -332,7 +334,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             self.gk.setIcon(icon)
         else:
             icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[0]].foto))
+            icon.addPixmap(QtGui.QPixmap(self.plist[jugadores[0]].foto))
             self.gk.setIcon(icon)
 
         if len(jugadores[1]) == 0:
@@ -341,7 +343,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             self.s1.setIcon(icon)
         else:
             icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][0]].foto))
+            icon.addPixmap(QtGui.QPixmap(self.plist[jugadores[1][0]].foto))
             self.s1.setIcon(icon)
 
         if len(jugadores[1]) < 2:
@@ -350,7 +352,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             self.s2.setIcon(icon)
         else:
             icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][1]].foto))
+            icon.addPixmap(QtGui.QPixmap(self.plist[jugadores[1][1]].foto))
             self.s2.setIcon(icon)
 
         if len(jugadores[1]) < 3:
@@ -359,7 +361,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             self.s3.setIcon(icon)
         else:
             icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][2]].foto))
+            icon.addPixmap(QtGui.QPixmap(self.plist[jugadores[1][2]].foto))
             self.s3.setIcon(icon)
 
         if len(jugadores[1]) < 4:
@@ -368,7 +370,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             self.s4.setIcon(icon)
         else:
             icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][3]].foto))
+            icon.addPixmap(QtGui.QPixmap(self.plist[jugadores[1][3]].foto))
             self.s4.setIcon(icon)
 
         if len(jugadores[1]) < 5:
@@ -377,7 +379,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             self.s5.setIcon(icon)
         else:
             icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap("images/players/" + self.plist[jugadores[1][4]].foto))
+            icon.addPixmap(QtGui.QPixmap(self.plist[jugadores[1][4]].foto))
             self.s5.setIcon(icon)
 
     def siguiente(self):
@@ -487,7 +489,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         self.dataList.clear()
         player = self.plist[self.ListaJugadores.currentRow()]
         self.playerphoto.clear()
-        self.playerphoto.setPixmap(QtGui.QPixmap("images/players/" + str(player.foto)))
+        self.playerphoto.setPixmap(QtGui.QPixmap(str(player.foto)))
         self.dataList.addItem(QtWidgets.QListWidgetItem("Shooter Global: " + str(player.glob)))
         self.dataList.addItem(QtWidgets.QListWidgetItem("Goalkeeper Global: " + str(player.port)))
         self.dataList.addItem(QtWidgets.QListWidgetItem("Type of Player: " + str(player.tipo)))
@@ -505,12 +507,17 @@ class VentanaCreator (QtWidgets.QMainWindow, Ui_VentanaCreator):
         self.setupUi(self)
         self.nombreEquipo.setText(juego.equipos[juego.modo]["name"])
         self.ButtonCreate.clicked.connect(self.CreatePlayer)
+        self.ButtonUpload.clicked.connect(self.uploadPhoto)
+        self.CancelButton.clicked.connect(self.hide)
+
+    def uploadPhoto(self):
+        self.file =  QtWidgets.QFileDialog.getOpenFileName(self, 'Open file', 'c:\\', "Image files (*.jpg *.gif *png)")
 
     def CreatePlayer(self):
         if self.LineName.text() and self.LineCountry.text():
             x = player(self.LineName.text(), 55, self.LineShooterGlobal.value(),
                 juego.equipos[juego.modo]["name"], self.LineCountry.text(),
-                "Shooter", self.LineAge.value(), self.LinePeso.value(), self.LinePeso.value(), "xxxxx.jpg")
+                "Shooter", self.LineAge.value(), self.LinePeso.value(), self.LinePeso.value(), self.file[0])
             if juego.modo == "loc":
                 self.plist = juego.selectorUi.playersUi.teamToPlayers.get(juego.local)
             else:
@@ -597,8 +604,8 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
 
     def config_fotos(self):
         jugadores = self.jugadoresActuales()
-        self.GKPhoto.setPixmap(QtGui.QPixmap("images/players/" + str(jugadores[0].foto)))
-        self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/players/" + str(jugadores[1].foto)))
+        self.GKPhoto.setPixmap(QtGui.QPixmap(str(jugadores[0].foto)))
+        self.ShooterPhoto.setPixmap(QtGui.QPixmap(str(jugadores[1].foto)))
 
     def Arduino_goal(self):
         jugadores = self.jugadoresActuales()
@@ -677,8 +684,6 @@ class arduino_loop(QtCore.QThread):
             cmd = juego.arduino.readline()
             if juego.arduino.inWaiting() and cmd and cmd != "":
                 cmd = cmd.decode().strip().replace('\n', '').replace('\r', '')
-                print(cmd)
-
                 if cmd[0] == "A":
                     if int(cmd[1]) == juego.partida.posicion:
                         juego.partida.stop()
@@ -705,7 +710,7 @@ class led_loop(QtCore.QThread):
             delay = juego.partida.delay
             for i in range(1, 7):
                 juego.partida.posicion = i
-                data = "X" + str(i) + "\n"
+                data = juego.dificultad + str(i) + "\n"
                 data = data.encode()
                 print(data)
                 juego.arduino.write(data)
@@ -714,7 +719,7 @@ class led_loop(QtCore.QThread):
             for i in range(1, 5):
                 juego.partida.posicion = i
                 i = 6 - i
-                data = "X" + str(i) + "\n"
+                data = juego.dificultad + str(i) + "\n"
                 data = data.encode()
                 print(data)
                 juego.arduino.write(data)
