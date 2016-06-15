@@ -260,7 +260,7 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
         juego.equipoVisitante = [-1, []]
 
         self.ListaJugadores.selectionModel().selectionChanged.connect(self.muestraInfo)
-        self.ListaJugadores.doubleClicked.connect(self.asignaShooter)
+        self.ListaJugadores.doubleClicked.connect(self.asignaDoble)
         self.ListaJugadores.clicked.connect(juego.clickFx)
 
         self.gkSelect.clicked.connect(self.asignaGk)
@@ -453,6 +453,21 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
 
         self.muestraPlanilla()
 
+
+    def asignaDoble(self):
+        juego.clickFx()
+        if self.modo == "loc":
+            var = juego.equipoLocal
+        else:
+            var = juego.equipoVisitante
+
+        if var[0] == -1:
+            self.asignaGk()
+        else:
+            self.asignaShooter()
+
+        self.muestraPlanilla()
+
     def muestraInfo(self):
         self.playerName.setText(
             self.plist[self.ListaJugadores.currentRow()].name)
@@ -529,46 +544,33 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.shoot.setVolume(100)
         self.shoot.play()
         self.timer.stop()
+
+
+    def jugadoresActuales(self):
+        if juego.turno%2 == 0:
+            jugador_index = juego.turno//2-1
+            shooter = juego.selectorUi.playersUi.teamToPlayers.get(juego.visitante)[juego.equipoVisitante[1][jugador_index]]
+            portero = juego.selectorUi.playersUi.teamToPlayers.get(juego.local)[juego.equipoLocal[0]]
+            return [portero, shooter]
+        else:
+            jugador_index = (juego.turno-1)//2
+            shooter = juego.selectorUi.playersUi.teamToPlayers.get(juego.local)[juego.equipoLocal[1][jugador_index]]
+            portero = juego.selectorUi.playersUi.teamToPlayers.get(juego.visitante)[juego.equipoVisitante[0]]
+            return [portero, shooter]
     
     
     def config_fotos(self):
-        if juego.turno%2 == 0:
-            jugador_index = i//2-1
-            shooter = juego.equipoVisitante[1][jugador_index]
-            portero = juego.equipoLocal[0]
-            self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/"+str(shooter.foto)))
-            self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/"+str(portero.foto)))
-        else:
-            jugador_index = (i-1)//2
-            shooter=juego.equipoLocal[1][jugador_index]
-            portero = juego.equipoVisitante[0]
-            self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/"+str(shooter.foto)))
-            self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/"+str(portero.foto)))
-
+        jugadores = self.jugadoresActuales()
+        self.GKPhoto.setPixmap(QtGui.QPixmap("images/players/"+str(jugadores[0].foto)))
+        self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/players/"+str(jugadores[1].foto)))
 
     def Arduino_goal(self):
-        if juego.turno%2 == 0:
-            jugador_index = i//2-1
-            shooter = juego.equipoVisitante[1][jugador_index]
-            portero = juego.equipoLocal[0]
-            juego.turno+=1
-            shooter.goles+=1
+       jugadores = self.jugadoresActuales()
+       juego.turno += 1
+       jugadores[1].goles += 1
 
-        else:
-            jugador_index = (i-1)//2
-            shooter=juego.equipoLocal[1][jugador_index]
-            portero = juego.equipoVisitante[0]
-            juego.turno+=1
-            shooter.goles+=1
     def Arduino_missed(self):
-        if juego.turno%2 == 0:
-            jugador_index = i//2-1
-            shooter = juego.equipoVisitante[1][jugador_index]
-            portero = juego.equipoLocal[0]
-        else:
-            jugador_index = (i-1)//2
-            shooter=juego.equipoLocal[1][jugador_index]
-            portero = juego.equipoVisitante[0]
+        return
 
 
 # Inicializa el programa
