@@ -558,7 +558,16 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.timer.timeout.connect(self.arduino_start)
         self.timer.start(2000)
 
+        self.puntaje = [0,0]
+
     def arduino_start(self):
+
+        if self.turno >= 11:
+            if self.penales_extra() == True:
+                return
+
+        self.config_fotos()
+
         self.referee = QtCore.QUrl.fromLocalFile("./sounds/silbato.mp3")
         self.silbato = QtMultimedia.QMediaPlaylist()
         self.silbato.addMedia(QtMultimedia.QMediaContent(self.referee))
@@ -579,6 +588,10 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
 
         self.lt = led_loop()
         self.lt.start()
+
+    def penales_extra():
+        if self.turno == 1:
+            return True
 
 
     def stop(self):
@@ -608,6 +621,11 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.ShooterPhoto.setPixmap(QtGui.QPixmap(str(jugadores[1].foto)))
 
     def Arduino_goal(self):
+        if juego.turno % 2 == 0:
+            self.puntaje[1] += 1
+        else:
+            self.puntaje[0] += 1
+
         jugadores = self.jugadoresActuales()
         jugadores[1].goles += 1
         if juego.turno == 1:
@@ -636,7 +654,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.vg.show()
 
         self.timer = QtCore.QTimer()
-        self.timer.timeout.connect(self.vg.hide)
+        self.timer.timeout.connect(self.vg.esconder)
         self.timer.start(5000)
 
 
@@ -664,12 +682,33 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         mark.setPixmap(QtGui.QPixmap("images/red.png"))
         mark.setEnabled(True)
 
+        self.vg = Missed()
+        self.vg.show()
 
-class Goal(QtWidgets.QMainWindow, Ui_VentanaJuego):
+        self.timer = QtCore.QTimer()
+        self.timer.timeout.connect(self.vg.esconder)
+        self.timer.start(5000)
+
+
+class Goal(QtWidgets.QMainWindow, Ui_Goal):
 
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
+    def esconder(self):
+        self.hide()
+        juego.partida.arduino_start()
+
+class Missed(QtWidgets.QMainWindow, Ui_Missed):
+
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+    def esconder(self):
+        self.hide()
+        juego.partida.arduino_start()
 
 
 
@@ -689,13 +728,11 @@ class arduino_loop(QtCore.QThread):
                         juego.partida.stop()
                         juego.partida.Arduino_goal()
                         juego.turno += 1
-                        juego.partida.arduino_start()
                         self.terminate()
                     else:
                         juego.partida.stop()
                         juego.partida.Arduino_missed()
                         juego.turno += 1
-                        juego.partida.arduino_start()
                         self.terminate()
 
 
