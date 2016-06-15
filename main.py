@@ -6,6 +6,8 @@ from players_data import *
 from players import *
 from creator import *
 from play import *
+from goal import *
+from missed import *
 import sys
 import time
 import serial
@@ -532,7 +534,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         
         self.timer=QtCore.QTimer()
         self.timer.timeout.connect(self.arduino_start)
-        self.timer.start(5000)
+        self.timer.start(3000)
 
     def arduino_start(self):
         self.referee = QtCore.QUrl.fromLocalFile("./sounds/silbato.mp3")
@@ -559,18 +561,71 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
             return [portero, shooter]
     
     
+
     def config_fotos(self):
         jugadores = self.jugadoresActuales()
         self.GKPhoto.setPixmap(QtGui.QPixmap("images/players/"+str(jugadores[0].foto)))
         self.ShooterPhoto.setPixmap(QtGui.QPixmap("images/players/"+str(jugadores[1].foto)))
 
+    def BolaDentro(self):
+        # LLAMAR
+
+        juego.turno += 1
+
+        if juego.turno == 11:
+            # Haga ka comprobaci'on
+
+
     def Arduino_goal(self):
-       jugadores = self.jugadoresActuales()
-       juego.turno += 1
-       jugadores[1].goles += 1
+        jugadores = self.jugadoresActuales()
+        jugadores[1].goles += 1
+        if juego.turno==1:
+            mark=g1
+        elif juego.turno==2:
+            mark=g2
+        elif juego.turno==3:
+            mark=g3
+        elif juego.turno==4:
+            mark=g4
+        elif juego.turno==5:
+            mark=g5
+        elif juego.turno==6:
+            mark=g6
+        elif juego.turno==7:
+            mark=g7
+        elif juego.turno==8:
+            mark=g8
+        elif juego.turno==9:
+            mark=g9
+        elif juego.turno==10:
+            mark=g10
+        self.mark.setEnabled(True)
+        
 
     def Arduino_missed(self):
-        return
+        if juego.turno==1:
+            mark=g1
+        elif juego.turno==2:
+            mark=g2
+        elif juego.turno==3:
+            mark=g3
+        elif juego.turno==4:
+            mark=g4
+        elif juego.turno==5:
+            mark=g5
+        elif juego.turno==6:
+            mark=g6
+        elif juego.turno==7:
+            mark=g7
+        elif juego.turno==8:
+            mark=g8
+        elif juego.turno==9:
+            mark=g9
+        elif juego.turno==10:
+            mark=g10
+        self.mark.setPixmap(QtGui.QPixmap("images/red.png"))
+        self.mark.setEnabled(True)
+        
 
 
 # Inicializa el programa
