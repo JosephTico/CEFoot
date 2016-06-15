@@ -585,12 +585,15 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         while juego.ejecutando is True:
             delay = self.delay
             for i in range(1, 7):
+                self.posicion = i
                 data = "L" + str(i)
                 data = data.encode()
                 print(data)
                 juego.arduino.write(data)
                 time.sleep(delay / 1000)
+
             for i in range(1, 5):
+                self.posicion = i
                 i = 6 - i
                 data = "L" + str(i)
                 data = data.encode()
@@ -649,6 +652,14 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
             mark = self.g10
         mark.setEnabled(True)
 
+        self.vg = Goal()
+        self.vg.show()
+
+        self.timer = QtCore.QTimer()
+        self.timer.timeout.connect(self.vg.hide)
+        self.timer.start(5000)
+
+
     def Arduino_missed(self):
         if juego.turno == 1:
             mark = self.g1
@@ -673,6 +684,12 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         mark.setPixmap(QtGui.QPixmap("images/red.png"))
         mark.setEnabled(True)
 
+
+class Goal(QtWidgets.QMainWindow, Ui_VentanaJuego):
+
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
 
 # Inicializa el programa
 if __name__ == "__main__":
