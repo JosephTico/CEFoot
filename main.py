@@ -261,10 +261,10 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.timer.start(5000)
 
     def arduino_start(self):
-        self.fans = QtCore.QUrl.fromLocalFile("./sounds/silbato.mp3")
+        self.referee = QtCore.QUrl.fromLocalFile("./sounds/silbato.mp3")
         self.silbato = QtMultimedia.QMediaPlaylist()
-        self.silbato.addMedia(QtMultimedia.QMediaContent(self.fans))
-        self.silbato.setCurrentIndex(1)
+        self.silbato.addMedia(QtMultimedia.QMediaContent(self.referee))
+        self.silbato.setCurrentIndex(2)
         self.player = QtMultimedia.QMediaPlayer()
         self.player.setPlaylist(self.silbato)
         self.player.setVolume(90)
