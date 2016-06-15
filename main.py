@@ -138,6 +138,7 @@ class VentanaAbout(QtWidgets.QMainWindow, Ui_VentanaAbout):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.back.clicked.connect(self.hide)
 
 
 class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
