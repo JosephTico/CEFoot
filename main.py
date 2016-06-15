@@ -19,12 +19,12 @@ import threading
 def confirmaSalir(self, event, porSalir=False):
     if porSalir:
         if juego.arduino is not None:
-            juego.arduino.setDTR(False)
-            time.sleep(2)
-            juego.arduino.setDTR(True)
             juego.arduino.close()
-        juego.partida.at.terminate()
-        juego.partida.lt.terminate()
+        try:
+            juego.partida.at.terminate()
+            juego.partida.lt.terminate()
+        except:
+            pass
         juego.ejecutando = False
         event.accept
         return
@@ -35,13 +35,13 @@ def confirmaSalir(self, event, porSalir=False):
         QtWidgets.QMessageBox.No)
 
     if reply == QtWidgets.QMessageBox.Yes:
-        juego.partida.at.terminate()
-        juego.partida.lt.terminate()
+        try:
+            juego.partida.at.terminate()
+            juego.partida.lt.terminate()
+        except:
+            pass
         juego.ejecutando = False
         if juego.arduino is not None:
-            juego.arduino.setDTR(False)
-            time.sleep(2)
-            juego.arduino.setDTR(True)
             juego.arduino.close()
         event.accept()
     else:
@@ -166,6 +166,7 @@ class VentanaSelector(QtWidgets.QMainWindow, Ui_VentanaSelector):
         self.L4_2.clicked.connect(lambda: self.seleccion("L4_2", 1))
         self.L5_2.clicked.connect(lambda: self.seleccion("L5_2", 1))
         self.L6_2.clicked.connect(lambda: self.seleccion("L6_2", 1))
+
 
     def closeEvent(self, event):
         confirmaSalir(self, event, self.porSalir)
@@ -548,7 +549,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
 
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.arduino_start)
-        self.timer.start(3000)
+        self.timer.start(2000)
 
     def arduino_start(self):
         self.referee = QtCore.QUrl.fromLocalFile("./sounds/silbato.mp3")
@@ -739,9 +740,9 @@ if __name__ == "__main__":
         for p in ports:
             if "Arduino" in p[1]:
                 juego.arduino = serial.Serial(p[0], 9600)
-                juego.arduino.setDTR(False)
-                time.sleep(2)
-                juego.arduino.setDTR(True)
+                #juego.arduino.setDTR(False)
+                #time.sleep(2)
+                #juego.arduino.setDTR(True)
                 break
     except:
         pass
