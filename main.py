@@ -506,13 +506,14 @@ class VentanaCreator (QtWidgets.QMainWindow, Ui_VentanaCreator):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.file = ["",""]
+        
         self.nombreEquipo.setText(juego.equipos[juego.modo]["name"])
         self.ButtonCreate.clicked.connect(self.CreatePlayer)
         self.ButtonUpload.clicked.connect(self.uploadPhoto)
         self.CancelButton.clicked.connect(self.hide)
 
     def uploadPhoto(self):
-        self.file = ["",""]
         self.file =  QtWidgets.QFileDialog.getOpenFileName(self, 'Open file', 'c:\\', "Image files (*.jpg *.gif *png)")
 
     def CreatePlayer(self):
