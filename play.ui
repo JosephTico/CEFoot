@@ -554,7 +554,7 @@
     <string>VISIT</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="closeMe">
    <property name="geometry">
     <rect>
      <x>690</x>
@@ -609,7 +609,7 @@ border: 1px solid;</string>
   <zorder>label_9</zorder>
   <zorder>label_8</zorder>
   <zorder>label_30</zorder>
-  <zorder>pushButton</zorder>
+  <zorder>closeMe</zorder>
   <zorder>label_2</zorder>
   <zorder>label_5</zorder>
   <zorder>label_6</zorder>

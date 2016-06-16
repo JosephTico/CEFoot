@@ -186,13 +186,13 @@ class Ui_VentanaJuego(object):
         self.label_8.setFont(font)
         self.label_8.setStyleSheet("color:rgb(255, 255, 255)")
         self.label_8.setObjectName("label_8")
-        self.pushButton = QtWidgets.QPushButton(VentanaJuego)
-        self.pushButton.setGeometry(QtCore.QRect(690, 0, 121, 51))
-        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton.setStyleSheet("background:rgba(10, 10, 10, 0.5);\n"
+        self.closeMe = QtWidgets.QPushButton(VentanaJuego)
+        self.closeMe.setGeometry(QtCore.QRect(690, 0, 121, 51))
+        self.closeMe.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.closeMe.setStyleSheet("background:rgba(10, 10, 10, 0.5);\n"
 "color: rgb(255, 255, 255);\n"
 "border: 1px solid;")
-        self.pushButton.setObjectName("pushButton")
+        self.closeMe.setObjectName("closeMe")
         self.label_2 = QtWidgets.QLabel(VentanaJuego)
         self.label_2.setGeometry(QtCore.QRect(0, 490, 801, 131))
         self.label_2.setStyleSheet("background:rgba(0,0,0,0.5)")
@@ -216,7 +216,7 @@ class Ui_VentanaJuego(object):
         self.label_9.raise_()
         self.label_8.raise_()
         self.label_30.raise_()
-        self.pushButton.raise_()
+        self.closeMe.raise_()
         self.label_2.raise_()
         self.label_5.raise_()
         self.label_6.raise_()
@@ -236,5 +236,5 @@ class Ui_VentanaJuego(object):
         self.label_9.setText(_translate("VentanaJuego", "LOCAL"))
         self.label_30.setText(_translate("VentanaJuego", "VISIT"))
         self.label_8.setText(_translate("VentanaJuego", "VISIT"))
-        self.pushButton.setText(_translate("VentanaJuego", "End this game"))
+        self.closeMe.setText(_translate("VentanaJuego", "End this game"))
 

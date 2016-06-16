@@ -75,7 +75,7 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
 
         self.equipos = {"loc": {"name": None, "img": None}, "visit": {"name": None, "img": None}}
 
-        self.dificultad = "L"
+        self.dificultad = "X"
 
 
     def jugar(self):
@@ -563,11 +563,18 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.player.setVolume(90)
         self.player.play()
 
+        self.closeMe.clicked.connect(self:adios)
+
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.arduino_start)
         self.timer.start(2000)
 
         self.puntaje = [0,0]
+
+    def adios(self):
+        juego.partida.hide()
+        juego.partida = None
+        juego.show()
 
     def arduino_start(self):
 
@@ -746,7 +753,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
 
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.vg.esconder)
-        self.timer.start(5000)
+        self.timer.start(10000)
 
 
     def Arduino_missed(self):
@@ -782,7 +789,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
 
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.vg.esconder)
-        self.timer.start(5000)
+        self.timer.start(10000)
 
 
 class Goal(QtWidgets.QMainWindow, Ui_Goal):
