@@ -28,6 +28,7 @@ def confirmaSalir(self, event, porSalir=False):
         try:
             juego.partida.at.terminate()
             juego.partida.lt.terminate()
+            juego.partida.ct.terminate()
         except:
             pass
         juego.ejecutando = False
@@ -43,6 +44,7 @@ def confirmaSalir(self, event, porSalir=False):
         try:
             juego.partida.at.terminate()
             juego.partida.lt.terminate()
+            juego.partida.ct.terminate()
         except:
             pass
         juego.ejecutando = False
@@ -562,7 +564,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.playlist.setCurrentIndex(1)
         self.player = QtMultimedia.QMediaPlayer()
         self.player.setPlaylist(self.playlist)
-        self.player.setVolume(80)
+        self.player.setVolume(65)
         self.player.play()
 
         self.closeMe.clicked.connect(self.adios)
@@ -578,6 +580,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         try:
             juego.partida.lt.terminate()
             juego.partida.at.terminate()
+            juego.partida.ct.terminate()
         except:
             pass
         juego.arduino.write("R0\n".encode())
@@ -614,6 +617,9 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.lt = led_loop()
         self.lt.start()
 
+        self.ct = cron_loop()
+        self.ct.start()
+
     def keyPressEvent(self, event):
         key = event.key()
 
@@ -638,12 +644,14 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
                 juego.turno += 1
                 self.lt.terminate()
                 self.at.terminate()
+                self.ct.terminate()
             else:
                 juego.partida.stop()
                 juego.partida.Arduino_missed()
                 juego.turno += 1
                 self.at.terminate()
                 self.lt.terminate()
+                self.ct.terminate()
         else:
             if key != juego.partida.posicion and key != juego.partida.posicion + 1:
                 juego.partida.stop()
@@ -651,12 +659,14 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
                 juego.turno += 1
                 self.lt.terminate()
                 self.at.terminate()
+                self.ct.terminate()
             else:
                 juego.partida.stop()
                 juego.partida.Arduino_missed()
                 juego.turno += 1
                 self.at.terminate()
                 self.lt.terminate()
+                self.ct.terminate()
 
     def muestra_ganador(self):
         juego.VW = VentanaWin()
@@ -824,7 +834,7 @@ class Goal(QtWidgets.QMainWindow, Ui_Goal):
         self.gol1.setCurrentIndex(2)
         self.gol2 = QtMultimedia.QMediaPlayer()
         self.gol2.setPlaylist(self.gol1)
-        self.gol2.setVolume(110)
+        self.gol2.setVolume(120)
         self.gol2.play()
 
     def esconder(self):
@@ -846,7 +856,7 @@ class Missed(QtWidgets.QMainWindow, Ui_Missed):
         self.missed1.setCurrentIndex(2)
         self.missed2 = QtMultimedia.QMediaPlayer()
         self.missed2.setPlaylist(self.missed1)
-        self.missed2.setVolume(110)
+        self.missed2.setVolume(120)
         self.missed2.play()
 
     def esconder(self):
@@ -918,12 +928,14 @@ class arduino_loop(QtCore.QThread):
                             juego.partida.Arduino_goal()
                             juego.turno += 1
                             juego.partida.lt.terminate()
+                            juego.partida.ct.terminate()
                             self.terminate()
                         else:
                             juego.partida.stop()
                             juego.partida.Arduino_missed()
                             juego.turno += 1
                             juego.partida.lt.terminate()
+                            juego.partida.ct.terminate()
                             self.terminate()
                     else:
                         if int(cmd[1]) != juego.partida.posicion and int(cmd[1]) != juego.partida.posicion + 1:
@@ -931,13 +943,29 @@ class arduino_loop(QtCore.QThread):
                             juego.partida.Arduino_goal()
                             juego.turno += 1
                             juego.partida.lt.terminate()
+                            juego.partida.ct.terminate()
                             self.terminate()
                         else:
                             juego.partida.stop()
                             juego.partida.Arduino_missed()
                             juego.turno += 1
                             juego.partida.lt.terminate()
+                            juego.partida.ct.terminate()
                             self.terminate()
+
+class cron_loop(QtCore.QThread):
+
+    def __init__(self):
+        super().__init__()
+        juego.partida.cron.display(0)
+        self.i = 0
+
+    def run(self):
+        while True:
+            time.sleep(1)
+            self.i+=1
+            juego.partida.cron.display(self.i)
+        
 
 class VentanaWin(QtWidgets.QMainWindow, Ui_Win):
     def __init__(self):
@@ -946,6 +974,7 @@ class VentanaWin(QtWidgets.QMainWindow, Ui_Win):
         try:
             juego.partida.lt.terminate()
             juego.partida.at.terminate()
+            juego.partida.ct.terminate()
         except:
             pass
         juego.partida = None
