@@ -17,6 +17,8 @@ class Ui_VentanaAbout(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(VentanaAbout.sizePolicy().hasHeightForWidth())
         VentanaAbout.setSizePolicy(sizePolicy)
+        VentanaAbout.setMinimumSize(QtCore.QSize(800, 639))
+        VentanaAbout.setMaximumSize(QtCore.QSize(800, 639))
         self.label = QtWidgets.QLabel(VentanaAbout)
         self.label.setGeometry(QtCore.QRect(-80, 0, 891, 651))
         font = QtGui.QFont()

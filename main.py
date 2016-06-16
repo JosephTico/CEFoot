@@ -8,6 +8,7 @@ from creator import *
 from play import *
 from goal import *
 from missed import *
+from difficult import *
 import sys
 import time
 import serial
@@ -409,9 +410,9 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             juego.modo = self.modo
             self.configuraTodo(self.modo)
         else:
-            juego.partida = VentanaJuego()
+            self.dificultad = Difficulty()
             self.hide()
-            juego.partida.show()
+            self.dificultad.show()
 
     def closeEvent(self, event):
         confirmaSalir(self, event)
@@ -563,11 +564,25 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.player.setVolume(80)
         self.player.play()
 
+        self.closeMe.clicked.connect(self.adios)
+
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.arduino_start)
         self.timer.start(2000)
 
         self.puntaje = [0,0]
+
+    def adios(self):
+        juego.partida.hide()
+        try:
+            juego.partida.lt.terminate()
+            juego.partida.at.terminate()
+        except:
+            pass
+        juego.arduino.write("R0\n".encode())
+        juego.partida = None
+        juego.show()
+        juego.reproduceMusica()
 
     def arduino_start(self):
 
@@ -615,7 +630,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
             key = 6
 
 
-        if juego.dificultad = "L":
+        if juego.dificultad == "L":
             if key != juego.partida.posicion:
                 juego.partida.stop()
                 juego.partida.Arduino_goal()
@@ -629,7 +644,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
                 self.at.terminate()
                 self.lt.terminate()
         else:
-            if key != juego.partida.posicion or :
+            if key != juego.partida.posicion and key != juego.partida.posicion + 1:
                 juego.partida.stop()
                 juego.partida.Arduino_goal()
                 juego.turno += 1
@@ -746,7 +761,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
 
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.vg.esconder)
-        self.timer.start(5000)
+        self.timer.start(10000)
 
 
     def Arduino_missed(self):
@@ -782,7 +797,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
 
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.vg.esconder)
-        self.timer.start(5000)
+        self.timer.start(10000)
 
 
 class Goal(QtWidgets.QMainWindow, Ui_Goal):
@@ -829,6 +844,50 @@ class Missed(QtWidgets.QMainWindow, Ui_Missed):
         juego.arduino.setDTR(True)
         juego.partida.arduino_start()
 
+class Difficulty(QtWidgets.QMainWindow, Ui_VentanaPre_Game):
+
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+        self.back.clicked.connect(self.atras)
+        self.continuar.clicked.connect(self.siguiente)
+
+        self.L1_5.clicked.connect(lambda: self.setDificultad("L"))
+        self.L1_4.clicked.connect(lambda: self.setDificultad("X"))
+        self.Referee1.clicked.connect(lambda: self.setReferee(1))
+        self.Referee2.clicked.connect(lambda: self.setReferee(2))
+
+    def closeEvent(self, event):
+        confirmaSalir(self, event)
+
+    def atras(self):
+        juego.clickFx()
+        self.hide()
+        juego.selectorUi.playersUi.show()
+
+    def siguiente(self):
+        juego.clickFx()
+        juego.partida = VentanaJuego()
+        self.hide()
+        juego.partida.show()
+
+    def setDificultad(self, value):
+        juego.clickFx()
+        if value == "L":
+            self.L1_4.setChecked(False)
+        elif value == "X":
+            self.L1_5.setChecked(False)
+        juego.dificultad = value
+
+    def setReferee(self, num):
+        juego.clickFx()
+        if num == 1:
+            self.Referee2.setChecked(False)
+        else:
+            self.Referee1.setChecked(False)
+
+
 
 
 class arduino_loop(QtCore.QThread):
@@ -843,18 +902,32 @@ class arduino_loop(QtCore.QThread):
             if juego.arduino.inWaiting() and cmd and cmd != "":
                 cmd = cmd.decode().strip().replace('\n', '').replace('\r', '')
                 if cmd[0] == "A":
-                    if int(cmd[1]) != juego.partida.posicion:
-                        juego.partida.stop()
-                        juego.partida.Arduino_goal()
-                        juego.turno += 1
-                        juego.partida.lt.terminate()
-                        self.terminate()
+                    if juego.dificultad == "L":
+                        if int(cmd[1]) != juego.partida.posicion:
+                            juego.partida.stop()
+                            juego.partida.Arduino_goal()
+                            juego.turno += 1
+                            juego.partida.lt.terminate()
+                            self.terminate()
+                        else:
+                            juego.partida.stop()
+                            juego.partida.Arduino_missed()
+                            juego.turno += 1
+                            juego.partida.lt.terminate()
+                            self.terminate()
                     else:
-                        juego.partida.stop()
-                        juego.partida.Arduino_missed()
-                        juego.turno += 1
-                        juego.partida.lt.terminate()
-                        self.terminate()
+                        if int(cmd[1]) != juego.partida.posicion and int(cmd[1]) != juego.partida.posicion + 1:
+                            juego.partida.stop()
+                            juego.partida.Arduino_goal()
+                            juego.turno += 1
+                            juego.partida.lt.terminate()
+                            self.terminate()
+                        else:
+                            juego.partida.stop()
+                            juego.partida.Arduino_missed()
+                            juego.turno += 1
+                            juego.partida.lt.terminate()
+                            self.terminate()
 
 
 class led_loop(QtCore.QThread):
