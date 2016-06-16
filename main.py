@@ -743,6 +743,15 @@ class Goal(QtWidgets.QMainWindow, Ui_Goal):
         super().__init__()
         self.setupUi(self)
 
+        self.gol = QtCore.QUrl.fromLocalFile("./sounds/silbato.mp3")
+        self.gol1 = QtMultimedia.QMediaPlaylist()
+        self.gol1.addMedia(QtMultimedia.QMediaContent(self.gol))
+        self.gol1.setCurrentIndex(2)
+        self.gol2 = QtMultimedia.QMediaPlayer()
+        self.gol2.setPlaylist(self.gol1)
+        self.gol2.setVolume(100)
+        self.gol2.play()
+
     def esconder(self):
         self.hide()
         juego.partida.arduino_start()
@@ -752,6 +761,15 @@ class Missed(QtWidgets.QMainWindow, Ui_Missed):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+
+        self.missed = QtCore.QUrl.fromLocalFile("./sounds/silbato.mp3")
+        self.missed1 = QtMultimedia.QMediaPlaylist()
+        self.missed1.addMedia(QtMultimedia.QMediaContent(self.missed))
+        self.missed1.setCurrentIndex(2)
+        self.missed2 = QtMultimedia.QMediaPlayer()
+        self.missed2.setPlaylist(self.missed1)
+        self.missed2.setVolume(100)
+        self.missed2.play()
 
     def esconder(self):
         self.hide()
