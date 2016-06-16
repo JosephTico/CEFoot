@@ -9,6 +9,7 @@ from play import *
 from goal import *
 from missed import *
 from difficult import *
+from winner import *
 import sys
 import time
 import serial
@@ -929,6 +930,25 @@ class arduino_loop(QtCore.QThread):
                             juego.partida.lt.terminate()
                             self.terminate()
 
+class VentanaWin(QtWidgets.QMainWindow, Ui_Win):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        self.continuar.clicked.connect(self.inicio)
+        self.Winner.setPixmap(QtGui.QPixmap("images/"+str(juego.ganador[1])))
+
+    def inicio():
+        self.hide()
+         try:
+            juego.partida.lt.terminate()
+            juego.partida.at.terminate()
+        except:
+            pass
+        juego.arduino.write("R0\n".encode())
+        juego.partida=None
+        juego.show()
+
+            
 
 class led_loop(QtCore.QThread):
 
