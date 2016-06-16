@@ -671,9 +671,11 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
 
                 return False
             elif self.puntaje[0] > self.puntaje[1]:
+                juego.ganador = juego.equipos["loc"]
                 #Local WIN
                 return True
             else:
+                juego.ganador = juego.equipos["visit"]
                 #Visitante WIN
                 return True
 
@@ -686,9 +688,11 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
 
                 return False
             elif self.puntaje[0] > self.puntaje[1]:
+                juego.ganador = juego.equipos["loc"]
                 #Local WIN
                 return True
             else:
+                juego.ganador = juego.equipos["visit"]
                 #Visitante WIN
                 return True
 
