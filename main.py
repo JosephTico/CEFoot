@@ -948,7 +948,7 @@ class VentanaWin(QtWidgets.QMainWindow, Ui_Win):
 
     def inicio():
         self.hide()
-         try:
+        try:
             juego.partida.lt.terminate()
             juego.partida.at.terminate()
         except:
