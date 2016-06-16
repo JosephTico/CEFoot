@@ -614,20 +614,33 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         elif key == QtCore.Qt.Key_6:
             key = 6
 
-        print ([key, juego.partida.posicion])
 
-        if key != juego.partida.posicion:
-            juego.partida.stop()
-            juego.partida.Arduino_goal()
-            juego.turno += 1
-            self.lt.terminate()
-            self.at.terminate()
+        if juego.dificultad = "L":
+            if key != juego.partida.posicion:
+                juego.partida.stop()
+                juego.partida.Arduino_goal()
+                juego.turno += 1
+                self.lt.terminate()
+                self.at.terminate()
+            else:
+                juego.partida.stop()
+                juego.partida.Arduino_missed()
+                juego.turno += 1
+                self.at.terminate()
+                self.lt.terminate()
         else:
-            juego.partida.stop()
-            juego.partida.Arduino_missed()
-            juego.turno += 1
-            self.at.terminate()
-            self.lt.terminate()
+            if key != juego.partida.posicion or :
+                juego.partida.stop()
+                juego.partida.Arduino_goal()
+                juego.turno += 1
+                self.lt.terminate()
+                self.at.terminate()
+            else:
+                juego.partida.stop()
+                juego.partida.Arduino_missed()
+                juego.turno += 1
+                self.at.terminate()
+                self.lt.terminate()
 
     def penales_extra(self):
         if juego.turno == 11:
@@ -854,21 +867,19 @@ class led_loop(QtCore.QThread):
         while True:
             delay = juego.partida.delay
             for i in range(1, 7):
-                juego.partida.posicion = i
                 data = juego.dificultad + str(i) + "\n"
                 data = data.encode()
-                print(data)
                 juego.arduino.write(data)
-                time.sleep(delay / 3300)
+                juego.partida.posicion = i
+                time.sleep(delay / 4000)
 
             for i in range(1, 5):
-                juego.partida.posicion = i
                 i = 6 - i
                 data = juego.dificultad + str(i) + "\n"
                 data = data.encode()
-                print(data)
                 juego.arduino.write(data)
-                time.sleep(delay / 3300)
+                juego.partida.posicion = i
+                time.sleep(delay / 4000)
 
 # Inicializa el programa
 if __name__ == "__main__":
