@@ -579,6 +579,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
             juego.partida.at.terminate()
         except:
             pass
+        juego.arduino.write("R0\n".encode())
         juego.partida = None
         juego.show()
         juego.reproduceMusica()
@@ -857,16 +858,22 @@ class Difficulty(QtWidgets.QMainWindow, Ui_VentanaPre_Game):
         self.Referee1.clicked.connect(lambda: self.setReferee(1))
         self.Referee2.clicked.connect(lambda: self.setReferee(2))
 
+    def closeEvent(self, event):
+        confirmaSalir(self, event)
+
     def atras(self):
+        juego.clickFx()
         self.hide()
         juego.selectorUi.playersUi.show()
 
     def siguiente(self):
+        juego.clickFx()
         juego.partida = VentanaJuego()
         self.hide()
         juego.partida.show()
 
     def setDificultad(self, value):
+        juego.clickFx()
         if value == "L":
             self.L1_4.setChecked(False)
         elif value == "X":
@@ -874,6 +881,7 @@ class Difficulty(QtWidgets.QMainWindow, Ui_VentanaPre_Game):
         juego.dificultad = value
 
     def setReferee(self, num):
+        juego.clickFx()
         if num == 1:
             self.Referee2.setChecked(False)
         else:
