@@ -88,6 +88,7 @@ class Ui_VentanaCreator(object):
         self.LineName.setObjectName("LineName")
         self.gridLayout.addWidget(self.LineName, 1, 1, 1, 1)
         self.LineShooterGlobal = QtWidgets.QSpinBox(self.gridLayoutWidget)
+        self.LineShooterGlobal.setMinimum(55)
         self.LineShooterGlobal.setObjectName("LineShooterGlobal")
         self.gridLayout.addWidget(self.LineShooterGlobal, 2, 1, 1, 1)
         self.LineCountry = QtWidgets.QLineEdit(self.gridLayoutWidget)
