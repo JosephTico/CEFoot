@@ -615,7 +615,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
             key = 6
 
 
-        if juego.dificultad = "L":
+        if juego.dificultad == "L":
             if key != juego.partida.posicion:
                 juego.partida.stop()
                 juego.partida.Arduino_goal()
@@ -629,7 +629,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
                 self.at.terminate()
                 self.lt.terminate()
         else:
-            if key != juego.partida.posicion or :
+            if key != juego.partida.posicion and key != juego.partida.posicion + 1:
                 juego.partida.stop()
                 juego.partida.Arduino_goal()
                 juego.turno += 1
@@ -843,18 +843,32 @@ class arduino_loop(QtCore.QThread):
             if juego.arduino.inWaiting() and cmd and cmd != "":
                 cmd = cmd.decode().strip().replace('\n', '').replace('\r', '')
                 if cmd[0] == "A":
-                    if int(cmd[1]) != juego.partida.posicion:
-                        juego.partida.stop()
-                        juego.partida.Arduino_goal()
-                        juego.turno += 1
-                        juego.partida.lt.terminate()
-                        self.terminate()
+                    if juego.dificultad == "L":
+                        if int(cmd[1]) != juego.partida.posicion:
+                            juego.partida.stop()
+                            juego.partida.Arduino_goal()
+                            juego.turno += 1
+                            juego.partida.lt.terminate()
+                            self.terminate()
+                        else:
+                            juego.partida.stop()
+                            juego.partida.Arduino_missed()
+                            juego.turno += 1
+                            juego.partida.lt.terminate()
+                            self.terminate()
                     else:
-                        juego.partida.stop()
-                        juego.partida.Arduino_missed()
-                        juego.turno += 1
-                        juego.partida.lt.terminate()
-                        self.terminate()
+                        if int(cmd[1]) != juego.partida.posicion and int(cmd[1]) != juego.partida.posicion + 1:
+                            juego.partida.stop()
+                            juego.partida.Arduino_goal()
+                            juego.turno += 1
+                            juego.partida.lt.terminate()
+                            self.terminate()
+                        else:
+                            juego.partida.stop()
+                            juego.partida.Arduino_missed()
+                            juego.turno += 1
+                            juego.partida.lt.terminate()
+                            self.terminate()
 
 
 class led_loop(QtCore.QThread):
