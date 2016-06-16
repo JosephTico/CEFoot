@@ -658,6 +658,11 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
                 self.at.terminate()
                 self.lt.terminate()
 
+    def muestra_ganador(self):
+        VW = VentanaWin()
+        self.hide()
+        VW.show()
+
     def penales_extra(self):
         if juego.turno == 11:
             if self.puntaje[0] == self.puntaje[1]:
@@ -672,11 +677,11 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
                 return False
             elif self.puntaje[0] > self.puntaje[1]:
                 juego.ganador = juego.equipos["loc"]
-                #Local WIN
+                self.muestra_ganador()
                 return True
             else:
                 juego.ganador = juego.equipos["visit"]
-                #Visitante WIN
+                self.muestra_ganador()
                 return True
 
         if juego.turno > 11 and (juego.turno+1)%2 == 0:
@@ -689,11 +694,11 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
                 return False
             elif self.puntaje[0] > self.puntaje[1]:
                 juego.ganador = juego.equipos["loc"]
-                #Local WIN
+                self.muestra_ganador()
                 return True
             else:
                 juego.ganador = juego.equipos["visit"]
-                #Visitante WIN
+                self.muestra_ganador()
                 return True
 
 
