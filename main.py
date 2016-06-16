@@ -780,7 +780,7 @@ class Goal(QtWidgets.QMainWindow, Ui_Goal):
         juego.arduino.write("R0\n".encode())
         juego.arduino.setDTR(False)
 
-        self.gol = QtCore.QUrl.fromLocalFile("./sounds/silbato.mp3")
+        self.gol = QtCore.QUrl.fromLocalFile("./sounds/gol3.mp3")
         self.gol1 = QtMultimedia.QMediaPlaylist()
         self.gol1.addMedia(QtMultimedia.QMediaContent(self.gol))
         self.gol1.setCurrentIndex(2)
@@ -802,7 +802,7 @@ class Missed(QtWidgets.QMainWindow, Ui_Missed):
         juego.arduino.write("R0\n".encode())
         juego.arduino.setDTR(False)
 
-        self.missed = QtCore.QUrl.fromLocalFile("./sounds/silbato.mp3")
+        self.missed = QtCore.QUrl.fromLocalFile("./sounds/atajada.mp3")
         self.missed1 = QtMultimedia.QMediaPlaylist()
         self.missed1.addMedia(QtMultimedia.QMediaContent(self.missed))
         self.missed1.setCurrentIndex(2)
