@@ -560,7 +560,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.playlist.setCurrentIndex(1)
         self.player = QtMultimedia.QMediaPlayer()
         self.player.setPlaylist(self.playlist)
-        self.player.setVolume(90)
+        self.player.setVolume(80)
         self.player.play()
 
         self.timer = QtCore.QTimer()
@@ -799,7 +799,7 @@ class Goal(QtWidgets.QMainWindow, Ui_Goal):
         self.gol1.setCurrentIndex(2)
         self.gol2 = QtMultimedia.QMediaPlayer()
         self.gol2.setPlaylist(self.gol1)
-        self.gol2.setVolume(100)
+        self.gol2.setVolume(110)
         self.gol2.play()
 
     def esconder(self):
@@ -821,7 +821,7 @@ class Missed(QtWidgets.QMainWindow, Ui_Missed):
         self.missed1.setCurrentIndex(2)
         self.missed2 = QtMultimedia.QMediaPlayer()
         self.missed2.setPlaylist(self.missed1)
-        self.missed2.setVolume(100)
+        self.missed2.setVolume(110)
         self.missed2.play()
 
     def esconder(self):
