@@ -563,7 +563,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.player.setVolume(90)
         self.player.play()
 
-        self.closeMe.clicked.connect(self:adios)
+        self.closeMe.clicked.connect(self.adios)
 
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.arduino_start)
@@ -575,6 +575,7 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         juego.partida.hide()
         juego.partida = None
         juego.show()
+        juego.reproduceMusica()
 
     def arduino_start(self):
 
