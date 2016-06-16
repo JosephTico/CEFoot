@@ -953,6 +953,7 @@ class arduino_loop(QtCore.QThread):
             cmd = juego.arduino.readline()
             if cmd and cmd != "":
                 cmd = cmd.decode().strip().replace('\n', '').replace('\r', '')
+                print(cmd)
                 if cmd[0] == "A":
                     if juego.dificultad == "L":
                         if int(cmd[1]) != juego.partida.posicion:
@@ -1004,11 +1005,22 @@ class VentanaWin(QtWidgets.QMainWindow, Ui_Win):
         self.continuar.clicked.connect(self.inicio)
         self.Winner.setPixmap(QtGui.QPixmap("images/"+str(juego.ganador["img"])))
 
+        self.missed = QtCore.QUrl.fromLocalFile("./sounds/champ.mp3")
+        self.missed1 = QtMultimedia.QMediaPlaylist()
+        self.missed1.addMedia(QtMultimedia.QMediaContent(self.missed))
+        self.missed1.setCurrentIndex(2)
+        self.missed2 = QtMultimedia.QMediaPlayer()
+        self.missed2.setPlaylist(self.missed1)
+        self.missed2.setVolume(80)
+        self.missed2.play()
+
     def inicio(self):
         self.hide()
+        self.missed2.stop()
         juego.show()
         juego.VW = None
         juego.reproduceMusica()
+
 
 
 class led_loop(QtCore.QThread):
