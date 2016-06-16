@@ -971,14 +971,6 @@ class VentanaWin(QtWidgets.QMainWindow, Ui_Win):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-<<<<<<< HEAD
-        self.continuar.clicked.connect(self.inicio)
-        self.Winner.setPixmap(QtGui.QPixmap("images/"+str(juego.ganador[1])))
-
-    def inicio():
-        self.hide()
-=======
->>>>>>> afc5ba696608a05b38c8a0177896863012326c17
         try:
             juego.partida.lt.terminate()
             juego.partida.at.terminate()
