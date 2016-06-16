@@ -598,7 +598,38 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
         self.lt = led_loop()
         self.lt.start()
 
-    def penales_extra():
+    def keyPressEvent(self, event):
+        key = event.key()
+
+        if key == QtCore.Qt.Key_1:
+            key = 1
+        elif key == QtCore.Qt.Key_2:
+            key = 2
+        elif key == QtCore.Qt.Key_3:
+            key = 3
+        elif key == QtCore.Qt.Key_4:
+            key = 4
+        elif key == QtCore.Qt.Key_5:
+            key = 5
+        elif key == QtCore.Qt.Key_6:
+            key = 6
+
+        print ([key, juego.partida.posicion])
+
+        if key != juego.partida.posicion:
+            juego.partida.stop()
+            juego.partida.Arduino_goal()
+            juego.turno += 1
+            self.lt.terminate()
+            self.at.terminate()
+        else:
+            juego.partida.stop()
+            juego.partida.Arduino_missed()
+            juego.turno += 1
+            self.at.terminate()
+            self.lt.terminate()
+
+    def penales_extra(self):
         if juego.turno == 11:
             if self.puntaje[0] == self.puntaje[1]:
                 bolas = [self.g3, self.g4, self.g5, self.g6, self.g7, self.g8, self.g9, self.g10]
@@ -608,12 +639,14 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
                 self.g1.setEnabled(False)
                 self.g2.setPixmap(QtGui.QPixmap("images/104493-3d-glossy-green-orb-icon-sports-hobbies-ball-soccer.png"))
                 self.g2.setEnabled(False)
+
+                return False
             elif self.puntaje[0] > self.puntaje[1]:
                 #Local WIN
-                return
+                return True
             else:
                 #Visitante WIN
-                return
+                return True
 
         if juego.turno > 11 and (juego.turno+1)%2 == 0:
             if self.puntaje[0] == self.puntaje[1]:
@@ -621,12 +654,14 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
                 self.g1.setEnabled(False)
                 self.g2.setPixmap(QtGui.QPixmap("images/104493-3d-glossy-green-orb-icon-sports-hobbies-ball-soccer.png"))
                 self.g2.setEnabled(False)
+
+                return False
             elif self.puntaje[0] > self.puntaje[1]:
                 #Local WIN
-                return
+                return True
             else:
                 #Visitante WIN
-                return
+                return True
 
 
     def stop(self):
@@ -742,9 +777,12 @@ class Goal(QtWidgets.QMainWindow, Ui_Goal):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        juego.arduino.write("R0\n".encode())
+        juego.arduino.setDTR(False)
 
     def esconder(self):
         self.hide()
+        juego.arduino.setDTR(True)
         juego.partida.arduino_start()
 
 class Missed(QtWidgets.QMainWindow, Ui_Missed):
@@ -752,9 +790,12 @@ class Missed(QtWidgets.QMainWindow, Ui_Missed):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        juego.arduino.write("R0\n".encode())
+        juego.arduino.setDTR(False)
 
     def esconder(self):
         self.hide()
+        juego.arduino.setDTR(True)
         juego.partida.arduino_start()
 
 
@@ -771,15 +812,17 @@ class arduino_loop(QtCore.QThread):
             if juego.arduino.inWaiting() and cmd and cmd != "":
                 cmd = cmd.decode().strip().replace('\n', '').replace('\r', '')
                 if cmd[0] == "A":
-                    if int(cmd[1]) == juego.partida.posicion:
+                    if int(cmd[1]) != juego.partida.posicion:
                         juego.partida.stop()
                         juego.partida.Arduino_goal()
                         juego.turno += 1
+                        juego.partida.lt.terminate()
                         self.terminate()
                     else:
                         juego.partida.stop()
                         juego.partida.Arduino_missed()
                         juego.turno += 1
+                        juego.partida.lt.terminate()
                         self.terminate()
 
 
