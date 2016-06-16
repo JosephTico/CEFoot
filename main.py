@@ -8,6 +8,7 @@ from creator import *
 from play import *
 from goal import *
 from missed import *
+from difficult import *
 import sys
 import time
 import serial
@@ -75,7 +76,7 @@ class VentanaTitulo(QtWidgets.QMainWindow, Ui_VentanaTitulo):
 
         self.equipos = {"loc": {"name": None, "img": None}, "visit": {"name": None, "img": None}}
 
-        self.dificultad = "X"
+        self.dificultad = "L"
 
 
     def jugar(self):
@@ -409,9 +410,9 @@ class VentanaPlayers(QtWidgets.QMainWindow, Ui_VentanaPlayers):
             juego.modo = self.modo
             self.configuraTodo(self.modo)
         else:
-            juego.partida = VentanaJuego()
+            self.dificultad = Difficulty()
             self.hide()
-            juego.partida.show()
+            self.dificultad.show()
 
     def closeEvent(self, event):
         confirmaSalir(self, event)
@@ -573,6 +574,11 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
 
     def adios(self):
         juego.partida.hide()
+        try:
+            juego.partida.lt.terminate()
+            juego.partida.at.terminate()
+        except:
+            pass
         juego.partida = None
         juego.show()
         juego.reproduceMusica()
@@ -836,6 +842,43 @@ class Missed(QtWidgets.QMainWindow, Ui_Missed):
         self.hide()
         juego.arduino.setDTR(True)
         juego.partida.arduino_start()
+
+class Difficulty(QtWidgets.QMainWindow, Ui_VentanaPre_Game):
+
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+        self.back.clicked.connect(self.atras)
+        self.continuar.clicked.connect(self.siguiente)
+
+        self.L1_5.clicked.connect(lambda: self.setDificultad("L"))
+        self.L1_4.clicked.connect(lambda: self.setDificultad("X"))
+        self.Referee1.clicked.connect(lambda: self.setReferee(1))
+        self.Referee2.clicked.connect(lambda: self.setReferee(2))
+
+    def atras(self):
+        self.hide()
+        juego.selectorUi.playersUi.show()
+
+    def siguiente(self):
+        juego.partida = VentanaJuego()
+        self.hide()
+        juego.partida.show()
+
+    def setDificultad(self, value):
+        if value == "L":
+            self.L1_4.setChecked(False)
+        elif value == "X":
+            self.L1_5.setChecked(False)
+        juego.dificultad = value
+
+    def setReferee(self, num):
+        if num == 1:
+            self.Referee2.setChecked(False)
+        else:
+            self.Referee1.setChecked(False)
+
 
 
 
