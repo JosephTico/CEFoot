@@ -19,6 +19,9 @@ import threading
 def confirmaSalir(self, event, porSalir=False):
     if porSalir:
         if juego.arduino is not None:
+            juego.arduino.setDTR(False)
+            time.sleep(0.3)
+            juego.arduino.setDTR(True)
             juego.arduino.close()
         try:
             juego.partida.at.terminate()
@@ -42,6 +45,9 @@ def confirmaSalir(self, event, porSalir=False):
             pass
         juego.ejecutando = False
         if juego.arduino is not None:
+            juego.arduino.setDTR(False)
+            time.sleep(0.3)
+            juego.arduino.setDTR(True)
             juego.arduino.close()
         event.accept()
     else:
@@ -594,7 +600,34 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
 
     def penales_extra():
         if juego.turno == 11:
-            return
+            if self.puntaje[0] == self.puntaje[1]:
+                bolas = [self.g3, self.g4, self.g5, self.g6, self.g7, self.g8, self.g9, self.g10]
+                for i in bolas:
+                    i.hide()
+                self.g1.setPixmap(QtGui.QPixmap("images/104493-3d-glossy-green-orb-icon-sports-hobbies-ball-soccer.png"))
+                self.g1.setEnabled(False)
+                self.g2.setPixmap(QtGui.QPixmap("images/104493-3d-glossy-green-orb-icon-sports-hobbies-ball-soccer.png"))
+                self.g2.setEnabled(False)
+            elif self.puntaje[0] > self.puntaje[1]:
+                #Local WIN
+                return
+            else:
+                #Visitante WIN
+                return
+
+        if juego.turno > 11 and (juego.turno+1)%2 == 0:
+            if self.puntaje[0] == self.puntaje[1]:
+                self.g1.setPixmap(QtGui.QPixmap("images/104493-3d-glossy-green-orb-icon-sports-hobbies-ball-soccer.png"))
+                self.g1.setEnabled(False)
+                self.g2.setPixmap(QtGui.QPixmap("images/104493-3d-glossy-green-orb-icon-sports-hobbies-ball-soccer.png"))
+                self.g2.setEnabled(False)
+            elif self.puntaje[0] > self.puntaje[1]:
+                #Local WIN
+                return
+            else:
+                #Visitante WIN
+                return
+
 
     def stop(self):
         juego.ejecutando = False
@@ -608,11 +641,15 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
     def jugadoresActuales(self):
         if juego.turno % 2 == 0:
             jugador_index = juego.turno // 2 - 1
+            while jugador_index > 4:
+                jugador_index -= 5
             shooter = juego.selectorUi.playersUi.teamToPlayers.get(juego.visitante)[juego.equipoVisitante[1][jugador_index]]
             portero = juego.selectorUi.playersUi.teamToPlayers.get(juego.local)[juego.equipoLocal[0]]
             return [portero, shooter]
         else:
             jugador_index = (juego.turno - 1) // 2
+            while jugador_index > 4:
+                jugador_index -= 5
             shooter = juego.selectorUi.playersUi.teamToPlayers.get(juego.local)[juego.equipoLocal[1][jugador_index]]
             portero = juego.selectorUi.playersUi.teamToPlayers.get(juego.visitante)[juego.equipoVisitante[0]]
             return [portero, shooter]
@@ -650,6 +687,10 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
             mark = self.g9
         elif juego.turno == 10:
             mark = self.g10
+        elif juego.turno > 10 and juego.turno%2 == 0:
+            mark = self.g2
+        else:
+            mark = self.g1
         mark.setEnabled(True)
 
         self.vg = Goal()
@@ -681,6 +722,10 @@ class VentanaJuego(QtWidgets.QMainWindow, Ui_VentanaJuego):
             mark = self.g9
         elif juego.turno == 10:
             mark = self.g10
+        elif juego.turno > 10 and juego.turno%2 == 0:
+            mark = self.g2
+        else:
+            mark = self.g1
         mark.setPixmap(QtGui.QPixmap("images/red.png"))
         mark.setEnabled(True)
 
